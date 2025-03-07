@@ -226,12 +226,21 @@ pre {
   border-radius: 5px;
   overflow-x: auto;
   margin: 1.5rem 0;
+  border: 1px solid var(--code-border);
   
   code {
     background-color: transparent;
     padding: 0;
     font-size: 0.9rem;
     color: var(--syntax-base);
+    border: none;
+    line-height: 1.5;
+  }
+  
+  .line, .ln {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
   }
 }
 
