@@ -38,12 +38,3 @@ export const BlueSkyIntegration = {
     });
   }
 };
-</function_results>
-
-
-
-Let's also update the CSS for better styling with the oEmbed approach:
-
-<function_calls>
-<invoke name="edit_file">
-<parameter name="path">/projects/src/nord-hugo-theme/assets/css/components/_embeds.scss
