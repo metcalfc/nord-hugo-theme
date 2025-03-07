@@ -10,7 +10,7 @@ export const BlueSkyIntegration = {
       // Store the current theme as a data attribute
       embed.setAttribute('data-theme', theme);
       
-      // Toggle class for CSS styling
+      // Toggle class for CSS styling (also applies to parent with twitter-embed class)
       embed.classList.toggle('dark-theme', theme === 'dark');
       
       // Get the iframe from the embedded content
