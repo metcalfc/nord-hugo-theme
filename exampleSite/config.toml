@@ -1,0 +1,85 @@
+baseURL = "https://example.com"
+languageCode = "en-us"
+title = "Nord Hugo Blog"
+theme = "nord-hugo-theme"
+
+# Enable syntax highlighting
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+
+# Pagination settings
+[pagination]
+  pagerSize = 5
+
+# Default content language
+defaultContentLanguage = "en"
+
+# Enable robots.txt
+enableRobotsTXT = true
+
+[params]
+  # Site description
+  description = "A beautiful blog using the Nord color palette"
+  
+  # Default author
+  author = "Your Name"
+  
+  # Social media links
+  twitter = "yourusername"
+  github = "yourusername"
+  linkedin = "yourusername"
+  
+  # Show reading time
+  showReadingTime = true
+  
+  # Show share buttons at the end of posts
+  showShareButtons = true
+  
+  # Show related posts
+  showRelatedPosts = true
+  
+  # Default image for social sharing
+  og_image = "/images/og-image.png"
+
+# Main menu
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+  
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 3
+  
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 4
+
+  [[menu.footer]]
+    identifier = "privacy"
+    name = "Privacy Policy"
+    url = "/privacy/"
+    weight = 1
+  
+  [[menu.footer]]
+    identifier = "terms"
+    name = "Terms of Service"
+    url = "/terms/"
+    weight = 2
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"

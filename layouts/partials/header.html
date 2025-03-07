@@ -1,0 +1,23 @@
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+            <h1 class="site-title"><a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></h1>
+            
+            <nav class="main-nav">
+                <ul>
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.main }}
+                    <li>
+                        <a href="{{ .URL }}" class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                            {{ .Name }}
+                        </a>
+                    </li>
+                    {{ end }}
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

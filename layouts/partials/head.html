@@ -1,0 +1,54 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+{{ $options := (dict "targetPath" "css/main.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+{{ $style := resources.Get "css/main.scss" | css.Sass $options | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+<!-- Theme handling JS -->
+{{ $themeJs := resources.Get "js/nord-theme.js" | minify | fingerprint }}
+<script src="{{ $themeJs.RelPermalink }}"></script>
+
+<!-- OpenGraph and Twitter Card -->
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{ with .Params.image }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{ else }}
+<meta property="og:image" content="{{ .Site.Params.og_image | absURL }}">
+{{ end }}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+{{ with .Params.image }}
+<meta name="twitter:image" content="{{ . | absURL }}">
+{{ else }}
+<meta name="twitter:image" content="{{ .Site.Params.og_image | absURL }}">
+{{ end }}
+
+<!-- RSS -->
+{{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
+
+<!-- Custom header code -->
+{{ if .Site.Params.customCSS }}
+<link rel="stylesheet" href="{{ .Site.Params.customCSS | absURL }}">
+{{ end }}
+{{ if .Site.Params.customJS }}
+<script src="{{ .Site.Params.customJS | absURL }}"></script>
+{{ end }}

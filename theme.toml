@@ -1,0 +1,13 @@
+name = "nord-hugo-theme"
+license = "MIT"
+licenselink = "https://github.com/yourusername/nord-hugo-theme/blob/main/LICENSE"
+description = "A clean Hugo theme using the Nord color palette with light and dark modes"
+homepage = "https://github.com/yourusername/nord-hugo-theme"
+demosite = "https://yourusername.github.io/nord-hugo-theme-demo/"
+tags = ["blog", "responsive", "nord", "light", "dark", "personal", "clean", "minimal"]
+features = ["responsive", "syntax highlighting", "light/dark mode", "social media", "nord colors"]
+min_version = "0.60.0"
+
+[author]
+  name = "Your Name"
+  homepage = "https://yourwebsite.com"

@@ -1,0 +1,109 @@
+baseURL = "https://example.com"
+languageCode = "en-us"
+title = "My Nord Blog"
+theme = "nord-hugo-theme"
+
+# Enable syntax highlighting
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+
+# Pagination settings
+[pagination]
+  pagerSize = 5
+
+# Default content language
+defaultContentLanguage = "en"
+
+# Add Google Analytics ID here
+googleAnalytics = ""
+
+# Enable robots.txt
+enableRobotsTXT = true
+
+[params]
+  # Site description
+  description = "A personal blog using the Nord color palette"
+  
+  # Default author
+  author = "Your Name"
+  
+  # Social media links
+  twitter = "yourusername"
+  github = "yourusername"
+  linkedin = "yourusername"
+  
+  # Show reading time
+  showReadingTime = true
+  
+  # Show share buttons at the end of posts
+  showShareButtons = true
+  
+  # Show related posts
+  showRelatedPosts = true
+  
+  # Default image for social sharing
+  og_image = "/images/og-image.png"
+  
+  # Custom CSS/JS (optional)
+  # customCSS = "/css/custom.css"
+  # customJS = "/js/custom.js"
+
+# Main menu
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+  
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 3
+  
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 4
+
+  [[menu.footer]]
+    identifier = "privacy"
+    name = "Privacy Policy"
+    url = "/privacy/"
+    weight = 1
+  
+  [[menu.footer]]
+    identifier = "terms"
+    name = "Terms of Service"
+    url = "/terms/"
+    weight = 2
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+# Privacy settings for GDPR
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    disable = false
+    respectDoNotTrack = true
+    useSessionStorage = true
+  [privacy.twitter]
+    disable = false
+    enableDNT = true
+    simple = true
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true

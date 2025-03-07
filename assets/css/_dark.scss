@@ -1,0 +1,43 @@
+/* Dark Theme Variables */
+.dark-theme {
+  --background: #{$nord0}; /* Polar Night darkest */
+  --foreground: #{$nord6}; /* Snow Storm brightest */
+  --selection: #{$nord2};
+  --selection-text: #{$nord6};
+  --accent: #{$nord8}; /* Frost bright blue */
+  --accent-alt: #{$nord9}; /* Frost medium blue */
+  --links: #{$nord8}; /* Light blue for better visibility on dark */
+  --links-hover: #{$nord7};
+  --border: #{$nord3};
+  --muted: #{$nord4};
+  --code-bg: #{$nord1};
+  --blockquote-bg: #{$nord1};
+  --blockquote-border: #{$nord9};
+  --navbar-bg: #{$nord1};
+  --navbar-text: #{$nord5};
+  --navbar-active: #{$nord8};
+  --footer-bg: #{$nord1};
+  --footer-text: #{$nord5};
+  --card-bg: #{$nord1};
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  
+  /* Code syntax colors */
+  --syntax-base: #{$nord4};
+  --syntax-comment: #{$nord3};
+  --syntax-keyword: #{$nord9};
+  --syntax-function: #{$nord8};
+  --syntax-string: #{$nord14};
+  --syntax-number: #{$nord15};
+  --syntax-class: #{$nord7};
+  --syntax-variable: #{$nord4};
+  --syntax-operator: #{$nord9};
+  --syntax-error: #{$nord11};
+  --syntax-warning: #{$nord13};
+  --syntax-tag: #{$nord9};
+  --syntax-attr: #{$nord7};
+  
+  /* Inline code */
+  --inline-code-color: #{$nord4};
+  --inline-code-bg: #{$nord1};
+  --code-border: #{$nord3}; /* Adding specific border color for code blocks */
+}
