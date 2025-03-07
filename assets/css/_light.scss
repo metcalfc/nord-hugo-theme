@@ -7,10 +7,10 @@
   --accent: #{$nord8}; /* Frost bright blue */
   --accent-alt: #{$nord9}; /* Frost medium blue */
   --links: #{$nord10}; /* Frost dark blue */
-  --links-hover: #{$nord8};
+  --links-hover: #{$nord7}; /* Using nord7 for a distinct hover state */
   --border: #{$nord4};
-  --muted: #{$nord3};
-  --code-bg: #{$nord6}; /* Using lightest color for better contrast with dark text */
+  --muted: #{$nord2}; /* Using darker nord2, instead of nord3, for better contrast in light mode */
+  --code-bg: #{$nord5}; /* Using nord5 for better contrast with dark text */
   --blockquote-bg: #{$nord5};
   --blockquote-border: #{$nord9};
   --navbar-bg: #{$nord5};
@@ -38,6 +38,6 @@
   
   /* Inline code */
   --inline-code-color: #{$nord0};
-  --inline-code-bg: #{$nord5};
+  --inline-code-bg: #{$nord5}; /* Consistent with code block background */
   --code-border: #{$nord4}; /* Adding specific border color for code blocks */
 }
