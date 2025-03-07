@@ -88,9 +88,10 @@ th, td {
 }
 
 th {
-  background-color: var(--code-bg);
+  background-color: var(--table-header-bg);
+  color: var(--table-header-text);
   font-weight: 600;
-  @include transition(background-color);
+  @include transition(background-color, color);
 }
 
 // Post list

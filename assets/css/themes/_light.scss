@@ -37,6 +37,10 @@
   --card-bg: #{$nord6};
   --card-shadow: rgba(#{$nord0}, 0.1);
   
+  // Tables
+  --table-header-bg: #{$nord4}; /* Using nord4 for more contrast against the background */
+  --table-header-text: #{$nord0}; /* Using Polar Night darkest for good contrast */
+  
   /* Code syntax colors */
   --syntax-base: #{$nord0};
   --syntax-comment: #{$nord3};

@@ -37,6 +37,10 @@
   --card-bg: #{$nord1};
   --card-shadow: rgba(0, 0, 0, 0.3);
   
+  // Tables
+  --table-header-bg: #{$nord2}; /* Using nord2 for more contrast against the background */
+  --table-header-text: #{$nord6}; /* Using Snow Storm brightest for good contrast */
+  
   /* Code syntax colors */
   --syntax-base: #{$nord4};
   --syntax-comment: #{$nord3};
