@@ -31,7 +31,33 @@
   }
 }
 
-// BlueSky links
+// BlueSky embeds and links
+.bluesky-embed {
+  margin: $spacing-lg 0;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  position: relative;
+  max-width: 550px;
+  border: 1px solid var(--border);
+  @include transition(border-color);
+  @include box-shadow(1);
+  
+  // Make sure container has proper size for iframe
+  iframe {
+    width: 100%;
+    border: none;
+    min-height: 300px;
+  }
+  
+  // Add some styling for dark theme
+  &.dark-theme {
+    iframe {
+      background-color: var(--card-bg);
+    }
+  }
+}
+
+// Fallback link styling
 .bluesky-link {
   background-color: var(--card-bg);
   border-radius: $border-radius-md;
@@ -39,6 +65,7 @@
   border: 1px solid var(--border);
   margin: $spacing-lg 0;
   text-align: center;
+  max-width: 550px;
   @include transition(background-color, border-color);
   
   a {
