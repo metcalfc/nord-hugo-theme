@@ -40,6 +40,18 @@ enableRobotsTXT = true
   
   # Default image for social sharing
   og_image = "/images/og-image.png"
+  
+  # Theme settings
+  defaultTheme = "light"  # "light" or "dark"
+  respectSystemPreference = true
+  enableThemeToggle = true
+  
+  # Social media embeds
+  enableTwitterEmbeds = true
+  enableBlueSkyEmbeds = true
+  
+  # Performance options
+  deferThemeJS = false
 
 # Main menu
 [menu]

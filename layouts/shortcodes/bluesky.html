@@ -1,5 +1,13 @@
-<div class="bluesky-link">
-    <a href="https://bsky.app/profile/{{ .Get 0 }}/post/{{ .Get 1 }}" target="_blank" rel="noopener">
-        View this post on BlueSky <span class="bluesky-arrow">→</span>
-    </a>
+<div class="bluesky-embed">
+    <iframe 
+        class="bluesky-iframe"
+        data-user="{{ .Get 0 }}"
+        data-post="{{ .Get 1 }}"
+        src="https://bsky.app/embed/profile/{{ .Get 0 }}/post/{{ .Get 1 }}?theme={{ with .Page.Site.Params.defaultTheme }}{{ . }}{{ else }}light{{ end }}"
+        width="100%"
+        height="450"
+        frameborder="0"
+        scrolling="no"
+        allowtransparency="true">
+    </iframe>
 </div>

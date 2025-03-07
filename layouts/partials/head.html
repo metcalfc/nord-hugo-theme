@@ -17,8 +17,19 @@
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 
 <!-- Theme handling JS -->
-{{ $themeJs := resources.Get "js/nord-theme.js" | minify | fingerprint }}
-<script src="{{ $themeJs.RelPermalink }}"></script>
+{{ $mainJs := resources.Get "js/main.js" | js.Build (dict "target" "es2015" "minify" true) | fingerprint }}
+<script src="{{ $mainJs.RelPermalink }}"{{ if .Site.Params.deferThemeJS }} defer{{ end }}></script>
+
+<!-- Theme configuration -->
+<script>
+  // Pass Hugo parameters to JS
+  window.nordThemeConfig = {
+    defaultTheme: {{ .Site.Params.defaultTheme | default "light" }},
+    respectSystemPreference: {{ .Site.Params.respectSystemPreference | default true }},
+    enableTwitterEmbeds: {{ .Site.Params.enableTwitterEmbeds | default true }},
+    enableBlueSkyEmbeds: {{ .Site.Params.enableBlueSkyEmbeds | default true }}
+  };
+</script>
 
 <!-- OpenGraph and Twitter Card -->
 <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
