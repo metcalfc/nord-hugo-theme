@@ -137,7 +137,32 @@ ul, ol {
   
   li {
     margin-bottom: $spacing-sm;
+    
+    // Fix for nested lists to remove unwanted spacing
+    ul, ol {
+      margin-top: $spacing-sm;
+      margin-bottom: 0;
+    }
   }
+  
+  // Ensure indented lists don't have excessive spacing
+  ul, ol {
+    margin-top: $spacing-sm;
+    margin-bottom: 0;
+  }
+}
+
+// Additional list styling for proper indentation
+ol ol, ol ul, ul ol, ul ul {
+  padding-left: $spacing-lg; // Slightly smaller padding for nested lists
+  margin-top: $spacing-sm !important; // Override any other margin settings
+  margin-bottom: 0 !important; // Override any other margin settings
+}
+
+// Fix for the first child in a nested list to avoid excessive spacing
+li > ol:first-child,
+li > ul:first-child {
+  margin-top: $spacing-sm !important;
 }
 
 // Horizontal rule

@@ -54,6 +54,23 @@
 // Post content
 .post-content {
   margin-top: $spacing-xl;
+  
+  // Specific list styling for content area
+  ul, ol {
+    li {
+      ul, ol {
+        margin-top: $spacing-sm;
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  // Ensure proper indentation and spacing in content
+  ol ol, ol ul, ul ol, ul ul {
+    padding-left: $spacing-lg;
+    margin-top: $spacing-sm !important;
+    margin-bottom: 0 !important;
+  }
 }
 
 // Tables
