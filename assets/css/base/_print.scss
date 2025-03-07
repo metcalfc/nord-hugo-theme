@@ -1,0 +1,92 @@
+/* 
+ * Nord Hugo Theme - Print Styles
+ * Optimized styling for print media
+ */
+
+@media print {
+  // Hide elements not needed for print
+  .site-header,
+  .site-footer,
+  .theme-toggle,
+  .pagination,
+  .post-tags {
+    display: none;
+  }
+  
+  // Reset content padding
+  .content {
+    padding: 0;
+  }
+  
+  // Basic print styling
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+  
+  // Always show URLs for links
+  a {
+    color: #000;
+    text-decoration: underline;
+    
+    &::after {
+      content: " (" attr(href) ")";
+      font-size: 90%;
+    }
+    
+    // Don't display URL for internal links or anchors
+    &[href^="#"],
+    &[href^="/"] {
+      &::after {
+        content: "";
+      }
+    }
+  }
+  
+  // Avoid page breaks inside important elements
+  pre, 
+  blockquote,
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  
+  // Force image max-width
+  img {
+    max-width: 100% !important;
+  }
+  
+  // Avoid page breaks after headings
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  // Add visible borders to tables
+  table {
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+  }
+  
+  // Simplify code blocks and blockquotes
+  pre, blockquote {
+    border: 1px solid #999;
+    padding: 0.5em;
+  }
+  
+  // Display the URL of the page in the footer
+  @page {
+    margin: 2cm 1.5cm;
+  }
+  
+  .content::after {
+    content: "URL: " attr(data-current-url);
+    font-size: 10pt;
+    font-style: italic;
+    display: block;
+    margin-top: 2em;
+  }
+}

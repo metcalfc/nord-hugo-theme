@@ -1,0 +1,59 @@
+/* 
+ * Nord Hugo Theme - Light Theme Variables
+ */
+
+:root {
+  // Main colors
+  --background: #{$nord6}; /* Snow Storm brightest */
+  --foreground: #{$nord0}; /* Polar Night darkest */
+  --selection: #{$nord5};
+  --selection-text: #{$nord0};
+  
+  // Accent colors
+  --accent: #{$nord8}; /* Frost bright blue */
+  --accent-alt: #{$nord9}; /* Frost medium blue */
+  --links: #{$nord10}; /* Frost dark blue */
+  --links-hover: #{$nord7}; /* Using nord7 for a distinct hover state */
+  
+  // UI element colors
+  --border: #{$nord4};
+  --muted: #{$nord2}; /* Using darker nord2, instead of nord3, for better contrast in light mode */
+  
+  // Component backgrounds
+  --code-bg: #{$nord5}; /* Using nord5 for better contrast with dark text */
+  --blockquote-bg: #{$nord5};
+  --blockquote-border: #{$nord9};
+  
+  // Navigation
+  --navbar-bg: #{$nord5};
+  --navbar-text: #{$nord1};
+  --navbar-active: #{$nord8};
+  
+  // Footer
+  --footer-bg: #{$nord5};
+  --footer-text: #{$nord1};
+  
+  // Cards & UI components
+  --card-bg: #{$nord6};
+  --card-shadow: rgba(#{$nord0}, 0.1);
+  
+  /* Code syntax colors */
+  --syntax-base: #{$nord0};
+  --syntax-comment: #{$nord3};
+  --syntax-keyword: #{$nord10}; /* Darker blue for better contrast */
+  --syntax-function: #{$nord10}; /* Darker blue for better contrast */
+  --syntax-string: #{$nord14};
+  --syntax-number: #{$nord15};
+  --syntax-class: #{$nord10}; /* Darker blue for better contrast */
+  --syntax-variable: #{$nord2}; /* Much darker for better contrast */
+  --syntax-operator: #{$nord10}; /* Darker blue for better contrast */
+  --syntax-error: #{$nord11};
+  --syntax-warning: #{$nord12}; /* Using orange instead of yellow for better contrast */
+  --syntax-tag: #{$nord10}; /* Darker blue for better contrast */
+  --syntax-attr: #{$nord10}; /* Darker blue for better contrast */
+  
+  /* Inline code */
+  --inline-code-color: #{$nord0};
+  --inline-code-bg: #{$nord5}; /* Consistent with code block background */
+  --code-border: #{$nord4}; /* Adding specific border color for code blocks */
+}

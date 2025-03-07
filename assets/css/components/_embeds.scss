@@ -1,0 +1,152 @@
+/* 
+ * Nord Hugo Theme - Embeds
+ * Styles for embedded content like tweets, videos, etc.
+ */
+
+// General embed container
+.embed-container {
+  margin: $spacing-lg 0;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  position: relative;
+}
+
+// Twitter embeds
+.twitter-embed {
+  background-color: var(--card-bg);
+  border-radius: $border-radius-md;
+  padding: $spacing-md;
+  border: 1px solid var(--border);
+  margin: $spacing-lg 0;
+  @include transition(background-color, border-color);
+  
+  // Center the tweet
+  @include flex-center;
+  
+  // Ensure Twitter widget adapts to theme
+  &.dark-theme {
+    .twitter-tweet {
+      background-color: var(--card-bg) !important;
+    }
+  }
+}
+
+// BlueSky links
+.bluesky-link {
+  background-color: var(--card-bg);
+  border-radius: $border-radius-md;
+  padding: $spacing-md;
+  border: 1px solid var(--border);
+  margin: $spacing-lg 0;
+  text-align: center;
+  @include transition(background-color, border-color);
+  
+  a {
+    display: inline-block;
+    padding: $spacing-sm $spacing-md;
+    background-color: #1285FE; // BlueSky brand color
+    color: white;
+    border-radius: $border-radius-sm;
+    font-weight: 500;
+    border-bottom: none;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: #0073E6; // Darker shade for hover
+      color: white;
+    }
+    
+    .bluesky-arrow {
+      margin-left: $spacing-xs;
+      transition: transform 0.2s ease;
+    }
+    
+    &:hover .bluesky-arrow {
+      transform: translateX(3px);
+    }
+  }
+}
+
+// YouTube embeds
+.youtube-embed {
+  position: relative;
+  padding-bottom: 56.25%; // 16:9 aspect ratio
+  height: 0;
+  overflow: hidden;
+  border-radius: $border-radius-md;
+  margin: $spacing-lg 0;
+  @include box-shadow(1);
+  
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+// Nord Palette SVG
+.nord-palette-container {
+  width: 100%;
+  max-width: 800px;
+  margin: $spacing-lg auto;
+  overflow-x: auto;
+  border-radius: $border-radius-lg;
+  @include box-shadow(1);
+  padding: $spacing-sm;
+}
+
+.nord-palette {
+  width: 100%;
+  height: auto;
+
+  .palette-background {
+    fill: var(--background);
+    @include transition(fill);
+  }
+
+  .color-box {
+    stroke: var(--border);
+    stroke-width: 1;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+    @include transition(stroke);
+  }
+
+  .palette-main-title {
+    font-size: 18px;
+    font-weight: 700;
+    fill: var(--foreground);
+    @include transition(fill);
+  }
+
+  .palette-subtitle {
+    font-size: 14px;
+    fill: var(--muted);
+    @include transition(fill);
+  }
+
+  .palette-title {
+    font-size: 18px;
+    font-weight: 700;
+    fill: var(--foreground);
+    @include transition(fill);
+  }
+
+  // Polar Night text - always light
+  .polar-night-label,
+  .polar-night-hex {
+    fill: #eceff4;
+  }
+
+  // Snow Storm, Frost, and Aurora text - always dark
+  .snow-storm-label,
+  .snow-storm-hex,
+  .frost-label,
+  .frost-hex,
+  .aurora-label,
+  .aurora-hex {
+    fill: #2e3440;
+  }
+}

@@ -1,0 +1,93 @@
+/* 
+ * Nord Hugo Theme - Utilities
+ * Utility classes for common styling needs
+ */
+
+// Text alignment
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+// Visibility
+.visually-hidden {
+  @include visually-hidden;
+}
+
+// Skip to content link (accessibility)
+.skip-to-content {
+  @include visually-hidden;
+  
+  &:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: $spacing-sm $spacing-md;
+    background-color: var(--accent);
+    color: white;
+    z-index: 1000;
+    clip: auto;
+    border-radius: 0 0 $border-radius-sm 0;
+  }
+}
+
+// Focus styles
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+// Spacing utilities
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mt-1 { margin-top: $spacing-sm; }
+.mb-1 { margin-bottom: $spacing-sm; }
+.mt-2 { margin-top: $spacing-md; }
+.mb-2 { margin-bottom: $spacing-md; }
+.mt-3 { margin-top: $spacing-lg; }
+.mb-3 { margin-bottom: $spacing-lg; }
+.mt-4 { margin-top: $spacing-xl; }
+.mb-4 { margin-bottom: $spacing-xl; }
+.mt-5 { margin-top: $spacing-xxl; }
+.mb-5 { margin-bottom: $spacing-xxl; }
+
+// Padding utilities
+.p-0 { padding: 0; }
+.p-1 { padding: $spacing-sm; }
+.p-2 { padding: $spacing-md; }
+.p-3 { padding: $spacing-lg; }
+.p-4 { padding: $spacing-xl; }
+
+// Display utilities
+.d-flex { display: flex; }
+.d-block { display: block; }
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-none { display: none; }
+
+// Flex utilities
+.flex-row { flex-direction: row; }
+.flex-column { flex-direction: column; }
+.justify-content-start { justify-content: flex-start; }
+.justify-content-center { justify-content: center; }
+.justify-content-end { justify-content: flex-end; }
+.justify-content-between { justify-content: space-between; }
+.align-items-start { align-items: flex-start; }
+.align-items-center { align-items: center; }
+.align-items-end { align-items: flex-end; }
+
+// Width utilities
+.w-100 { width: 100%; }
+.w-75 { width: 75%; }
+.w-50 { width: 50%; }
+.w-25 { width: 25%; }
+.w-auto { width: auto; }

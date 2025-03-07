@@ -1,0 +1,73 @@
+/* 
+ * Nord Hugo Theme - Cards
+ * Styles for card components
+ */
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: $border-radius-md;
+  padding: $spacing-lg;
+  margin: $spacing-lg 0;
+  @include box-shadow(1);
+  @include transition(background-color, box-shadow);
+  
+  &:hover {
+    @include box-shadow(2);
+  }
+}
+
+.card-title {
+  margin-top: 0;
+  margin-bottom: $spacing-sm;
+}
+
+.card-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: $spacing-md;
+  @include transition(color);
+}
+
+.card-content {
+  margin-bottom: $spacing-md;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: $spacing-md;
+  @include transition(border-color);
+}
+
+// Feature card - with image
+.feature-card {
+  @extend .card;
+  display: flex;
+  flex-direction: column;
+  
+  .card-image {
+    margin: -#{$spacing-lg} -#{$spacing-lg} $spacing-md -#{$spacing-lg};
+    border-radius: $border-radius-md $border-radius-md 0 0;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+  }
+}
+
+// Grid of cards
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+  margin: $spacing-lg 0;
+  
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+  }
+}

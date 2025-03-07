@@ -1,0 +1,118 @@
+/* 
+ * Nord Hugo Theme - Header
+ * Header and navigation styles
+ */
+
+.site-header {
+  background-color: var(--navbar-bg);
+  padding: $spacing-md 0;
+  @include box-shadow(2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  @include transition(background-color);
+}
+
+.header-inner {
+  @include flex-between;
+  
+  @include respond-to(md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--navbar-text);
+  @include transition(color);
+  
+  a {
+    color: inherit;
+    border-bottom: none;
+    
+    &:hover {
+      color: var(--navbar-active);
+    }
+  }
+}
+
+.main-nav {
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    @include respond-to(md) {
+      flex-wrap: wrap;
+      margin-top: $spacing-md;
+    }
+  }
+  
+  li {
+    margin-left: $spacing-lg;
+    
+    @include respond-to(md) {
+      margin-left: 0;
+      margin-right: $spacing-lg;
+      margin-bottom: $spacing-sm;
+    }
+  }
+  
+  a {
+    color: var(--navbar-text);
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+    @include transition(color, border-bottom-color);
+    
+    &:hover, 
+    &.active {
+      color: var(--navbar-active);
+      border-bottom-color: var(--navbar-active);
+    }
+  }
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--navbar-text);
+  font-size: 1.1rem;
+  cursor: pointer;
+  @include transition(color);
+  padding: $spacing-xs;
+  margin-left: $spacing-md;
+  position: relative;
+  
+  &:hover {
+    color: var(--navbar-active);
+  }
+  
+  /* Simple tooltip */
+  &::after {
+    content: attr(aria-label);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    @include box-shadow(1);
+    opacity: 0;
+    transform: translateY(-10px);
+    @include transition(opacity, transform);
+    pointer-events: none;
+    z-index: 100;
+  }
+  
+  &:hover::after {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+}

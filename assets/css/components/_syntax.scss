@@ -1,0 +1,185 @@
+/* 
+ * Nord Hugo Theme - Syntax Highlighting
+ * Styling for code blocks and syntax highlighting with Nord colors
+ */
+
+/* Remove line table styling from Hugo's default highlighting */
+.highlight table {
+  margin: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.highlight tr, 
+.highlight td {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.highlight td pre {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+/* For line numbers - no borders */
+.highlight .lnt {
+  margin-right: 0.5em;
+  padding: 0 0.5em 0 0.5em;
+  display: block;
+  background: none;
+  border: none;
+  box-shadow: none;
+  opacity: 0.5;
+}
+
+/* Base styling for code blocks */
+.highlight {
+  background-color: var(--code-bg);
+  border-radius: $border-radius-md;
+  margin: $spacing-lg 0;
+  overflow-x: auto;
+  @include transition(background-color, border-color);
+  border: 1px solid var(--code-border);
+  
+  pre {
+    margin: 0;
+    padding: $spacing-md;
+  }
+  
+  code {
+    font-family: $font-family-mono;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--syntax-base);
+    @include transition(color);
+    display: block; /* Ensure code is displayed as block */
+  }
+  
+  /* Lines */
+  .line, .ln {
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    border: none;
+  }
+  
+  .line::before, .line::after {
+    display: none; /* Remove any pseudo-elements that might be creating lines */
+  }
+  
+  /* Base text */
+  .chroma {
+    color: var(--syntax-base);
+    @include transition(color);
+  }
+  
+  /* Comments */
+  .c, .ch, .cm, .cp, .cpf, .c1, .cs {
+    color: var(--syntax-comment);
+    font-style: italic;
+    @include transition(color);
+  }
+  
+  /* Keywords */
+  .k, .kc, .kd, .kn, .kp, .kr, .kt {
+    color: var(--syntax-keyword);
+    font-weight: 600;
+    @include transition(color);
+  }
+  
+  /* Functions */
+  .f, .fm, .nb {
+    color: var(--syntax-function);
+    @include transition(color);
+  }
+  
+  /* Strings */
+  .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
+    color: var(--syntax-string);
+    @include transition(color);
+  }
+  
+  /* Numbers */
+  .m, .mb, .mf, .mh, .mi, .mo, .il {
+    color: var(--syntax-number);
+    @include transition(color);
+  }
+  
+  /* Classes and types */
+  .nc, .nn, .bp, .nt {
+    color: var(--syntax-class);
+    @include transition(color);
+  }
+  
+  /* Variables */
+  .n, .na, .nf, .nx {
+    color: var(--syntax-variable);
+    @include transition(color);
+  }
+  
+  /* Operators */
+  .o, .ow {
+    color: var(--syntax-operator);
+    @include transition(color);
+  }
+  
+  /* Error highlighting */
+  .err {
+    color: var(--syntax-error);
+    @include transition(color);
+  }
+  
+  /* Attributes */
+  .na {
+    color: var(--syntax-attr);
+    @include transition(color);
+  }
+  
+  /* Special elements like escape sequences */
+  .se, .si {
+    color: var(--syntax-warning);
+    @include transition(color);
+  }
+}
+
+/* Language-specific adjustments */
+.language-html {
+  .nt {
+    color: var(--syntax-tag);
+    @include transition(color);
+  }
+  
+  .na {
+    color: var(--syntax-attr);
+    @include transition(color);
+  }
+}
+
+.language-css {
+  .nc, .nt, .nn {
+    color: var(--syntax-tag);
+    @include transition(color);
+  }
+  
+  .k {
+    color: var(--syntax-attr);
+    @include transition(color);
+  }
+}
+
+.language-js, 
+.language-javascript {
+  .kd, .k {
+    color: var(--syntax-keyword);
+    @include transition(color);
+  }
+  
+  .nx {
+    color: var(--syntax-variable);
+    @include transition(color);
+  }
+}

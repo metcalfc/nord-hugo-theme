@@ -1,0 +1,56 @@
+/* 
+ * Nord Hugo Theme - Footer
+ * Footer styles for the theme
+ */
+
+.site-footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: $spacing-xl 0;
+  font-size: 0.9rem;
+  @include transition(background-color, color);
+}
+
+.footer-inner {
+  @include flex-between;
+  flex-wrap: wrap;
+  
+  @include respond-to(md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  
+  @include respond-to(md) {
+    margin-top: $spacing-md;
+    flex-wrap: wrap;
+  }
+  
+  li {
+    margin-right: $spacing-md;
+    
+    @include respond-to(md) {
+      margin-bottom: $spacing-sm;
+    }
+  }
+  
+  a {
+    color: var(--footer-text);
+    border-bottom: none;
+    @include transition(color);
+    
+    &:hover {
+      color: var(--navbar-active);
+    }
+  }
+}
+
+.footer-copyright {
+  @include transition(color);
+}
