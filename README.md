@@ -48,9 +48,21 @@ hugo mod init github.com/yourusername/my-site
 hugo mod get -u
 ```
 
+## Documentation
+
+Comprehensive documentation is available in the [docs directory](./docs/):
+
+- [Getting Started](./docs/getting-started.md) - Installation and basic setup
+- [Configuration](./docs/configuration.md) - Available theme options
+- [Content Management](./docs/content.md) - Working with content and front matter
+- [Customization](./docs/customization.md) - Modifying the theme
+- [Advanced Usage](./docs/advanced.md) - Advanced configuration techniques
+- [FAQ & Troubleshooting](./docs/faq.md) - Common questions and solutions
+- [Theme Internals](./docs/internals/) - Technical details for developers
+
 ## Configuration
 
-Here's a sample configuration with all available options:
+Here's a sample configuration with common options:
 
 ```toml
 baseURL = "https://example.com"
@@ -62,16 +74,16 @@ theme = "nord-hugo-theme"
 pygmentsUseClasses = true
 pygmentsCodeFences = true
 
-# Pagination settings
-[pagination]
-  pagerSize = 5
-
 [params]
   # Site description
   description = "A personal blog using the Nord color palette"
   
   # Default author
   author = "Your Name"
+  
+  # Theme settings
+  defaultTheme = "light"  # or "dark"
+  respectSystemPreference = true
   
   # Social media links
   twitter = "yourusername"
@@ -83,89 +95,32 @@ pygmentsCodeFences = true
   
   # Show share buttons at the end of posts
   showShareButtons = true
-  
-  # Show related posts
-  showRelatedPosts = true
-  
-  # Default image for social sharing
-  og_image = "/images/og-image.png"
 ```
 
 See the full sample in `exampleSite/config.toml` for more details.
 
-## Content Organization
-
-This theme works best with the following content organization:
-
-```
-content/
-├── posts/
-│   ├── my-first-post.md
-│   └── my-second-post.md
-├── about/
-│   └── index.md
-└── _index.md
-```
-
-## Front Matter Examples
-
-### Blog Post
-
-```yaml
----
-title: "My First Post"
-date: 2023-04-01T12:00:00-05:00
-description: "A brief description of my first post"
-tags: ["hugo", "theme", "nord"]
-categories: ["web development"]
-image: "/images/post-cover.jpg"
-draft: false
----
-```
-
 ## Shortcodes
 
-### YouTube
+The theme includes several custom shortcodes:
 
 ```
 {{</* youtube dQw4w9WgXcQ */>}}
-```
-
-### X/Twitter
-
-You can use either shortcode:
-
-```
-{{</* x username tweet_id */>}}
-```
-
-or
-
-```
 {{</* twitter username tweet_id */>}}
-```
-
-### BlueSky
-
-```
 {{</* bluesky username post_id */>}}
+{{</* nord-palette variant="dark" */>}}
 ```
+
+For more details, see the [Content Management](./docs/content.md) documentation.
 
 ## Customization
 
-### Custom CSS/JS
+You can customize the theme in several ways:
 
-You can add custom CSS or JavaScript by creating files in the `static/css/` or `static/js/` directories of your site and then referencing them in your `config.toml`:
+- Custom CSS/JS files
+- Template overrides
+- Configuration options
 
-```toml
-[params]
-  customCSS = "/css/custom.css"
-  customJS = "/js/custom.js"
-```
-
-### Modifying Theme 
-
-For more extensive customization, fork this theme and modify the source files directly.
+See the [Customization](./docs/customization.md) guide for details.
 
 ## Credits
 
