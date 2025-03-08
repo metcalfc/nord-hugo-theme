@@ -9,7 +9,7 @@ pygmentsCodeFences = true
 
 # Pagination settings
 [pagination]
-  pagerSize = 5
+  pagerSize = 10
 
 # Default content language
 defaultContentLanguage = "en"
