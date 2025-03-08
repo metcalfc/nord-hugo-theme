@@ -1,0 +1,143 @@
+/* Nord Alert Component */
+
+.nord-alert {
+  display: flex;
+  padding: var(--spacing-md, 1rem);
+  border-radius: var(--border-radius-md, 4px);
+  margin: var(--spacing-md, 1rem) 0;
+  position: relative;
+  overflow: hidden;
+  
+  /* Icon styling */
+  .alert-icon {
+    flex-shrink: 0;
+    margin-right: var(--spacing-sm, 0.5rem);
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  
+  /* Content styling */
+  .alert-content {
+    flex: 1;
+  }
+  
+  .alert-title {
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs, 0.25rem);
+    font-size: 1.05em;
+  }
+  
+  /* Close button for dismissible alerts */
+  .alert-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs, 0.25rem);
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    
+    &:hover, &:focus {
+      opacity: 1;
+    }
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  
+  /* Type variations */
+  &.alert-info {
+    background-color: rgba(var(--nord9-rgb, 129, 161, 193), 0.15);
+    border-left: 4px solid var(--nord9, #81a1c1);
+    
+    .alert-icon {
+      color: var(--nord9, #81a1c1);
+    }
+  }
+  
+  &.alert-success {
+    background-color: rgba(var(--nord14-rgb, 163, 190, 140), 0.15);
+    border-left: 4px solid var(--nord14, #a3be8c);
+    
+    .alert-icon {
+      color: var(--nord14, #a3be8c);
+    }
+  }
+  
+  &.alert-warning {
+    background-color: rgba(var(--nord13-rgb, 235, 203, 139), 0.15);
+    border-left: 4px solid var(--nord13, #ebcb8b);
+    
+    .alert-icon {
+      color: var(--nord13, #ebcb8b);
+    }
+  }
+  
+  &.alert-error {
+    background-color: rgba(var(--nord11-rgb, 191, 97, 106), 0.15);
+    border-left: 4px solid var(--nord11, #bf616a);
+    
+    .alert-icon {
+      color: var(--nord11, #bf616a);
+    }
+  }
+  
+  &.alert-tip {
+    background-color: rgba(var(--nord15-rgb, 180, 142, 173), 0.15);
+    border-left: 4px solid var(--nord15, #b48ead);
+    
+    .alert-icon {
+      color: var(--nord15, #b48ead);
+    }
+  }
+  
+  &.alert-note {
+    background-color: rgba(var(--nord10-rgb, 94, 129, 172), 0.15);
+    border-left: 4px solid var(--nord10, #5e81ac);
+    
+    .alert-icon {
+      color: var(--nord10, #5e81ac);
+    }
+  }
+  
+  /* Dark theme adjustments */
+  .dark-theme & {
+    &.alert-info {
+      background-color: rgba(var(--nord9-rgb, 129, 161, 193), 0.2);
+    }
+    
+    &.alert-success {
+      background-color: rgba(var(--nord14-rgb, 163, 190, 140), 0.2);
+    }
+    
+    &.alert-warning {
+      background-color: rgba(var(--nord13-rgb, 235, 203, 139), 0.2);
+    }
+    
+    &.alert-error {
+      background-color: rgba(var(--nord11-rgb, 191, 97, 106), 0.2);
+    }
+    
+    &.alert-tip {
+      background-color: rgba(var(--nord15-rgb, 180, 142, 173), 0.2);
+    }
+    
+    &.alert-note {
+      background-color: rgba(var(--nord10-rgb, 94, 129, 172), 0.2);
+    }
+  }
+  
+  /* Add subtle animation for dismissible alerts */
+  &.dismissing {
+    max-height: 0;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease, margin 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+  }
+}

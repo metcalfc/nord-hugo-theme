@@ -1,0 +1,57 @@
+{{- $type := .Get "type" | default "info" -}}
+{{- $icon := .Get "icon" | default $type -}}
+{{- $title := .Get "title" -}}
+{{- $dismissible := .Get "dismissible" | default false -}}
+
+{{- $typeClass := "" -}}
+{{- if eq $type "info" -}}
+  {{- $typeClass = "alert-info" -}}
+  {{- if eq $icon $type -}}{{- $icon = "info-circle" -}}{{- end -}}
+{{- else if eq $type "success" -}}
+  {{- $typeClass = "alert-success" -}}
+  {{- if eq $icon $type -}}{{- $icon = "check-circle" -}}{{- end -}}
+{{- else if eq $type "warning" -}}
+  {{- $typeClass = "alert-warning" -}}
+  {{- if eq $icon $type -}}{{- $icon = "alert-triangle" -}}{{- end -}}
+{{- else if eq $type "error" -}}
+  {{- $typeClass = "alert-error" -}}
+  {{- if eq $icon $type -}}{{- $icon = "x-circle" -}}{{- end -}}
+{{- else if eq $type "tip" -}}
+  {{- $typeClass = "alert-tip" -}}
+  {{- if eq $icon $type -}}{{- $icon = "lightbulb" -}}{{- end -}}
+{{- else if eq $type "note" -}}
+  {{- $typeClass = "alert-note" -}}
+  {{- if eq $icon $type -}}{{- $icon = "book" -}}{{- end -}}
+{{- end -}}
+
+<div class="nord-alert {{ $typeClass }}" role="alert">
+  <div class="alert-icon">
+    {{- partial "components/icon" $icon -}}
+  </div>
+  
+  <div class="alert-content">
+    {{- if $title -}}
+      <div class="alert-title">{{ $title }}</div>
+    {{- end -}}
+    <div class="alert-body">{{ .Inner | markdownify }}</div>
+  </div>
+  
+  {{- if $dismissible -}}
+  <button class="alert-close" aria-label="Close alert">
+    {{- partial "components/icon" "x" -}}
+  </button>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const closeButton = document.currentScript.previousElementSibling;
+      const alert = closeButton.closest('.nord-alert');
+      
+      closeButton.addEventListener('click', () => {
+        alert.classList.add('dismissing');
+        setTimeout(() => {
+          alert.remove();
+        }, 300);
+      });
+    });
+  </script>
+  {{- end -}}
+</div>

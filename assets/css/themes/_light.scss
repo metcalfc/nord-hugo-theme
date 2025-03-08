@@ -3,6 +3,13 @@
  */
 
 :root {
+  // Nord RGB values for opacity usage
+  --nord9-rgb: 129, 161, 193;
+  --nord10-rgb: 94, 129, 172;
+  --nord11-rgb: 191, 97, 106;
+  --nord13-rgb: 235, 203, 139;
+  --nord14-rgb: 163, 190, 140;
+  --nord15-rgb: 180, 142, 173;
   // Main colors
   --background: #{$nord6}; /* Snow Storm brightest */
   --foreground: #{$nord0}; /* Polar Night darkest */
