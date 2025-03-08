@@ -41,6 +41,14 @@
   --table-header-bg: #{$nord2}; /* Using nord2 for more contrast against the background */
   --table-header-text: #{$nord6}; /* Using Snow Storm brightest for good contrast */
   
+  // Tags
+  --tag-bg: #{$nord2}; /* Darker background for better contrast */
+  --tag-text: #{$nord6}; /* Bright text for high contrast */
+  --tag-border: #{$nord3}; /* Slightly visible border */
+  
+  // Action links
+  --action-color: #{$nord15}; /* Purple from Aurora for read more links */
+  
   /* Code syntax colors */
   --syntax-base: #{$nord4};
   --syntax-comment: #{$nord3};

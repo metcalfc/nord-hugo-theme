@@ -120,7 +120,7 @@ Or using the legacy name:
 
 You can also embed BlueSky posts using this format:
 
-{{< bluesky "did:plc:z72i7hdynmk6r22z27h6tvur" "bafyreiabtyc4qky3cqctbjve2o4o6ugcsmgdvvsukpzmkcewe4n55y4yci" >}}
+{{< bluesky link="https://bsky.app/profile/scott.hanselman.com/post/3ljsrqkjfdk26" >}}
 
 ## Nord Color Palette
 

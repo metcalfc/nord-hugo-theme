@@ -16,7 +16,20 @@
         {{ end }}
     </header>
     
-    {{ $paginator := .Paginate (where .Pages "Type" "posts") }}
+    {{ if eq .Kind "taxonomyTerm" }}
+    <!-- Display list of terms (e.g., list of all tag names) -->
+    <ul class="taxonomy-list">
+        {{ range .Data.Terms.Alphabetical }}
+        <li>
+            <a href="{{ .Page.RelPermalink }}">
+                {{ .Page.Title }} ({{ .Count }})
+            </a>
+        </li>
+        {{ end }}
+    </ul>
+    {{ else }}
+    <!-- Display paginated list of content -->
+    {{ $paginator := .Paginate .Pages }}
     
     {{ range $paginator.Pages }}
     <article class="list-item">
@@ -24,6 +37,7 @@
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </h2>
         
+        {{ if ne .Kind "term" }}
         <div class="post-meta">
             <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
                 {{ .Date.Format "January 2, 2006" }}
@@ -35,6 +49,7 @@
             • <span class="reading-time">{{ .ReadingTime }} min read</span>
             {{ end }}
         </div>
+        {{ end }}
         
         {{ with .Params.tags }}
         <div class="post-tags">
@@ -52,10 +67,13 @@
             {{ end }}
         </div>
         
-        <a href="{{ .RelPermalink }}" class="read-more">Read More →</a>
+        {{ if ne .Kind "term" }}
+        <a href="{{ .RelPermalink }}" class="read-more">Read More</a>
+        {{ end }}
     </article>
     {{ end }}
     
-    {{ template "_internal/pagination.html" . }}
+    {{ partial "pagination.html" . }}
+    {{ end }}
 </div>
 {{ end }}

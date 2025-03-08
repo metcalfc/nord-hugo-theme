@@ -1,0 +1,71 @@
+{{ if gt .Paginator.TotalPages 1 }}
+<nav class="pagination-nav">
+  <ul class="pagination">
+    <!-- Previous page -->
+    {{ if .Paginator.HasPrev }}
+    <li class="page-item">
+      <a href="{{ .Paginator.Prev.URL }}" class="page-link">
+        <span>&laquo; Previous</span>
+      </a>
+    </li>
+    {{ else }}
+    <li class="page-item disabled">
+      <span class="page-link disabled">&laquo; Previous</span>
+    </li>
+    {{ end }}
+
+    <!-- Page numbers -->
+    {{ $currentPageNumber := .Paginator.PageNumber }}
+    {{ $totalPages := .Paginator.TotalPages }}
+    
+    <!-- First page -->
+    {{ if gt $currentPageNumber 3 }}
+    <li class="page-item">
+      <a href="{{ .Paginator.First.URL }}" class="page-link">1</a>
+    </li>
+    {{ if gt $currentPageNumber 4 }}
+    <li class="page-item page-ellipsis"><span>...</span></li>
+    {{ end }}
+    {{ end }}
+    
+    <!-- Page numbers around current page -->
+    {{ range .Paginator.Pagers }}
+      {{ $pageNum := .PageNumber }}
+      {{ if and (ge $pageNum (sub $currentPageNumber 2)) (le $pageNum (add $currentPageNumber 2)) }}
+        {{ if eq $pageNum $currentPageNumber }}
+        <li class="page-item active">
+          <span class="page-link active">{{ $pageNum }}</span>
+        </li>
+        {{ else }}
+        <li class="page-item">
+          <a href="{{ .URL }}" class="page-link">{{ $pageNum }}</a>
+        </li>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    
+    <!-- Last page -->
+    {{ if lt $currentPageNumber (sub $totalPages 2) }}
+      {{ if lt $currentPageNumber (sub $totalPages 3) }}
+      <li class="page-item page-ellipsis"><span>...</span></li>
+      {{ end }}
+      <li class="page-item">
+        <a href="{{ .Paginator.Last.URL }}" class="page-link">{{ $totalPages }}</a>
+      </li>
+    {{ end }}
+    
+    <!-- Next page -->
+    {{ if .Paginator.HasNext }}
+    <li class="page-item">
+      <a href="{{ .Paginator.Next.URL }}" class="page-link">
+        <span>Next &raquo;</span>
+      </a>
+    </li>
+    {{ else }}
+    <li class="page-item disabled">
+      <span class="page-link disabled">Next &raquo;</span>
+    </li>
+    {{ end }}
+  </ul>
+</nav>
+{{ end }}

@@ -1,0 +1,40 @@
+{{ define "main" }}
+<div class="taxonomy-terms">
+    <header class="terms-header">
+        <h1>{{ .Title }}</h1>
+        
+        {{ with .Description }}
+        <div class="terms-description">
+            {{ . }}
+        </div>
+        {{ end }}
+    </header>
+    
+    <div class="tag-cloud">
+        {{ $maxCount := 1 }}
+        {{ $minCount := 1 }}
+        {{ range $key, $value := .Data.Terms.Alphabetical }}
+            {{ if gt $value.Count $maxCount }}
+                {{ $maxCount = $value.Count }}
+            {{ end }}
+            {{ if and (lt $value.Count $minCount) (gt $value.Count 0) }}
+                {{ $minCount = $value.Count }}
+            {{ end }}
+        {{ end }}
+
+        {{ $range := sub $maxCount $minCount }}
+        {{ if lt $range 1 }}
+            {{ $range = 1 }}
+        {{ end }}
+        
+        {{ range .Data.Terms.Alphabetical }}
+        {{ $percent := div (sub .Count $minCount) $range }}
+        {{ $fontSize := add 0.8 (mul $percent 1.0) }}
+        {{ $tagSize := printf "font-size: %.2frem;" $fontSize }}
+        <a href="{{ .Page.RelPermalink }}" class="tag-cloud-item" style="{{ $tagSize }}">
+            {{ .Page.Title }} <span class="tag-count">{{ .Count }}</span>
+        </a>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
