@@ -1,0 +1,14 @@
+{{- $columns := .Get "columns" | default "3" -}}
+{{- $gap := .Get "gap" | default "md" -}}
+{{- $responsive := .Get "responsive" | default true -}}
+{{- $align := .Get "align" | default "start" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<div class="nord-card-grid 
+            grid-columns-{{ $columns }}
+            grid-gap-{{ $gap }}
+            grid-align-{{ $align }}
+            {{ if $responsive }}grid-responsive{{ end }}
+            {{ $class }}">
+  {{ .Inner }}
+</div>
