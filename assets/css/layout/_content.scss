@@ -92,6 +92,10 @@
   pre {
     border: 1px dashed var(--border);
     background-color: var(--code-bg);
+    max-width: 100%;
+    overflow-x: auto; /* Add horizontal scroll for code that's too wide */
+    white-space: pre-wrap; /* Allow code to wrap */
+    word-wrap: break-word; /* Break long words if necessary */
   }
 }
 

@@ -7,6 +7,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: $spacing-lg;
+  width: 100%; /* Ensure grid doesn't exceed container width */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
   
   // Gap sizes
   &.grid-gap-sm {
@@ -29,31 +31,26 @@
   // Responsive grid with columns property
   &.grid-columns-2 {
     @media (min-width: $breakpoint-sm) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-auto-rows: 1fr; /* Ensure consistent row heights */
     }
   }
   
   &.grid-columns-3 {
     @media (min-width: $breakpoint-sm) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-auto-rows: 1fr; /* Ensure consistent row heights */
     }
     
     @media (min-width: $breakpoint-lg) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
   }
   
   &.grid-columns-4 {
     @media (min-width: $breakpoint-sm) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    @media (min-width: $breakpoint-md) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    
-    @media (min-width: $breakpoint-lg) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-auto-rows: 1fr; /* Ensure consistent row heights */
     }
   }
   
@@ -68,36 +65,35 @@
   grid-template-columns: 1fr;
   gap: $spacing-lg;
   margin: $spacing-xl 0;
+  width: 100%; /* Ensure grid doesn't exceed container width */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
   
   @media (min-width: $breakpoint-md) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: 1fr; /* Ensure consistent row heights */
   }
   
+  // Card styling within feature cards
   .feature-card {
-    border: 1px dashed var(--border);
-    padding: $spacing-lg;
-    @include transition(border-color);
-    
-    &:hover {
-      border-color: var(--accent);
-    }
-    
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: $spacing-md;
-      color: var(--accent);
-    }
-    
-    .feature-title {
-      margin-top: 0;
-      margin-bottom: $spacing-sm;
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-    
-    .feature-description {
-      color: var(--foreground);
-      margin-bottom: 0;
-    }
+  border: 1px dashed var(--border);
+  padding: $spacing-lg;
+  @include transition(border-color);
+  
+  &:hover {
+    border-color: var(--accent);
+  }
+  
+  // Feature-specific styles
+  .feature-title {
+  margin-top: 0;
+  margin-bottom: $spacing-sm;
+  font-size: 1.25rem;
+  font-weight: 600;
+  }
+  
+  .feature-description {
+  color: var(--foreground);
+  margin-bottom: 0;
+  }
   }
 }

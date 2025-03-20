@@ -5,20 +5,19 @@
 {{- $accentColor := .Get "accent-color" | default "accent" -}}
 {{- $hover := .Get "hover" | default true -}}
 
-<div class="nord-card feature-card {{ $class }}
+<div class="card feature-card {{ $class }}
             {{ if $accent }}card-accent card-accent-{{ $accentColor }}{{ end }}
             {{ if $hover }}card-hover{{ end }}">
-  <div class="feature-icon">
-    {{- partial "components/icon" $icon -}}
-  </div>
-  
-  <div class="card-content">
+
+  <div class="card-header">
+    <div class="icon-inline">{{- partial "components/icon" $icon -}}</div>
     {{- if $title -}}
     <h3 class="card-title">{{ $title }}</h3>
     {{- end -}}
-    
-    <div class="card-body">
-      {{ .Inner | markdownify }}
-    </div>
   </div>
+
+  <div class="card-body">
+    {{ .Inner | markdownify }}
+  </div>
+
 </div>

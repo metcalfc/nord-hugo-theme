@@ -11,6 +11,36 @@
   height: 100%; /* Make all cards same height */
   display: flex;
   flex-direction: column;
+  width: 100%; /* Ensure card doesn't exceed container width */
+  box-sizing: border-box; /* Include padding in width calculation */
+  word-wrap: break-word; /* Allow long text to wrap */
+  overflow-wrap: break-word; /* Modern version of word-wrap */
+  
+  // Card header with icon and title
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-md;
+    
+    .icon-inline {
+      display: inline-block;
+      margin-right: $spacing-sm;
+      line-height: 0;
+      
+      svg {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+      }
+    }
+    
+    .card-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+  }
   
   // Card image
   .card-image {
@@ -32,6 +62,8 @@
     flex-direction: column;
     flex-grow: 1;
     height: 100%;
+    width: 100%; /* Ensure content doesn't exceed card width */
+    overflow-wrap: break-word; /* Allow long text to wrap */
   }
   
   .card-title {
@@ -63,12 +95,15 @@
     @include transition(color);
   }
   
+  // Card body content
   .card-body, .card-description {
     margin-bottom: $spacing-md;
     color: var(--foreground);
     font-size: 0.95rem;
     line-height: 1.5;
     flex-grow: 1; /* Allow description to expand to fill available space */
+    max-width: 100%; /* Ensure content doesn't exceed card width */
+    white-space: normal; /* Allow text to wrap */
   }
   
   .card-footer {
@@ -113,6 +148,10 @@
     .card-footer {
       justify-content: center;
     }
+    
+    .card-header {
+      justify-content: center;
+    }
   }
 }
 
@@ -120,9 +159,11 @@
 .card.card-type-horizontal {
   @media (min-width: $breakpoint-sm) {
     flex-direction: row;
+    flex-wrap: wrap; /* Allow wrapping if needed */
     
     .card-image {
       flex: 0 0 40%;
+      max-width: 40%; /* Ensure image doesn't exceed parent width */
       margin: -#{$spacing-lg} 0 -#{$spacing-lg} -#{$spacing-lg};
       overflow: hidden;
       
@@ -135,6 +176,8 @@
     .card-content {
       flex: 1;
       padding-left: $spacing-md;
+      min-width: 0; /* Allow content to shrink below its natural width */
+      max-width: 60%; /* Ensure content doesn't become too narrow */
     }
   }
 }
