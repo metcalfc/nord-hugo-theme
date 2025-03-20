@@ -8,6 +8,31 @@
   padding: $spacing-lg;
   border: 1px dashed var(--border);
   @include transition(border-color);
+  height: 100%; /* Make all cards same height */
+  display: flex;
+  flex-direction: column;
+  
+  // Card image
+  .card-image {
+    margin: -#{$spacing-lg} -#{$spacing-lg} $spacing-md -#{$spacing-lg};
+    position: relative;
+    height: 150px; /* Match the approximate image height */
+    overflow: hidden;
+    
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+  }
   
   .card-title {
     margin-top: 0;
@@ -24,6 +49,13 @@
     }
   }
   
+  .card-subtitle {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: -#{$spacing-xs};
+    margin-bottom: $spacing-sm;
+  }
+  
   .card-meta {
     font-size: 0.85rem;
     color: var(--muted);
@@ -31,18 +63,19 @@
     @include transition(color);
   }
   
-  .card-description {
+  .card-body, .card-description {
     margin-bottom: $spacing-md;
     color: var(--foreground);
     font-size: 0.95rem;
     line-height: 1.5;
+    flex-grow: 1; /* Allow description to expand to fill available space */
   }
   
   .card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: $spacing-md;
+    margin-top: auto; /* Push footer to bottom of card */
     
     .card-link {
       color: var(--links);
@@ -63,6 +96,45 @@
       &:hover::after {
         transform: translateX(3px);
       }
+    }
+  }
+  
+  // Centered card content
+  &.card-center {
+    text-align: center;
+    
+    .card-title,
+    .card-subtitle,
+    .card-body,
+    .card-description {
+      text-align: center;
+    }
+    
+    .card-footer {
+      justify-content: center;
+    }
+  }
+}
+
+// Horizontal card layout
+.card.card-type-horizontal {
+  @media (min-width: $breakpoint-sm) {
+    flex-direction: row;
+    
+    .card-image {
+      flex: 0 0 40%;
+      margin: -#{$spacing-lg} 0 -#{$spacing-lg} -#{$spacing-lg};
+      overflow: hidden;
+      
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    
+    .card-content {
+      flex: 1;
+      padding-left: $spacing-md;
     }
   }
 }

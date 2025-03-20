@@ -7,14 +7,54 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: $spacing-lg;
-  margin: $spacing-xl 0;
   
-  @media (min-width: $breakpoint-sm) {
-    grid-template-columns: repeat(2, 1fr);
+  // Gap sizes
+  &.grid-gap-sm {
+    gap: $spacing-sm;
   }
   
-  @media (min-width: $breakpoint-lg) {
-    grid-template-columns: repeat(3, 1fr);
+  &.grid-gap-md {
+    gap: $spacing-md;
+  }
+  
+  &.grid-gap-lg {
+    gap: $spacing-lg;
+  }
+  
+  &.grid-gap-xl {
+    gap: $spacing-xl;
+  }
+  margin: $spacing-xl 0;
+  
+  // Responsive grid with columns property
+  &.grid-columns-2 {
+    @media (min-width: $breakpoint-sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  &.grid-columns-3 {
+    @media (min-width: $breakpoint-sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &.grid-columns-4 {
+    @media (min-width: $breakpoint-sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
   
   .card {

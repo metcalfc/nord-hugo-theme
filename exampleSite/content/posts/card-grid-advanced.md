@@ -17,14 +17,14 @@ This page demonstrates advanced use cases and real-world examples for the Card G
 {{</* card-grid columns="2" */>}}
   {{</* card 
       title="Mountain View" 
-      image="https://placehold.co/600x400/88c0d0/eceff4?text=Mountain"
+      image="https://placehold.co/600x200/88c0d0/eceff4?text=Mountain"
   */>}}
     Beautiful mountain landscapes with snow-capped peaks.
   {{</* /card */>}}
   
   {{</* card 
       title="Ocean Waves" 
-      image="https://placehold.co/600x400/5e81ac/eceff4?text=Ocean"
+      image="https://placehold.co/600x200/5e81ac/eceff4?text=Ocean"
   */>}}
     Peaceful ocean waves crashing against the shore.
   {{</* /card */>}}
@@ -36,14 +36,14 @@ Which renders as:
 {{< card-grid columns="2" >}}
   {{< card 
       title="Mountain View" 
-      image="https://placehold.co/600x400/88c0d0/eceff4?text=Mountain"
+      image="https://placehold.co/600x200/88c0d0/eceff4?text=Mountain"
   >}}
     Beautiful mountain landscapes with snow-capped peaks.
   {{< /card >}}
   
   {{< card 
       title="Ocean Waves" 
-      image="https://placehold.co/600x400/5e81ac/eceff4?text=Ocean"
+      image="https://placehold.co/600x200/5e81ac/eceff4?text=Ocean"
   >}}
     Peaceful ocean waves crashing against the shore.
   {{< /card >}}
@@ -55,7 +55,7 @@ Which renders as:
 {{</* card 
     type="horizontal" 
     title="Horizontal Layout" 
-    image="https://placehold.co/600x400/81a1c1/eceff4?text=Horizontal"
+    image="https://placehold.co/600x200/81a1c1/eceff4?text=Horizontal"
 */>}}
   This card uses a horizontal layout with the image on the left and content on the right.
 {{</* /card */>}}
@@ -66,7 +66,7 @@ Which renders as:
 {{< card 
     type="horizontal" 
     title="Horizontal Layout" 
-    image="https://placehold.co/600x400/81a1c1/eceff4?text=Horizontal"
+    image="https://placehold.co/600x200/81a1c1/eceff4?text=Horizontal"
 >}}
   This card uses a horizontal layout with the image on the left and content on the right.
 {{< /card >}}
@@ -200,7 +200,7 @@ Display blog post previews in a grid:
       title="Getting Started with Hugo" 
       subtitle="March 7, 2025 • 5 min read"
       tag="Tutorial"
-      image="https://placehold.co/600x400/88c0d0/eceff4?text=Hugo"
+      image="https://placehold.co/600x200/88c0d0/eceff4?text=Hugo"
       link="#"
   */>}}
     Learn how to build your first website with Hugo, the world's fastest framework for building websites.
@@ -211,7 +211,7 @@ Display blog post previews in a grid:
       title="Customizing Nord Theme" 
       subtitle="March 5, 2025 • 8 min read"
       tag="Design"
-      image="https://placehold.co/600x400/81a1c1/eceff4?text=Nord"
+      image="https://placehold.co/600x200/81a1c1/eceff4?text=Nord"
       link="#"
   */>}}
     Discover how to customize the Nord theme to perfectly match your brand and aesthetic preferences.
@@ -227,7 +227,7 @@ Which renders as:
       title="Getting Started with Hugo" 
       subtitle="March 7, 2025 • 5 min read"
       tag="Tutorial"
-      image="https://placehold.co/600x400/88c0d0/eceff4?text=Hugo"
+      image="https://placehold.co/600x200/88c0d0/eceff4?text=Hugo"
       link="#"
   >}}
     Learn how to build your first website with Hugo, the world's fastest framework for building websites.
@@ -238,7 +238,7 @@ Which renders as:
       title="Customizing Nord Theme" 
       subtitle="March 5, 2025 • 8 min read"
       tag="Design"
-      image="https://placehold.co/600x400/81a1c1/eceff4?text=Nord"
+      image="https://placehold.co/600x200/81a1c1/eceff4?text=Nord"
       link="#"
   >}}
     Discover how to customize the Nord theme to perfectly match your brand and aesthetic preferences.
@@ -254,7 +254,7 @@ Display team members or contributors:
   {{</* card 
       title="Jane Doe" 
       subtitle="CEO & Founder"
-      image="https://placehold.co/300x300/5e81ac/eceff4?text=Jane"
+      image="https://placehold.co/300x200/5e81ac/eceff4?text=Jane"
       center=true
   */>}}
     15+ years of industry experience
@@ -263,7 +263,7 @@ Display team members or contributors:
   {{</* card 
       title="John Smith" 
       subtitle="CTO"
-      image="https://placehold.co/300x300/81a1c1/eceff4?text=John"
+      image="https://placehold.co/300x200/81a1c1/eceff4?text=John"
       center=true
   */>}}
     Full-stack developer & architect
@@ -272,7 +272,7 @@ Display team members or contributors:
   {{</* card 
       title="Emily Chen" 
       subtitle="Design Lead"
-      image="https://placehold.co/300x300/88c0d0/eceff4?text=Emily"
+      image="https://placehold.co/300x200/88c0d0/eceff4?text=Emily"
       center=true
   */>}}
     Award-winning UI/UX designer
@@ -281,7 +281,7 @@ Display team members or contributors:
   {{</* card 
       title="Mike Johnson" 
       subtitle="Marketing"
-      image="https://placehold.co/300x300/8fbcbb/eceff4?text=Mike"
+      image="https://placehold.co/300x200/8fbcbb/eceff4?text=Mike"
       center=true
   */>}}
     Digital marketing specialist
@@ -295,7 +295,7 @@ Which renders as:
   {{< card 
       title="Jane Doe" 
       subtitle="CEO & Founder"
-      image="https://placehold.co/300x300/5e81ac/eceff4?text=Jane"
+      image="https://placehold.co/300x200/5e81ac/eceff4?text=Jane"
       center=true
   >}}
     15+ years of industry experience
@@ -304,7 +304,7 @@ Which renders as:
   {{< card 
       title="John Smith" 
       subtitle="CTO"
-      image="https://placehold.co/300x300/81a1c1/eceff4?text=John"
+      image="https://placehold.co/300x200/81a1c1/eceff4?text=John"
       center=true
   >}}
     Full-stack developer & architect
@@ -313,7 +313,7 @@ Which renders as:
   {{< card 
       title="Emily Chen" 
       subtitle="Design Lead"
-      image="https://placehold.co/300x300/88c0d0/eceff4?text=Emily"
+      image="https://placehold.co/300x200/88c0d0/eceff4?text=Emily"
       center=true
   >}}
     Award-winning UI/UX designer
@@ -322,7 +322,7 @@ Which renders as:
   {{< card 
       title="Mike Johnson" 
       subtitle="Marketing"
-      image="https://placehold.co/300x300/8fbcbb/eceff4?text=Mike"
+      image="https://placehold.co/300x200/8fbcbb/eceff4?text=Mike"
       center=true
   >}}
     Digital marketing specialist
