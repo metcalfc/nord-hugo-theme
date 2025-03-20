@@ -1,0 +1,103 @@
+/* 
+ * Nord Hugo Theme - Nord Palette Component
+ * Styles for the Nord palette SVG visualization
+ */
+
+.nord-palette-container {
+  margin: $spacing-xl auto; /* Center with auto margins */
+  width: 100%;
+  overflow-x: auto;
+  text-align: center; /* Center inline content */
+}
+
+.nord-palette {
+  width: 100%;
+  height: auto;
+  max-width: 670px;
+  margin: 0 auto;
+  display: inline-block; /* Changed from block to inline-block for centering */
+  
+  // Background changes based on theme
+  .palette-background {
+    fill: var(--background);
+    @include transition(fill);
+  }
+  
+  // Styles for text elements
+  .palette-main-title {
+    font-size: 24px;
+    font-weight: 600;
+    fill: var(--foreground);
+    @include transition(fill);
+  }
+  
+  .palette-subtitle {
+    font-size: 16px;
+    fill: var(--muted);
+    @include transition(fill);
+  }
+  
+  .palette-title {
+    font-size: 18px;
+    font-weight: 600;
+    fill: var(--foreground);
+    @include transition(fill);
+  }
+  
+  // Label styles
+  .polar-night-label, 
+  .snow-storm-label, 
+  .frost-label, 
+  .aurora-label {
+    font-family: $font-family-mono;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .polar-night-hex, 
+  .snow-storm-hex, 
+  .frost-hex, 
+  .aurora-hex {
+    font-family: $font-family-mono;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  // Colors in light mode
+  .polar-night-label, .polar-night-hex {
+    fill: #eceff4; // Light text on dark background
+  }
+  
+  .snow-storm-label, .snow-storm-hex {
+    fill: #2e3440; // Dark text on light background
+  }
+  
+  .frost-label, .frost-hex {
+    fill: #2e3440; // Dark text on light blue background
+  }
+  
+  .aurora-label, .aurora-hex {
+    fill: #2e3440; // Dark text on colorful background
+  }
+}
+
+// Dark theme adjustments
+.dark-theme {
+  .nord-palette {
+    .polar-night-label, .polar-night-hex {
+      fill: #eceff4; // Keep light text on dark background
+    }
+    
+    .snow-storm-label, .snow-storm-hex {
+      fill: #2e3440; // Keep dark text on light background
+    }
+    
+    .frost-label, .frost-hex {
+      fill: #2e3440; // Keep dark text on light blue background
+    }
+    
+    .aurora-label, .aurora-hex {
+      fill: #2e3440; // Keep dark text on colorful background
+    }
+  }
+}

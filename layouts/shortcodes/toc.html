@@ -1,0 +1,6 @@
+{{ with .Page.TableOfContents }}
+<div class="dashed-box p-3 toc-container">
+    <h4 class="text-secondary">{{ $.Page.Site.Params.tocTitle | default "Table of contents" }}</h4>
+    {{ . }}
+</div>
+{{ end }}

@@ -11,6 +11,8 @@ draft: false
 
 This post demonstrates various elements of the Nord Hugo theme and how it renders different content types with both light and dark modes.
 
+{{< toc >}}
+
 ## Nord Colors
 
 The Nord color scheme consists of four palettes:

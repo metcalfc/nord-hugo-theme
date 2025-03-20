@@ -1,20 +1,18 @@
 /**
- * Theme toggle button component
+ * Theme toggle button component (With Nord-colored SVG Icons)
  */
 import { ThemeManager, THEMES } from '../lib/theme.js';
 
 export const ThemeToggle = {
   buttonSelector: '#theme-toggle',
   
-  // Update button appearance
+  // Update button appearance with Nord-colored icons
+  // Note: Icons are now handled via CSS display property
   updateButton(theme) {
     const button = document.querySelector(this.buttonSelector);
     if (!button) return;
     
-    // Update button text/icon
-    button.textContent = theme === THEMES.DARK ? '☀️' : '🌙';
-    
-    // Update aria label
+    // Just update the aria label since icons are shown/hidden via CSS
     button.setAttribute(
       'aria-label', 
       theme === THEMES.DARK ? 'Switch to light theme' : 'Switch to dark theme'

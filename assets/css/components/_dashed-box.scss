@@ -1,0 +1,78 @@
+/* 
+ * Nord Hugo Theme - Dashed Box Component
+ * Styles for dashed box components inspired by Planetscale
+ */
+
+.dashed-box {
+  border: 1px dashed var(--border);
+  @include transition(border-color);
+  
+  &.p-3 {
+    padding: $spacing-md;
+  }
+}
+
+// Border variations
+.dashed-box-x-t {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+.dashed-box-y-l {
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+}
+
+.dashed-box-l-t {
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+.dashed-box-x-b {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+// TOC container specific styling
+.toc-container {
+  margin: $spacing-md 0 $spacing-xl 0;
+  
+  h4 {
+    margin-top: 0;
+    margin-bottom: $spacing-sm;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  nav#TableOfContents {
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: $spacing-sm 0;
+      
+      li {
+        margin-bottom: $spacing-xs;
+        
+        a {
+          color: var(--links);
+          font-weight: 500;
+          
+          &:hover {
+            color: var(--links-hover);
+          }
+        }
+        
+        // Nested lists
+        ul {
+          list-style: none;
+          padding-left: $spacing-md;
+          margin: $spacing-xs 0;
+        }
+      }
+    }
+  }
+}

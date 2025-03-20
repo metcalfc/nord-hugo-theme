@@ -1,95 +1,85 @@
 /* 
- * Nord Hugo Theme - Reset
- * Basic CSS reset and normalization
+ * Nord Hugo Theme - CSS Reset (Minimal Edition)
+ * A simple reset to ensure consistent rendering across browsers
  */
 
-*, 
-*::before, 
+*,
+*::before,
 *::after {
   box-sizing: border-box;
-}
-
-html, 
-body, 
-div, 
-span, 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
-h6, 
-p, 
-blockquote, 
-pre, 
-a, 
-code, 
-img, 
-ul, 
-ol, 
-li, 
-table, 
-tr, 
-th, 
-td, 
-article, 
-aside, 
-footer, 
-header, 
-nav, 
-section {
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
-  vertical-align: baseline;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   background-color: var(--background);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   @include transition(background-color);
+  min-height: 100vh;
+  line-height: 1.5;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+img, picture, video, canvas, svg {
   display: block;
-  border-radius: $border-radius-sm;
+  max-width: 100%;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
+input, button, textarea, select {
+  font: inherit;
 }
 
-/* Remove default button styling */
 button {
   background: none;
   border: none;
-  padding: 0;
-  font: inherit;
   cursor: pointer;
-  outline: inherit;
 }
 
-/* Make sure elements with "hidden" attribute are truly hidden */
-[hidden] {
-  display: none !important;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* Remove default fieldset styles */
-fieldset {
-  border: 0;
-  margin: 0;
+/* Remove list styles */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* Create a root stacking context */
+#root, #__next {
+  isolation: isolate;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* For screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
   padding: 0;
-}
-
-/* Remove link outline on clicked links */
-a:active,
-a:focus {
-  outline: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

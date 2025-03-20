@@ -6,16 +6,16 @@
 {{- if $jsonOembed -}}
   {{- $jsonOembed = $jsonOembed | transform.Unmarshal -}}
   {{- if $jsonOembed -}}
-    <div class="twitter-embed bluesky-embed" data-theme="{{ with $.Page.Site.Params.defaultTheme }}{{ . }}{{ else }}light{{ end }}">
+    <div class="bluesky-container">
       {{- $jsonOembed.html | safeHTML -}}
     </div>
   {{- else -}}
-    <div class="twitter-embed bluesky-link">
+    <div class="bluesky-container">
       <p>Failed to load Bluesky post. <a href="{{ $link }}" target="_blank" rel="noopener">View on Bluesky <span class="bluesky-arrow">→</span></a></p>
     </div>
   {{- end -}}
 {{- else -}}
-  <div class="twitter-embed bluesky-link">
+  <div class="bluesky-container">
     <p>Failed to load Bluesky post. <a href="{{ $link }}" target="_blank" rel="noopener">View on Bluesky <span class="bluesky-arrow">→</span></a></p>
   </div>
 {{- end -}}

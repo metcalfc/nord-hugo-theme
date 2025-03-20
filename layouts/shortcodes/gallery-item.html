@@ -1,0 +1,10 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $caption := .Get "caption" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $lightbox := .Get "lightbox" | default true -}}
+
+<div class="gallery-item {{ $class }}" {{ if $lightbox }}data-lightbox="true" data-src="{{ $src }}" {{ if $caption }}data-caption="{{ $caption }}"{{ end }}{{ end }}>
+  <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" />
+  {{ if $caption }}<div class="gallery-caption">{{ $caption }}</div>{{ end }}
+</div>

@@ -1,17 +1,12 @@
 {{ define "main" }}
-<article class="post-single">
-    <header class="post-header">
+<article class="post">
+    <div class="post-header">
         <h1 class="post-title">{{ .Title }}</h1>
-        
         <div class="post-meta">
-            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                {{ .Date.Format "January 2, 2006" }}
-            </time>
-            {{ with .Params.author }}
-            • <span class="post-author">{{ . }}</span>
-            {{ end }}
-            {{ if .Site.Params.showReadingTime }}
-            • <span class="reading-time">{{ .ReadingTime }} min read</span>
+            {{ with .Params.author }}By {{ . }} {{ end }}
+            {{ if not .Date.IsZero }}
+            <span class="text-decoration" role="presentation">|</span> 
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
             {{ end }}
         </div>
         
@@ -22,37 +17,17 @@
             {{ end }}
         </div>
         {{ end }}
-    </header>
+    </div>
+    
+    {{ if and (.TableOfContents) (.Params.toc) }}
+    <div class="dashed-box p-3 toc-container">
+        <h4 class="text-secondary">{{ .Site.Params.tocTitle | default "Table of contents" }}</h4>
+        {{ .TableOfContents }}
+    </div>
+    {{ end }}
     
     <div class="post-content">
         {{ .Content }}
     </div>
-    
-    <footer class="post-footer">
-        {{ if .Site.Params.showShareButtons }}
-        <div class="share-buttons">
-            <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&title={{ .Title }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
-        {{ end }}
-        
-        {{ if .Site.Params.showRelatedPosts }}
-        {{ $related := .Site.RegularPages.Related . | first 3 }}
-        {{ with $related }}
-        <div class="related-posts">
-            <h3>Related Posts</h3>
-            <ul>
-                {{ range . }}
-                <li>
-                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                </li>
-                {{ end }}
-            </ul>
-        </div>
-        {{ end }}
-        {{ end }}
-    </footer>
 </article>
 {{ end }}

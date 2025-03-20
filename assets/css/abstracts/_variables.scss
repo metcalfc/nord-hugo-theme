@@ -1,5 +1,5 @@
 /* 
- * Nord Hugo Theme Variables
+ * Nord Hugo Theme Variables (Minimal Edition)
  * Contains all the color definitions and base variables
  */
 
@@ -32,7 +32,7 @@ $nord15: #b48ead; // Purple
 
 // Theme base variables
 // -------------------
-// These are default values that themes can override
+// These are default values for light theme
 $background: $nord6;
 $foreground: $nord0;
 $selection: $nord5;
@@ -43,22 +43,30 @@ $links: $nord10;
 $links-hover: $nord8;
 $border: $nord4;
 $muted: $nord3;
-$code-bg: $nord5;
-$blockquote-bg: $nord5;
+$code-bg: rgba($nord5, 0.6);
+$inline-code-bg: rgba($nord5, 0.5);
+$inline-code-color: $nord1;
+$code-border: rgba($nord3, 0.15);
+$blockquote-bg: transparent;
 $blockquote-border: $nord9;
-$navbar-bg: $nord6;
+$navbar-bg: transparent;
 $navbar-text: $nord0;
 $navbar-active: $nord8;
-$footer-bg: $nord5;
+$footer-bg: transparent;
 $footer-text: $nord1;
-$card-bg: $nord6;
-$card-shadow: rgba($nord0, 0.1);
+$card-bg: transparent;
+$tag-bg: transparent;
+$tag-text: $nord10; 
+$tag-border: transparent;
+$table-header-bg: transparent;
+$table-header-text: $nord1;
+$action-color: $nord10;
 
 // Typography
 // ----------
-$font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-$font-family-mono: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace;
-$font-size-base: 18px;
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$font-family-mono: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+$font-size-base: 16px;
 $line-height-base: 1.6;
 
 // Spacing
@@ -68,22 +76,22 @@ $spacing-sm: 0.5rem;
 $spacing-md: 1rem;
 $spacing-lg: 1.5rem;
 $spacing-xl: 2rem;
-$spacing-xxl: 2.5rem;
+$spacing-xxl: 3rem;
 
 // Container
 // ---------
-$container-max-width: 800px;
-$container-padding: 0 $spacing-lg;
+$container-max-width: 780px; // Narrower container for better reading
+$container-padding: 0 $spacing-md;
 
 // Borders & Shadows
 // ----------------
-$border-radius-sm: 3px;
-$border-radius-md: 5px;
-$border-radius-lg: 8px;
-// Enhanced shadow variables
-$box-shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.15);
-$box-shadow-md: 0 3px 12px rgba(0, 0, 0, 0.1);
-$box-shadow-lg: 0 5px 24px rgba(0, 0, 0, 0.15);
+$border-radius-sm: 0px; // No rounded corners
+$border-radius-md: 0px; // No rounded corners
+$border-radius-lg: 0px; // No rounded corners
+// Subtle shadows
+$box-shadow-sm: none; 
+$box-shadow-md: none;
+$box-shadow-lg: none;
 
 // Breakpoints
 // -----------

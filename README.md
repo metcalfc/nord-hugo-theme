@@ -16,6 +16,7 @@ A clean, elegant Hugo theme using the [Nord color palette](https://www.nordtheme
 - 🔗 Support for X/Twitter, YouTube, and BlueSky embeds
 - 🏷️ Support for tags and categories
 - 📄 Custom shortcodes for various content types
+- 📑 Optional Table of Contents via shortcode or front matter
 
 ## Installation
 
@@ -85,6 +86,9 @@ pygmentsCodeFences = true
   defaultTheme = "light"  # or "dark"
   respectSystemPreference = true
   
+  # Table of Contents title (optional)
+  tocTitle = "On this page"
+  
   # Social media links
   twitter = "yourusername"
   github = "yourusername"
@@ -108,7 +112,26 @@ The theme includes several custom shortcodes:
 {{</* twitter username tweet_id */>}}
 {{</* bluesky username post_id */>}}
 {{</* nord-palette variant="dark" */>}}
+{{</* toc */>}}  (adds table of contents at shortcode location)
 ```
+
+### Table of Contents
+
+You can include a table of contents in your posts in two ways:
+
+1. **Via front matter** (automatically placed between the header and content):
+   ```yaml
+   ---
+   title: "My Post Title"
+   date: 2023-09-01
+   toc: true
+   ---
+   ```
+
+2. **Via shortcode** (place it anywhere in your content):
+   ```
+   {{</* toc */>}}
+   ```
 
 For more details, see the [Content Management](./docs/content.md) documentation.
 

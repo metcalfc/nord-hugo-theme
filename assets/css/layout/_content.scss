@@ -1,18 +1,214 @@
 /* 
- * Nord Hugo Theme - Content Layout
- * Styles for the main content area
+ * Nord Hugo Theme - Content Layout (Minimal Edition)
+ * Styles for the main content area inspired by Planetscale's minimal design
  */
 
 .content {
-  padding: $spacing-xl 0;
-  min-height: calc(100vh - 240px); // Ensure content area is at least full height minus header/footer
+  padding: $spacing-lg 0;
+  min-height: calc(100vh - 180px);
 }
 
 .container {
-  @include container;
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
 }
 
-// Taxonomy terms page
+// Post header - simplified
+.post-header {
+  margin-bottom: $spacing-xl;
+}
+
+.post-title {
+  margin-top: 0;
+  margin-bottom: $spacing-sm;
+  font-weight: 600;
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  @include transition(color);
+  margin-bottom: $spacing-md;
+}
+
+// Post tags - simple text style
+.post-tags {
+  margin-top: $spacing-sm;
+  
+  a {
+    display: inline-block;
+    color: var(--links);
+    font-size: 0.85rem;
+    margin-right: $spacing-sm;
+    @include transition(color);
+    
+    &:hover {
+      color: var(--links-hover);
+    }
+    
+    &::before {
+      content: '#';
+      opacity: 0.7;
+    }
+  }
+}
+
+// Post content
+.post-content {
+  margin-top: $spacing-lg;
+  
+  // Media styles
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: $spacing-lg auto;
+    border-radius: $border-radius-sm;
+  }
+  
+  // Table styles - minimalist with dashed borders
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: $spacing-lg 0;
+    font-size: 0.9rem;
+    border: 1px dashed var(--border);
+  }
+  
+  th, td {
+    padding: $spacing-sm;
+    text-align: left;
+    border-bottom: 1px dashed var(--border);
+  }
+  
+  th {
+    font-weight: 600;
+  }
+
+  // Code blocks in content
+  pre {
+    border: 1px dashed var(--border);
+    background-color: var(--code-bg);
+  }
+}
+
+// Post list - minimal with simple separators
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: $spacing-xl 0;
+}
+
+.post-list-item {
+  margin-bottom: $spacing-xl;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px dashed var(--border);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.post-list-title {
+  margin-top: 0;
+  margin-bottom: $spacing-xs;
+  font-weight: 600;
+  
+  a {
+    color: var(--foreground);
+    
+    &:hover {
+      color: var(--links);
+    }
+  }
+}
+
+.post-list-meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: $spacing-md;
+}
+
+.post-list-excerpt {
+  margin-bottom: $spacing-md;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+// Read more link - minimalist
+.post-list-read-more,
+.read-more {
+  font-size: 0.9rem;
+  color: var(--links);
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  @include transition(color);
+  
+  &:hover {
+    color: var(--links-hover);
+  }
+  
+  &::after {
+    content: '→';
+    margin-left: $spacing-xs;
+    display: inline-block;
+    @include transition(transform);
+  }
+  
+  &:hover::after {
+    transform: translateX(3px);
+  }
+}
+
+// Pagination - simplified with text links
+.pagination-nav {
+  margin: $spacing-xl 0;
+  border-top: 1px dashed var(--border);
+  padding-top: $spacing-lg;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  .page-item {
+    margin: 0;
+    display: inline-block;
+  }
+  
+  .page-link {
+    display: inline-block;
+    padding: $spacing-sm;
+    color: var(--links);
+    font-size: 0.9rem;
+    @include transition(color);
+    
+    &:hover {
+      color: var(--links-hover);
+    }
+  }
+  
+  .page-item.active .page-link {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+  
+  .page-item.disabled .page-link {
+    color: var(--muted);
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+// Taxonomy terms - simplified
 .taxonomy-terms {
   .terms-header {
     margin-bottom: $spacing-xl;
@@ -24,309 +220,32 @@
     
     .terms-description {
       color: var(--muted);
-      @include transition(color);
     }
   }
 }
 
-// Tag Cloud
-.tag-cloud {
-  margin: $spacing-lg 0;
-  padding: $spacing-md;
-  background-color: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: $border-radius-md;
-  @include box-shadow(2);
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacing-sm;
-  align-items: center;
-  justify-content: center;
-  
-  .tag-cloud-item {
-    display: inline-block;
-    background-color: var(--tag-bg);
-    color: var(--tag-text);
-    padding: $spacing-xs $spacing-sm;
-    border-radius: $border-radius-sm;
-    margin-right: $spacing-sm;
-    margin-bottom: $spacing-sm;
-    border-bottom: none;
-    border: 1px solid var(--tag-border);
-    @include box-shadow(1);
-    @include transition(background-color, color, box-shadow, border-color, transform);
-    
-    &:hover {
-      background-color: var(--accent);
-      color: white;
-      @include box-shadow(2);
-      transform: translateY(-2px) scale(1.05);
-    }
-  }
-  
-  .tag-count {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0,0,0,0.2);
-    color: var(--tag-text);
-    border-radius: 50%;
-    min-width: 1.5em;
-    height: 1.5em;
-    font-size: 0.75em;
-    padding: 0 0.2em;
-    margin-left: $spacing-xs;
-  }
-}
-
-// Taxonomy list styling
+// Tag cloud - minimal text style
 .taxonomy-list {
   list-style: none;
   padding: 0;
   margin: $spacing-lg 0;
   
   li {
-    margin-bottom: $spacing-md;
-  }
-  
-  a {
-    display: inline-block;
-    background-color: var(--tag-bg);
-    color: var(--tag-text);
-    padding: $spacing-sm $spacing-md;
-    border-radius: $border-radius-sm;
-    font-size: 1rem;
-    margin-right: $spacing-sm;
     margin-bottom: $spacing-sm;
-    border-bottom: none;
-    border: 1px solid var(--tag-border);
-    @include box-shadow(1);
-    @include transition(background-color, color, box-shadow, border-color);
     
-    &:hover {
-      background-color: var(--accent);
-      color: white;
-      @include box-shadow(2);
-    }
-  }
-}
-
-// Post header
-.post-header {
-  margin-bottom: $spacing-xl;
-}
-
-.post-title {
-  margin-top: 0;
-  margin-bottom: $spacing-sm;
-}
-
-.post-meta {
-  color: var(--muted);
-  font-size: 0.9rem;
-  @include transition(color);
-}
-
-// Post tags
-.post-tags {
-  margin-top: $spacing-sm;
-  
-  a {
-    display: inline-block;
-    background-color: var(--tag-bg);
-    color: var(--tag-text);
-    padding: $spacing-xs $spacing-sm;
-    border-radius: $border-radius-sm;
-    font-size: 0.8rem;
-    margin-right: $spacing-sm;
-    margin-bottom: $spacing-sm;
-    border-bottom: none;
-    border: 1px solid var(--tag-border);
-    @include box-shadow(1); // Slightly smaller shadow for these small elements
-    @include transition(background-color, color, box-shadow, border-color);
-    
-    &:hover {
-      background-color: var(--accent);
-      color: white;
-      @include box-shadow(2); // Enhance shadow on hover
-    }
-  }
-}
-
-// Post content
-.post-content {
-  margin-top: $spacing-xl;
-  
-  // Specific list styling for content area
-  ul, ol {
-    li {
-      ul, ol {
-        margin-top: $spacing-sm;
-        margin-bottom: 0;
+    a {
+      color: var(--links);
+      @include transition(color);
+      
+      &:hover {
+        color: var(--links-hover);
+      }
+      
+      .taxonomy-count {
+        color: var(--muted);
+        font-size: 0.85em;
+        margin-left: $spacing-xs;
       }
     }
-  }
-  
-  // Ensure proper indentation and spacing in content
-  ol ol, ol ul, ul ol, ul ul {
-    padding-left: $spacing-lg;
-    margin-top: $spacing-sm !important;
-    margin-bottom: 0 !important;
-  }
-}
-
-// Tables
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: $spacing-lg 0;
-  background-color: var(--code-bg);
-  border-radius: $border-radius-md;
-  overflow: hidden;
-  @include box-shadow(2);
-  border: 1px solid var(--border);
-  @include transition(background-color, border-color);
-}
-
-th, td {
-  padding: $spacing-sm;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-  @include transition(border-color);
-}
-
-th {
-  background-color: var(--table-header-bg);
-  color: var(--table-header-text);
-  font-weight: 600;
-  @include transition(background-color, color);
-}
-
-// Post list
-.post-list {
-  list-style: none;
-  padding: 0;
-  margin: $spacing-lg 0;
-}
-
-.post-list-item {
-  margin-bottom: $spacing-xl;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.post-list-title {
-  margin-top: 0;
-  margin-bottom: $spacing-xs;
-  
-  a {
-    border-bottom: none;
-  }
-}
-
-.post-list-meta {
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-bottom: $spacing-sm;
-  @include transition(color);
-}
-
-.post-list-excerpt {
-  margin-bottom: $spacing-sm;
-}
-
-.post-list-read-more,
-.read-more {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--action-color);
-  display: inline-flex;
-  align-items: center;
-  padding: $spacing-xs $spacing-sm;
-  margin-top: $spacing-sm;
-  border-radius: $border-radius-sm;
-  text-decoration: none;
-  border-bottom: none;
-  position: relative;
-  overflow: hidden;
-  @include transition(color, transform);
-  
-  &:hover {
-    color: var(--accent);
-    transform: translateY(-1px);
-  }
-  
-  &::after {
-    content: '→'; /* Unicode right arrow */
-    margin-left: $spacing-xs;
-    display: inline-block;
-    @include transition(transform);
-  }
-  
-  &:hover::after {
-    transform: translateX(3px);
-  }
-}
-
-// Pagination
-.pagination-nav {
-  margin: $spacing-xl 0;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-wrap: wrap;
-  gap: $spacing-xs;
-  
-  .page-item {
-    margin: 0;
-    display: inline-block;
-  }
-  
-  .page-link {
-    display: inline-block;
-    padding: $spacing-sm $spacing-md;
-    background-color: var(--code-bg);
-    color: var(--foreground);
-    border-radius: $border-radius-sm;
-    border: 1px solid var(--border);
-    border-bottom: none;
-    font-size: 0.9rem;
-    min-width: 2.5rem;
-    text-align: center;
-    @include box-shadow(1);
-    @include transition(background-color, color, box-shadow, border-color);
-    
-    &:hover {
-      background-color: var(--accent);
-      color: white;
-      @include box-shadow(2);
-    }
-  }
-  
-  .page-item.active .page-link {
-    background-color: var(--accent);
-    color: white;
-    @include box-shadow(2);
-  }
-  
-  .page-item.disabled .page-link {
-    background-color: var(--code-bg);
-    color: var(--muted);
-    opacity: 0.7;
-    cursor: not-allowed;
-    @include box-shadow(0);
-  }
-  
-  .page-ellipsis {
-    padding: $spacing-sm $spacing-sm;
-    color: var(--muted);
   }
 }

@@ -14,6 +14,8 @@ tags:
 
 This page demonstrates the various components available in the Nord Hugo theme. These components are designed to follow the Nord design principles and color palette.
 
+{{< toc >}}
+
 ## Alert Component
 
 The Alert component provides contextual feedback messages for typical user actions.

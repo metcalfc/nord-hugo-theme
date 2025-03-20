@@ -15,6 +15,8 @@ tags:
 
 The Alert component is a versatile way to emphasize important information within your content. Whether you need to highlight warnings, share tips, or showcase important information, the Alert component provides a visually distinct way to make your content stand out.
 
+{{< toc >}}
+
 ## Basic Usage
 
 The most basic way to use the Alert component is by wrapping your content with the `alert` shortcode:

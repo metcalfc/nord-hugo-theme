@@ -1,6 +1,6 @@
 /* 
- * Nord Hugo Theme - Typography
- * Base typography styles for the theme
+ * Nord Hugo Theme - Typography (Minimal Edition)
+ * Base typography styles inspired by Planetscale's minimal design
  */
 
 html {
@@ -13,59 +13,69 @@ body {
   line-height: $line-height-base;
   color: var(--foreground);
   @include transition(color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-// Headings
+// Headings - simplified, more minimal approach
 h1, h2, h3, h4, h5, h6 {
-  margin-top: $spacing-xxl;
+  margin-top: $spacing-xl;
   margin-bottom: $spacing-md;
-  line-height: 1.3;
+  line-height: 1.2;
   color: var(--foreground);
-  font-weight: 700;
+  font-weight: 500; // Lighter weight for minimalist style
   @include transition(color);
+  letter-spacing: -0.01em; // Slight kerning adjustment
 }
 
 h1 {
-  @include heading-size(1);
-  margin-top: $spacing-xl;
+  font-size: 1.75rem;
+  margin-top: $spacing-lg;
+  font-weight: 600;
 }
 
 h2 {
-  @include heading-size(2);
+  font-size: 1.5rem;
+  padding-bottom: $spacing-sm;
+  margin-top: $spacing-xxl;
 }
 
 h3 {
-  @include heading-size(3);
+  font-size: 1.25rem;
 }
 
 h4 {
-  @include heading-size(4);
+  font-size: 1.1rem;
 }
 
 h5 {
-  @include heading-size(5);
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 h6 {
-  @include heading-size(6);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-// Paragraphs
+// Paragraphs - adjusted line height for improved readability
 p {
   margin-bottom: $spacing-lg;
+  max-width: 65ch; // Optimal reading line length
 }
 
-// Links
+// Links - simpler styling
 a {
   color: var(--links);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  @include transition(border-color, color);
+  @include transition(color);
   
   &:hover, 
   &:focus {
     color: var(--links-hover);
-    border-bottom-color: var(--links-hover);
   }
 }
 
@@ -82,7 +92,7 @@ small {
   font-size: 0.85em;
 }
 
-// Code elements
+// Code elements - monospace font
 pre, code {
   font-family: $font-family-mono;
   @include transition(background-color, color);
@@ -101,7 +111,7 @@ code {
 pre {
   padding: $spacing-md;
   background-color: var(--code-bg);
-  border-radius: $border-radius-md;
+  border-radius: $border-radius-sm;
   overflow-x: auto;
   margin: $spacing-lg 0;
   border: 1px solid var(--code-border);
@@ -116,25 +126,22 @@ pre {
   }
 }
 
-// Blockquotes
+// Blockquotes - more minimal
 blockquote {
-  border-left: 4px solid var(--blockquote-border);
-  background-color: var(--blockquote-bg);
-  padding: $spacing-md $spacing-lg;
+  border-left: 2px solid var(--blockquote-border);
+  background-color: transparent;
+  padding: $spacing-sm $spacing-lg;
   margin: $spacing-lg 0;
   font-style: italic;
-  border-radius: $border-radius-md;
-  @include box-shadow(2);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--blockquote-border);
-  @include transition(background-color, border-color, box-shadow);
+  color: var(--muted);
+  @include transition(border-color);
   
   p:last-child {
     margin-bottom: 0;
   }
 }
 
-// Lists
+// Lists - simplified
 ul, ol {
   margin: $spacing-lg 0;
   padding-left: $spacing-xl;
@@ -142,34 +149,15 @@ ul, ol {
   li {
     margin-bottom: $spacing-sm;
     
-    // Fix for nested lists to remove unwanted spacing
+    // Fix for nested lists
     ul, ol {
       margin-top: $spacing-sm;
       margin-bottom: 0;
     }
   }
-  
-  // Ensure indented lists don't have excessive spacing
-  ul, ol {
-    margin-top: $spacing-sm;
-    margin-bottom: 0;
-  }
 }
 
-// Additional list styling for proper indentation
-ol ol, ol ul, ul ol, ul ul {
-  padding-left: $spacing-lg; // Slightly smaller padding for nested lists
-  margin-top: $spacing-sm !important; // Override any other margin settings
-  margin-bottom: 0 !important; // Override any other margin settings
-}
-
-// Fix for the first child in a nested list to avoid excessive spacing
-li > ol:first-child,
-li > ul:first-child {
-  margin-top: $spacing-sm !important;
-}
-
-// Horizontal rule
+// Horizontal rule - minimal line
 hr {
   border: 0;
   height: 1px;
@@ -182,4 +170,17 @@ hr {
 ::selection {
   background-color: var(--selection);
   color: var(--selection-text);
+}
+
+// Text decoration for separators (|)
+.text-decoration {
+  color: var(--muted);
+  font-weight: normal;
+  margin: 0 $spacing-xs;
+}
+
+// Dashed box (similar to Planetscale design)
+.dashed-box {
+  border: 1px dashed var(--border);
+  @include transition(border-color);
 }

@@ -8,7 +8,9 @@ tags: ["social media", "integrations", "nord", "theme"]
 
 # BlueSky Embedding in the Nord Theme
 
-This post demonstrates how to embed BlueSky posts in the Nord Hugo theme. 
+This post demonstrates how to embed BlueSky posts in the Nord Hugo theme.
+
+{{< toc >}}
 
 ## Basic Embedding
 

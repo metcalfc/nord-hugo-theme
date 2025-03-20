@@ -1,79 +1,52 @@
 {{ define "main" }}
-<div class="posts-list">
-    <header class="list-header">
-        {{ if eq .Kind "term" }}
-            <h1>{{ .Data.Singular | title }}: {{ .Title }}</h1>
-        {{ else if eq .Kind "taxonomyTerm" }}
-            <h1>{{ .Data.Plural | title }}</h1>
-        {{ else }}
-            <h1>{{ .Title }}</h1>
-        {{ end }}
-        
+<section>
+    <div class="list-header">
+        <h1>{{ .Title }}</h1>
         {{ with .Description }}
-        <div class="list-description">
-            {{ . }}
-        </div>
+        <p>{{ . }}</p>
         {{ end }}
-    </header>
-    
+    </div>
+
     {{ if eq .Kind "taxonomyTerm" }}
-    <!-- Display list of terms (e.g., list of all tag names) -->
-    <ul class="taxonomy-list">
-        {{ range .Data.Terms.Alphabetical }}
-        <li>
-            <a href="{{ .Page.RelPermalink }}">
-                {{ .Page.Title }} ({{ .Count }})
-            </a>
-        </li>
-        {{ end }}
-    </ul>
+        <!-- List of taxonomy terms (e.g., list of all tags) -->
+        <ul class="taxonomy-list">
+            {{ range .Pages.ByTitle }}
+            <li>
+                <a href="{{ .RelPermalink }}">
+                    {{ .Title }}
+                    <span class="taxonomy-count">{{ .Pages.Len }}</span>
+                </a>
+            </li>
+            {{ end }}
+        </ul>
     {{ else }}
-    <!-- Display paginated list of content -->
-    {{ $paginator := .Paginate .Pages }}
-    
-    {{ range $paginator.Pages }}
-    <article class="list-item">
-        <h2 class="post-title">
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </h2>
-        
-        {{ if ne .Kind "term" }}
-        <div class="post-meta">
-            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                {{ .Date.Format "January 2, 2006" }}
-            </time>
-            {{ with .Params.author }}
-            • <span class="post-author">{{ . }}</span>
+        <!-- Regular list of posts -->
+        <ul class="post-list">
+            {{ range .Pages }}
+            <li class="post-list-item">
+                <h2 class="post-list-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h2>
+                <div class="post-list-meta">
+                    {{ if not .Date.IsZero }}
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                    {{ end }}
+                    {{ with .Params.author }}
+                    <span class="text-decoration" role="presentation">|</span> {{ . }}
+                    {{ end }}
+                </div>
+                {{ with .Summary }}
+                <div class="post-list-excerpt">
+                    {{ . | plainify | truncate 150 }}
+                </div>
+                {{ end }}
+                <a href="{{ .RelPermalink }}" class="post-list-read-more">Read more</a>
+            </li>
             {{ end }}
-            {{ if $.Site.Params.showReadingTime }}
-            • <span class="reading-time">{{ .ReadingTime }} min read</span>
-            {{ end }}
-        </div>
-        {{ end }}
+        </ul>
         
-        {{ with .Params.tags }}
-        <div class="post-tags">
-            {{ range . }}
-            <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-            {{ end }}
-        </div>
-        {{ end }}
-        
-        <div class="post-summary">
-            {{ with .Description }}
-                {{ . }}
-            {{ else }}
-                {{ .Summary }}
-            {{ end }}
-        </div>
-        
-        {{ if ne .Kind "term" }}
-        <a href="{{ .RelPermalink }}" class="read-more">Read More</a>
-        {{ end }}
-    </article>
+        <!-- Pagination -->
+        {{ partial "pagination.html" . }}
     {{ end }}
-    
-    {{ partial "pagination.html" . }}
-    {{ end }}
-</div>
+</section>
 {{ end }}

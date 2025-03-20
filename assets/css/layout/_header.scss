@@ -1,41 +1,35 @@
 /* 
- * Nord Hugo Theme - Header
- * Header and navigation styles
+ * Nord Hugo Theme - Header Layout (Minimal Edition with Nord-colored SVG Icons)
+ * Styles for site header inspired by Planetscale's minimal design
  */
 
 .site-header {
-  background-color: var(--navbar-bg);
   padding: $spacing-md 0;
-  @include box-shadow(2);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  @include transition(background-color);
+  margin-bottom: $spacing-md;
+  border-bottom: 1px dashed var(--border);
+  @include transition(border-color);
 }
 
 .header-inner {
-  @include flex-between;
-  
-  @include respond-to(md) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
 }
 
 .site-title {
-  font-size: 1.5rem;
-  font-weight: 700;
   margin: 0;
-  color: var(--navbar-text);
-  @include transition(color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
   
-  a {
-    color: inherit;
-    border-bottom: none;
-    
-    &:hover {
-      color: var(--navbar-active);
-    }
+  &:hover {
+    color: var(--accent);
   }
 }
 
@@ -43,76 +37,126 @@
   ul {
     display: flex;
     list-style: none;
-    margin: 0;
     padding: 0;
-    
-    @include respond-to(md) {
-      flex-wrap: wrap;
-      margin-top: $spacing-md;
-    }
+    margin: 0;
+    align-items: center;
   }
   
   li {
-    margin-left: $spacing-lg;
+    margin: 0;
     
-    @include respond-to(md) {
-      margin-left: 0;
-      margin-right: $spacing-lg;
-      margin-bottom: $spacing-sm;
+    &.nav-item {
+      margin: 0 $spacing-sm; // Add horizontal spacing to nav items
     }
   }
   
   a {
-    color: var(--navbar-text);
-    border-bottom: 2px solid transparent;
-    padding-bottom: 4px;
-    @include transition(color, border-bottom-color);
+    color: var(--foreground);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.2rem 0;
+    @include transition(color);
     
-    &:hover, 
-    &.active {
-      color: var(--navbar-active);
-      border-bottom-color: var(--navbar-active);
+    &:hover, &.active {
+      color: var(--links);
+    }
+  }
+  
+  .text-decoration {
+    margin: 0 $spacing-sm; // Add spacing around the pipe separators
+  }
+}
+
+// Theme toggle - Nord colored SVG icons
+.theme-toggle-wrapper {
+  display: inline-block;
+  margin-left: $spacing-md; // Add more space before the theme toggle
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: 50%; // Circular button
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  
+  &:hover {
+    transform: rotate(12deg) scale(1.15); // Fun rotation and scale effect
+  }
+  
+  .toggle-icon {
+    display: none; // Hide both icons by default
+    width: 20px;
+    height: 20px;
+    
+    &.sun-icon {
+      stroke: #{$nord12}; // Orange from Aurora palette
+      filter: drop-shadow(0 0 3px rgba(208, 135, 112, 0.4)); // Subtle glow effect
+    }
+    
+    &.moon-icon {
+      stroke: #{$nord8}; // Light blue from Frost palette
+      filter: drop-shadow(0 0 3px rgba(136, 192, 208, 0.4)); // Subtle glow effect
     }
   }
 }
 
-.theme-toggle {
-  background: none;
-  border: none;
-  color: var(--navbar-text);
-  font-size: 1.1rem;
-  cursor: pointer;
-  @include transition(color);
-  padding: $spacing-xs;
-  margin-left: $spacing-md;
-  position: relative;
-  
-  &:hover {
-    color: var(--navbar-active);
+// Light theme: show moon icon
+:root {
+  .theme-toggle {
+    .moon-icon {
+      display: block;
+    }
+    
+    &:hover {
+      background-color: rgba(136, 192, 208, 0.1); // Nord8 with transparency
+    }
+  }
+}
+
+// Dark theme: show sun icon
+.dark-theme {
+  .theme-toggle {
+    .sun-icon {
+      display: block;
+    }
+    
+    .moon-icon {
+      display: none;
+    }
+    
+    &:hover {
+      background-color: rgba(208, 135, 112, 0.1); // Nord12 with transparency
+    }
+  }
+}
+
+// Responsive
+@media (max-width: $breakpoint-sm) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
   }
   
-  /* Simple tooltip */
-  &::after {
-    content: attr(aria-label);
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: var(--navbar-bg);
-    color: var(--navbar-text);
-    padding: $spacing-xs $spacing-sm;
-    border-radius: $border-radius-sm;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    @include box-shadow(1);
-    opacity: 0;
-    transform: translateY(-10px);
-    @include transition(opacity, transform);
-    pointer-events: none;
-    z-index: 100;
+  .main-nav {
+    margin-top: $spacing-md;
+    width: 100%;
+    
+    ul {
+      flex-wrap: wrap;
+    }
+    
+    li.nav-item {
+      margin: $spacing-xs $spacing-sm;
+    }
   }
   
-  &:hover::after {
-    opacity: 1;
-    transform: translateY(5px);
+  .site-logo {
+    margin-bottom: $spacing-sm;
   }
 }

@@ -15,6 +15,8 @@ tags:
 
 The Card Grid component allows you to present content in a responsive grid layout. It's perfect for showcasing features, blog posts, team members, and more.
 
+{{< toc >}}
+
 ## Component Structure
 
 The Card Grid system consists of two main shortcodes:

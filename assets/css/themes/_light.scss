@@ -1,9 +1,9 @@
 /* 
- * Nord Hugo Theme - Light Theme Variables
+ * Nord Hugo Theme - Light Theme Variables (Minimal Edition)
  */
 
 :root {
-  // Nord RGB values for opacity usage
+  // RGB values of colors for use with rgba()
   --nord9-rgb: 129, 161, 193;
   --nord10-rgb: 94, 129, 172;
   --nord11-rgb: 191, 97, 106;
@@ -12,69 +12,70 @@
   --nord15-rgb: 180, 142, 173;
   --background-rgb: 236, 239, 244;
   --border-rgb: 216, 222, 233;
+  
   // Main colors
   --background: #{$nord6}; /* Snow Storm brightest */
   --foreground: #{$nord0}; /* Polar Night darkest */
-  --selection: #{$nord5};
+  --selection: #{$nord4};
   --selection-text: #{$nord0};
   
   // Accent colors
-  --accent: #{$nord8}; /* Frost bright blue */
+  --accent: #{$nord10}; /* Frost dark blue */
   --accent-alt: #{$nord9}; /* Frost medium blue */
-  --links: #{$nord10}; /* Frost dark blue */
-  --links-hover: #{$nord7}; /* Using nord7 for a distinct hover state */
+  --links: #{$nord10}; /* Dark blue for better visibility on light */
+  --links-hover: #{$nord8};
   
   // UI element colors
-  --border: #{$nord4};
-  --muted: #{$nord2}; /* Using darker nord2, instead of nord3, for better contrast in light mode */
+  --border: #{rgba($nord4, 0.7)};
+  --muted: #{$nord3};
   
   // Component backgrounds
-  --code-bg: #{$nord5}; /* Using nord5 for better contrast with dark text */
-  --blockquote-bg: #{$nord5};
+  --code-bg: #{rgba($nord5, 0.5)};
+  --blockquote-bg: transparent;
   --blockquote-border: #{$nord9};
   
   // Navigation
-  --navbar-bg: #{$nord5};
-  --navbar-text: #{$nord1};
-  --navbar-active: #{$nord8};
+  --navbar-bg: transparent;
+  --navbar-text: #{$nord0};
+  --navbar-active: #{$nord10};
   
   // Footer
-  --footer-bg: #{$nord5};
-  --footer-text: #{$nord1};
+  --footer-bg: transparent;
+  --footer-text: #{$nord0};
   
   // Cards & UI components
-  --card-bg: #{$nord6};
-  --card-shadow: rgba(#{$nord0}, 0.1);
+  --card-bg: transparent;
+  --card-shadow: none;
   
   // Tables
-  --table-header-bg: #{$nord4}; /* Using nord4 for more contrast against the background */
-  --table-header-text: #{$nord0}; /* Using Polar Night darkest for good contrast */
+  --table-header-bg: transparent;
+  --table-header-text: #{$nord0};
   
   // Tags
-  --tag-bg: #{$nord10}; /* Frost dark blue for high visibility */
-  --tag-text: #{$nord6}; /* Snow Storm brightest for high contrast */
-  --tag-border: #{$nord9}; /* Medium blue border */
+  --tag-bg: transparent;
+  --tag-text: #{$nord10};
+  --tag-border: transparent;
   
   // Action links
-  --action-color: #{$nord15}; /* Purple from Aurora for read more links */
+  --action-color: #{$nord10};
   
   /* Code syntax colors */
-  --syntax-base: #{$nord0};
+  --syntax-base: #{$nord1};
   --syntax-comment: #{$nord3};
-  --syntax-keyword: #{$nord10}; /* Darker blue for better contrast */
-  --syntax-function: #{$nord10}; /* Darker blue for better contrast */
+  --syntax-keyword: #{$nord9};
+  --syntax-function: #{$nord8};
   --syntax-string: #{$nord14};
   --syntax-number: #{$nord15};
-  --syntax-class: #{$nord10}; /* Darker blue for better contrast */
-  --syntax-variable: #{$nord2}; /* Much darker for better contrast */
-  --syntax-operator: #{$nord10}; /* Darker blue for better contrast */
+  --syntax-class: #{$nord7};
+  --syntax-variable: #{$nord1};
+  --syntax-operator: #{$nord9};
   --syntax-error: #{$nord11};
-  --syntax-warning: #{$nord12}; /* Using orange instead of yellow for better contrast */
-  --syntax-tag: #{$nord10}; /* Darker blue for better contrast */
-  --syntax-attr: #{$nord10}; /* Darker blue for better contrast */
+  --syntax-warning: #{$nord13};
+  --syntax-tag: #{$nord9};
+  --syntax-attr: #{$nord7};
   
   /* Inline code */
-  --inline-code-color: #{$nord0};
-  --inline-code-bg: #{$nord5}; /* Consistent with code block background */
-  --code-border: #{$nord4}; /* Adding specific border color for code blocks */
+  --inline-code-color: #{$nord1};
+  --inline-code-bg: #{rgba($nord5, 0.5)};
+  --code-border: #{rgba($nord4, 0.3)};
 }

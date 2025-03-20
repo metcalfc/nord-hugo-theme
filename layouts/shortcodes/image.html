@@ -1,0 +1,62 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $caption := .Get "caption" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $lightbox := .Get "lightbox" | default false -}}
+{{- $width := .Get "width" | default "auto" -}}
+{{- $height := .Get "height" | default "auto" -}}
+{{- $caption_style := .Get "caption-style" | default "" -}}
+{{- $hover := .Get "hover" | default "" -}}
+{{- $shadow := .Get "shadow" | default "" -}}
+{{- $border := .Get "border" | default false -}}
+{{- $rounded := .Get "rounded" | default "" -}}
+{{- $lazy := .Get "lazy" | default true -}}
+{{- $size := .Get "size" | default "" -}}
+
+{{- $classes := slice "nord-image" -}}
+
+{{- if $class -}}
+  {{- $classes = $classes | append $class -}}
+{{- end -}}
+
+{{- if eq $size "full" -}}
+  {{- $classes = $classes | append "image-full" -}}
+{{- else if eq $size "wide" -}}
+  {{- $classes = $classes | append "image-wide" -}}
+{{- end -}}
+
+{{- if $border -}}
+  {{- $classes = $classes | append "image-border" -}}
+{{- end -}}
+
+{{- if $shadow -}}
+  {{- $classes = $classes | append (printf "image-shadow-%s" $shadow) -}}
+{{- end -}}
+
+{{- if $rounded -}}
+  {{- $classes = $classes | append (printf "image-rounded-%s" $rounded) -}}
+{{- end -}}
+
+{{- if $hover -}}
+  {{- $classes = $classes | append (printf "image-hover-%s" $hover) -}}
+{{- end -}}
+
+{{- if $lightbox -}}
+  {{- $classes = $classes | append "lightbox-enabled" -}}
+{{- end -}}
+
+<figure class="{{ delimit $classes " " }}">
+  <img 
+    src="{{ $src }}" 
+    alt="{{ $alt }}" 
+    {{ if not (eq $width "auto") }}width="{{ $width }}"{{ end }}
+    {{ if not (eq $height "auto") }}height="{{ $height }}"{{ end }}
+    {{ if $lazy }}loading="lazy"{{ end }}
+    {{ if $lightbox }}data-lightbox="true"{{ if $caption }}data-caption="{{ $caption }}"{{ end }}{{ end }}
+  />
+  {{- if $caption -}}
+    <figcaption class="image-caption{{ with $caption_style }} caption-{{ . }}{{ end }}">
+      {{ $caption | markdownify }}
+    </figcaption>
+  {{- end -}}
+</figure>

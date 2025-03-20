@@ -9,6 +9,8 @@ tags: ["components", "nord", "layout"]
 
 The Card Grid component is a flexible system for displaying content in a responsive grid layout. This page demonstrates basic usage patterns and simple configurations.
 
+{{< toc >}}
+
 ## Basic 3-Column Grid
 
 The default Card Grid creates a 3-column layout with medium spacing between cards:

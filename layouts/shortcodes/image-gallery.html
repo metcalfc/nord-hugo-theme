@@ -1,0 +1,18 @@
+{{- $columns := .Get "columns" | default "3" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $lightbox := .Get "lightbox" | default true -}}
+{{- $captions_visible := .Get "captions-visible" | default false -}}
+
+{{- $classes := slice "nord-image-gallery" (printf "gallery-cols-%s" $columns) -}}
+
+{{- if $class -}}
+  {{- $classes = $classes | append $class -}}
+{{- end -}}
+
+{{- if $captions_visible -}}
+  {{- $classes = $classes | append "captions-visible" -}}
+{{- end -}}
+
+<div class="{{ delimit $classes " " }}" data-gallery-id="gallery-{{ .Ordinal }}">
+  {{ .Inner }}
+</div>

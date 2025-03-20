@@ -1,23 +1,25 @@
 <footer class="site-footer">
     <div class="container">
         <div class="footer-inner">
-            <div class="copyright">
-                &copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.
-            </div>
+            <nav class="footer-nav">
+                <div class="dashed-box p-3">
+                    <h2 class="font-semibold">Links</h2>
+                    {{ range .Site.Menus.footer }}
+                    <a class="block pl-1 -indent-1 text-primary hover:text-contrast" href="{{ .URL }}">{{ .Name }}</a>
+                    {{ end }}
+                </div>
+            </nav>
             
-            <ul class="footer-links">
-                {{ range .Site.Menus.footer }}
-                <li>
-                    <a href="{{ .URL }}">{{ .Name }}</a>
-                </li>
-                {{ end }}
-                <li>
-                    <a href="{{ "index.xml" | absURL }}" target="_blank">RSS</a>
-                </li>
-            </ul>
+            <div class="dashed-box dashed-box-x-b p-3">
+                <p>
+                    <a class="text-primary" href="{{ .Site.Params.githubUrl | default "#" }}">GitHub</a>
+                    <span class="text-decoration" role="presentation">|</span>
+                    <a class="text-primary" href="{{ .Site.Params.twitterUrl | default "#" }}">Twitter</a>
+                    <span class="text-decoration" role="presentation">|</span>
+                    <a class="text-primary" href="{{ "index.xml" | absURL }}">RSS</a>
+                </p>
+                <p class="text-secondary">&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+            </div>
         </div>
     </div>
 </footer>
-
-<!-- Twitter/X Widget Script -->
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

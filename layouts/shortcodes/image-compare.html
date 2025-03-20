@@ -1,0 +1,41 @@
+{{- $before := .Get "before" -}}
+{{- $after := .Get "after" -}}
+{{- $before_alt := .Get "before-alt" | default "Before image" -}}
+{{- $after_alt := .Get "after-alt" | default "After image" -}}
+{{- $before_label := .Get "before-label" | default "Before" -}}
+{{- $after_label := .Get "after-label" | default "After" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $initial := .Get "initial" | default "50" -}}
+{{- $height := .Get "height" | default "auto" -}}
+{{- $shadow := .Get "shadow" | default "" -}}
+{{- $border := .Get "border" | default false -}}
+{{- $show_labels := .Get "show-labels" | default true -}}
+
+{{- $classes := slice "nord-image-compare" -}}
+
+{{- if $class -}}
+  {{- $classes = $classes | append $class -}}
+{{- end -}}
+
+{{- if $border -}}
+  {{- $classes = $classes | append "image-border" -}}
+{{- end -}}
+
+{{- if $shadow -}}
+  {{- $classes = $classes | append (printf "image-shadow-%s" $shadow) -}}
+{{- end -}}
+
+<div class="{{ delimit $classes " " }}" 
+     data-initial="{{ $initial }}" 
+     {{ if not (eq $height "auto") }}style="height: {{ $height }};"{{ end }}
+     id="compare-{{ .Ordinal }}">
+  <div class="image-before" style="width: {{ $initial }}%;">
+    <img src="{{ $before }}" alt="{{ $before_alt }}" loading="lazy" />
+    {{ if $show_labels }}<div class="compare-label label-before">{{ $before_label }}</div>{{ end }}
+  </div>
+  <div class="image-after">
+    <img src="{{ $after }}" alt="{{ $after_alt }}" loading="lazy" />
+    {{ if $show_labels }}<div class="compare-label label-after">{{ $after_label }}</div>{{ end }}
+  </div>
+  <div class="compare-handle" aria-label="Drag to compare images"></div>
+</div>

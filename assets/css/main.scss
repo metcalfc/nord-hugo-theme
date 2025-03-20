@@ -1,5 +1,5 @@
 /* 
- * Nord Hugo Theme - Main SCSS file
+ * Nord Hugo Theme - Main SCSS file (Minimal Edition)
  * Organizes and imports all stylesheets
  */
 
@@ -28,3 +28,6 @@
 @import 'components/alerts';
 @import 'components/cards';
 @import 'components/card-grid';
+@import 'components/dashed-box';
+@import 'components/images';
+@import 'components/nord-palette';
