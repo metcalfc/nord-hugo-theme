@@ -9,8 +9,8 @@
 }
 
 .container {
-  width: 100%;
-  max-width: $container-max-width;
+  width: 80%;
+  max-width: 1440px; /* Still set a max-width for very wide screens */
   margin: 0 auto;
   padding: 0 $spacing-lg;
 }
@@ -58,6 +58,7 @@
 // Post content
 .post-content {
   margin-top: $spacing-lg;
+  max-width: 100%; /* Ensure content can expand to full width */
   
   // Media styles
   img {
