@@ -56,6 +56,7 @@ Comprehensive documentation is available in the [docs directory](./docs/):
 - [Getting Started](./docs/getting-started.md) - Installation and basic setup
 - [Configuration](./docs/configuration.md) - Available theme options
 - [Content Management](./docs/content.md) - Working with content and front matter
+- [Code Scroll Shortcodes](./docs/code-scroll.md) - Using code scroll features
 - [Customization](./docs/customization.md) - Modifying the theme
 - [Advanced Usage](./docs/advanced.md) - Advanced configuration techniques
 - [FAQ & Troubleshooting](./docs/faq.md) - Common questions and solutions
@@ -113,6 +114,8 @@ The theme includes several custom shortcodes:
 {{</* bluesky username post_id */>}}
 {{</* nord-palette variant="dark" */>}}
 {{</* toc */>}}  (adds table of contents at shortcode location)
+{{</* scroll-code "path/to/file.js" "javascript" "400px" "true" */>}}  (scrollable code block with controls)
+{{</* feature-code "path/to/file.js" "javascript" "400px" "true" */>}}  (image-like code display without controls)
 ```
 
 ### Table of Contents

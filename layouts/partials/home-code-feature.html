@@ -1,0 +1,45 @@
+{{ $source := .Site.Params.featureCodeSource | default "https://raw.githubusercontent.com/gohugoio/hugo/master/common/hugo/version.go" }}
+{{ $language := .Site.Params.featureCodeLanguage | default "go" }}
+{{ $height := .Site.Params.featureCodeHeight | default "300px" }}
+
+{{ $codeContent := "// Error: Could not fetch code from source" }}
+{{ $fetchError := true }}
+{{ $isURL := hasPrefix $source "http" }}
+
+{{ if $isURL }}
+  {{ $remoteSrc := resources.GetRemote $source }}
+  {{ if $remoteSrc }}
+    {{ $codeContent = $remoteSrc.Content }}
+    {{ $fetchError = false }}
+  {{ end }}
+{{ else }}
+  {{ if fileExists $source }}
+    {{ $codeContent = readFile $source }}
+    {{ $fetchError = false }}
+  {{ end }}
+{{ end }}
+
+<div class="feature-code-container" style="height: {{ $height }};" data-auto-scroll="true">
+  <div class="feature-code-content">
+    <pre><code class="language-{{ $language }}">{{ if $fetchError }}// Error: Could not fetch code from source{{ else }}{{ $codeContent }}{{ end }}</code></pre>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const containers = document.querySelectorAll('.feature-code-container');
+  
+  containers.forEach(container => {
+    const content = container.querySelector('.feature-code-content');
+    const pre = container.querySelector('pre');
+    
+    // Set a CSS variable for the container height to use in the animation
+    container.style.setProperty('--container-height', container.style.height);
+    
+    // Check if content is long enough to scroll
+    if (pre.scrollHeight <= content.clientHeight) {
+      container.setAttribute('data-auto-scroll', 'false');
+    }
+  });
+});
+</script>

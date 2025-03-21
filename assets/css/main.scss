@@ -1,5 +1,5 @@
 /* 
- * Nord Hugo Theme - Main SCSS file (Minimal Edition)
+ * Nord Hugo Theme - Main SCSS file
  * Organizes and imports all stylesheets
  */
 
@@ -7,27 +7,21 @@
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
 
+// Base styles
+@import 'base/reset';
+@import 'base/typography';
+
 // Themes
 @import 'themes/light';
 @import 'themes/dark';
-
-// Base
-@import 'base/reset';
-@import 'base/typography';
-@import 'base/utilities';
-@import 'base/print';
 
 // Layout
 @import 'layout/header';
 @import 'layout/content';
 @import 'layout/footer';
 
-// Components
-@import 'components/syntax';
-@import 'components/embeds';
-@import 'components/alerts';
-@import 'components/cards';
-@import 'components/card-grid';
-@import 'components/dashed-box';
-@import 'components/images';
-@import 'components/nord-palette';
+// Components - Import the scroll-code components
+@import 'components/scroll-code';
+@import 'components/scroll-code-icons';
+@import 'components/scroll-code-highlight';
+@import 'components/feature-code';
