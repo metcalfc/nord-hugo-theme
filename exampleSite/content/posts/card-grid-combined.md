@@ -611,23 +611,23 @@ Use cards to highlight important statistics or metrics:
 ```
 {{</* card-grid columns="4" */>}}
   {{</* card center=true */>}}
-    ## 500+
-    **Projects Completed**
+<p style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">500+</p>
+Projects Completed
   {{</* /card */>}}
   
   {{</* card center=true */>}}
-    ## 50+
-    **Team Members**
+<p style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">50+</p>
+Team Members
   {{</* /card */>}}
   
   {{</* card center=true */>}}
-    ## 30+
-    **Countries Served**
+<p style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">30+</p>
+Countries Served
   {{</* /card */>}}
   
   {{</* card center=true */>}}
-    ## 98%
-    **Client Satisfaction**
+<p style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">98%</p>
+Client Satisfaction
   {{</* /card */>}}
 {{</* /card-grid */>}}
 ```
@@ -636,23 +636,23 @@ Which renders as:
 
 {{< card-grid columns="4" >}}
   {{< card center=true >}}
-    ## 500+
-    **Projects Completed**
+<p style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">500+</p>
+Projects Completed
   {{< /card >}}
   
   {{< card center=true >}}
-    ## 50+
-    **Team Members**
+<p style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">50+</p>
+Team Members
   {{< /card >}}
   
   {{< card center=true >}}
-    ## 30+
-    **Countries Served**
+<p style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">30+</p>
+Countries Served
   {{< /card >}}
   
   {{< card center=true >}}
-    ## 98%
-    **Client Satisfaction**
+<p style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">98%</p>
+Client Satisfaction
   {{< /card >}}
 {{< /card-grid >}}
 
