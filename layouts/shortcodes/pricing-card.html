@@ -1,0 +1,46 @@
+{{- $title := .Get "title" -}}
+{{- $subtitle := .Get "subtitle" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $center := .Get "center" | default true -}}
+
+<div class="card
+            card-type-basic 
+            card-shadow 
+            {{ if $center }}card-center{{ end }}
+            card-hover
+            {{ $class }}">
+  
+  <div class="card-header-content">      
+    {{- if $title -}}
+    <div class="card-header">
+      <h3 class="card-title">{{ $title }}</h3>
+    </div>
+    {{- end -}}
+    
+    {{- if $subtitle -}}
+    <div class="card-subtitle">{{ $subtitle }}</div>
+    {{- end -}}
+  </div>
+  
+  <div class="card-content">
+    <div class="card-body">
+      <h2>Features</h2>
+      <ul style="list-style-type: none; padding-left: 0;">
+        {{ range split .Inner "\n" }}
+          {{ $line := trim . " -" }}
+          {{ if and (not (eq $line "")) (not (eq $line "## Features")) }}
+            <li>{{ $line }}</li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+    
+    {{- if $.Get "action-text" -}}
+    <div class="card-footer">
+      <a href="{{ $.Get "action-link" | default "#" }}" class="card-link">
+        <span>{{ $.Get "action-text" }}</span>
+      </a>
+    </div>
+    {{- end -}}
+  </div>
+</div>

@@ -59,7 +59,7 @@
   
   <div class="card-content">
     <div class="card-body">
-      {{ .Inner | markdownify }}
+      {{ .Inner | safeHTML }}
     </div>
     
     {{- if $link -}}

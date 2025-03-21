@@ -335,120 +335,90 @@ Display pricing plans in a comparative layout:
 
 ```
 {{</* card-grid columns="3" gap="lg" */>}}
-  {{</* card 
+  {{</* pricing-card 
       title="Basic Plan" 
       subtitle="$9/month"
-      center=true
+      action-text="Sign Up"
+      action-link="#"
   */>}}
-    ## Features
-    
-    - 5 projects
-    - 10GB storage
-    - Email support
-    - Basic analytics
-    
-    {{</* card link="#" class="mt-4" center=true */>}}
-      **Sign Up**
-    {{</* /card */>}}
-  {{</* /card */>}}
+5 projects
+10GB storage
+Email support
+Basic analytics
+  {{</* /pricing-card */>}}
   
-  {{</* card 
+  {{</* pricing-card 
       title="Pro Plan" 
       subtitle="$19/month"
-      center=true
       class="card-accent card-accent-accent"
+      action-text="Sign Up"
+      action-link="#"
   */>}}
-    ## Features
-    
-    - 20 projects
-    - 50GB storage
-    - Priority support
-    - Advanced analytics
-    - Custom domain
-    
-    {{</* card link="#" class="mt-4" center=true */>}}
-      **Sign Up**
-    {{</* /card */>}}
-  {{</* /card */>}}
+20 projects
+50GB storage
+Priority support
+Advanced analytics
+Custom domain
+  {{</* /pricing-card */>}}
   
-  {{</* card 
+  {{</* pricing-card 
       title="Enterprise Plan" 
       subtitle="$49/month"
-      center=true
+      action-text="Contact Sales"
+      action-link="#"
   */>}}
-    ## Features
-    
-    - Unlimited projects
-    - 250GB storage
-    - 24/7 phone support
-    - Custom analytics
-    - Custom domain
-    - User management
-    
-    {{</* card link="#" class="mt-4" center=true */>}}
-      **Contact Sales**
-    {{</* /card */>}}
-  {{</* /card */>}}
+Unlimited projects
+250GB storage
+24/7 phone support
+Custom analytics
+Custom domain
+User management
+  {{</* /pricing-card */>}}
 {{</* /card-grid */>}}
 ```
 
 Which renders as:
 
 {{< card-grid columns="3" gap="lg" >}}
-  {{< card 
+  {{< pricing-card 
       title="Basic Plan" 
       subtitle="$9/month"
-      center=true
+      action-text="Sign Up"
+      action-link="#"
   >}}
-    ## Features
-    
-    - 5 projects
-    - 10GB storage
-    - Email support
-    - Basic analytics
-    
-    {{< card link="#" class="mt-4" center=true >}}
-      **Sign Up**
-    {{< /card >}}
-  {{< /card >}}
+5 projects
+10GB storage
+Email support
+Basic analytics
+  {{< /pricing-card >}}
   
-  {{< card 
+  {{< pricing-card 
       title="Pro Plan" 
       subtitle="$19/month"
-      center=true
       class="card-accent card-accent-accent"
+      action-text="Sign Up"
+      action-link="#"
   >}}
-    ## Features
-    
-    - 20 projects
-    - 50GB storage
-    - Priority support
-    - Advanced analytics
-    - Custom domain
-    
-    {{< card link="#" class="mt-4" center=true >}}
-      **Sign Up**
-    {{< /card >}}
-  {{< /card >}}
+20 projects
+50GB storage
+Priority support
+Advanced analytics
+Custom domain
+  {{< /pricing-card >}}
   
-  {{< card 
+  {{< pricing-card 
       title="Enterprise Plan" 
       subtitle="$49/month"
-      center=true
+      action-text="Contact Sales"
+      action-link="#"
   >}}
-    ## Features
-    
-    - Unlimited projects
-    - 250GB storage
-    - 24/7 phone support
-    - Custom analytics
-    - Custom domain
-    - User management
-    
-    {{< card link="#" class="mt-4" center=true >}}
-      **Contact Sales**
-    {{< /card >}}
-  {{< /card >}}
+Unlimited projects
+250GB storage
+24/7 phone support
+Custom analytics
+Custom domain
+User management
+  {{< /pricing-card >}}
 {{< /card-grid >}}
 
 ## Best Practices

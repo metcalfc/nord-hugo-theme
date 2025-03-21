@@ -17,7 +17,7 @@
   </div>
 
   <div class="card-body">
-    {{ .Inner | markdownify }}
+    {{ .Inner | safeHTML }}
   </div>
 
 </div>
