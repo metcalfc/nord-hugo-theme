@@ -3,10 +3,21 @@
  * Styles for card components
  */
 
+// New horizontal card header row
+.card-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: $spacing-md;
+  
+  .card-header-content {
+    flex: 1;
+    min-width: 0;
+  }
+}
 .card {
   margin-bottom: $spacing-lg;
   padding: $spacing-lg;
-  border: 1px dashed var(--border);
+  border: 1px dashed $border;
   @include transition(border-color);
   height: 100%; /* Make all cards same height */
   display: flex;
@@ -78,6 +89,23 @@
     overflow-wrap: break-word; /* Allow long text to wrap */
   }
   
+  // Card header group - contains tag, title, and subtitle
+  .card-header-group {
+    margin-bottom: $spacing-md;
+  }
+  
+  // Tag styling
+  .card-tag {
+    display: inline-block;
+    padding: $spacing-xs $spacing-sm;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: $accent;
+    color: $background;
+    border-radius: 3px;
+    margin-bottom: $spacing-sm;
+  }
+
   .card-title {
     margin-top: 0;
     margin-bottom: $spacing-sm;
@@ -85,32 +113,32 @@
     font-weight: 600;
     
     a {
-      color: var(--foreground);
+      color: $foreground;
       
       &:hover {
-        color: var(--links);
+        color: $links;
       }
     }
   }
   
   .card-subtitle {
     font-size: 0.9rem;
-    color: var(--muted);
-    margin-top: -#{$spacing-xs};
-    margin-bottom: $spacing-sm;
+    color: $muted;
+    margin-bottom: $spacing-md;
+    line-height: 1.4;
   }
   
   .card-meta {
     font-size: 0.85rem;
-    color: var(--muted);
+    color: $muted;
     margin-bottom: $spacing-md;
     @include transition(color);
   }
   
   // Card body content
   .card-body, .card-description {
-    margin-bottom: $spacing-md;
-    color: var(--foreground);
+    margin-bottom: $spacing-sm;
+    color: $foreground;
     font-size: 0.95rem;
     line-height: 1.5;
     flex-grow: 1; /* Allow description to expand to fill available space */
@@ -122,15 +150,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto; /* Push footer to bottom of card */
+    margin-top: $spacing-sm;
     
     .card-link {
-      color: var(--links);
+      color: $links;
       font-size: 0.9rem;
       @include transition(color);
+      display: inline-flex;
+      align-items: center;
       
       &:hover {
-        color: var(--links-hover);
+        color: $links-hover;
       }
       
       &::after {
@@ -182,27 +212,38 @@
 
 // Horizontal card layout
 .card.card-type-horizontal {
+  position: relative;
+  overflow: hidden;
+  
   @media (min-width: $breakpoint-sm) {
-    flex-direction: row;
-    flex-wrap: wrap; /* Allow wrapping if needed */
+    .card-header-row {
+      flex-wrap: nowrap;
+    }
     
     .card-image {
       flex: 0 0 40%;
-      max-width: 40%; /* Ensure image doesn't exceed parent width */
-      margin: -#{$spacing-lg} 0 -#{$spacing-lg} -#{$spacing-lg};
+      max-width: 40%;
+      margin: -#{$spacing-lg} $spacing-md -#{$spacing-sm} -#{$spacing-lg};
       overflow: hidden;
       
       img {
         height: 100%;
         object-fit: cover;
+        border-radius: 3px;
       }
     }
     
+    .card-header-content {
+      padding-right: $spacing-md;
+    }
+    
     .card-content {
-      flex: 1;
-      padding-left: $spacing-md;
-      min-width: 0; /* Allow content to shrink below its natural width */
-      max-width: 60%; /* Ensure content doesn't become too narrow */
+      width: 100%;
+      clear: both;
+    }
+    
+    .card-body {
+      margin-top: $spacing-sm;
     }
   }
 }

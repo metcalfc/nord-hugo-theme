@@ -18,39 +18,43 @@
             {{ if $hover }}card-hover{{ end }}
             {{ $class }}">
   
-  {{- if $image -}}
-  <div class="card-image">
-    <img src="{{ $image }}" alt="{{ $imageAlt }}" loading="lazy">
+  <div class="card-header-row">
+    {{- if $image -}}
+    <div class="card-image">
+      <img src="{{ $image }}" alt="{{ $imageAlt }}" loading="lazy">
+    </div>
+    {{- end -}}
+    
+    <div class="card-header-content">
+      {{- if $tag -}}
+      <div class="card-tag">{{ $tag }}</div>
+      {{- end -}}
+      
+      {{- if and $icon $center -}}
+      <div class="card-icon">
+      {{- partial "components/icon" $icon -}}
+      </div>
+      {{- end -}}
+      
+      {{- if $title -}}
+      <div class="card-header">
+        {{- if and $icon (not $center) -}}
+        <div class="icon-inline">{{- partial "components/icon" $icon -}}</div>
+        {{- end -}}
+        <h3 class="card-title">{{ $title }}</h3>
+      </div>
+      {{- if $subtitle -}}
+        <div class="card-subtitle">{{ $subtitle }}</div>
+      {{- end -}}
+      {{- else if and $icon (not $center) -}}
+      <div class="card-icon">
+      {{- partial "components/icon" $icon -}}
+      </div>
+      {{- end -}}
+    </div>
   </div>
-  {{- end -}}
   
   <div class="card-content">
-    {{- if $tag -}}
-    <div class="card-tag">{{ $tag }}</div>
-    {{- end -}}
-    
-    {{- if and $icon $center -}}
-    <div class="card-icon">
-    {{- partial "components/icon" $icon -}}
-    </div>
-    {{- end -}}
-    
-    {{- if $title -}}
-    <div class="card-header">
-      {{- if and $icon (not $center) -}}
-      <div class="icon-inline">{{- partial "components/icon" $icon -}}</div>
-      {{- end -}}
-      <h3 class="card-title">{{ $title }}</h3>
-      {{- if $subtitle -}}
-      <div class="card-subtitle">{{ $subtitle }}</div>
-      {{- end -}}
-    </div>
-    {{- else if and $icon (not $center) -}}
-    <div class="card-icon">
-    {{- partial "components/icon" $icon -}}
-    </div>
-    {{- end -}}
-    
     <div class="card-body">
       {{ .Inner | markdownify }}
     </div>
@@ -59,7 +63,6 @@
     <div class="card-footer">
       <a href="{{ $link }}" class="card-link">
         <span>Read more</span>
-        {{- partial "components/icon" "arrow-right" -}}
       </a>
     </div>
     {{- end -}}
