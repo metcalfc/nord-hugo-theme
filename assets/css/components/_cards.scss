@@ -42,6 +42,18 @@
     }
   }
   
+  // Card icon independently of header
+  .card-icon {
+    margin-bottom: $spacing-md;
+    line-height: 0;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+  }
+  
   // Card image
   .card-image {
     margin: -#{$spacing-lg} -#{$spacing-lg} $spacing-md -#{$spacing-lg};
@@ -151,6 +163,19 @@
     
     .card-header {
       justify-content: center;
+    }
+    
+    .card-icon {
+      display: flex;
+      justify-content: center;
+      margin-bottom: $spacing-md;
+      margin-top: $spacing-sm; /* Add top margin for better visual spacing */
+      
+      svg {
+        width: 36px; /* Slightly larger for centered icons */
+        height: 36px;
+        color: var(--accent); /* Use accent color for centered icons */
+      }
     }
   }
 }

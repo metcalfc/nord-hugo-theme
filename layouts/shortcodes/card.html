@@ -29,18 +29,25 @@
     <div class="card-tag">{{ $tag }}</div>
     {{- end -}}
     
-    {{- if $icon -}}
+    {{- if and $icon $center -}}
     <div class="card-icon">
-      {{- partial "components/icon" $icon -}}
+    {{- partial "components/icon" $icon -}}
     </div>
     {{- end -}}
     
     {{- if $title -}}
     <div class="card-header">
+      {{- if and $icon (not $center) -}}
+      <div class="icon-inline">{{- partial "components/icon" $icon -}}</div>
+      {{- end -}}
       <h3 class="card-title">{{ $title }}</h3>
       {{- if $subtitle -}}
       <div class="card-subtitle">{{ $subtitle }}</div>
       {{- end -}}
+    </div>
+    {{- else if and $icon (not $center) -}}
+    <div class="card-icon">
+    {{- partial "components/icon" $icon -}}
     </div>
     {{- end -}}
     
