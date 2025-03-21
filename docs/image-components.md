@@ -43,13 +43,13 @@ The basic image component enhances standard images with captions, styling option
 
 Basic image with caption:
 ```
-{{</* image src="/images/nordic-landscape.jpg" alt="A beautiful Nordic landscape" caption="A serene landscape in the Nordic wilderness" */>}}
+{{</* image src="/images/picture.jpg" alt="A beautiful Nordic landscape" caption="A serene landscape in the Nordic wilderness" */>}}
 ```
 
 Image with styling options:
 ```
 {{</* image 
-  src="/images/nordic-landscape.jpg" 
+  src="/images/picture.jpg" 
   alt="A beautiful Nordic landscape" 
   caption="A serene landscape with snow-capped mountains" 
   shadow="md" 
@@ -96,8 +96,8 @@ The image comparison slider allows users to interactively compare two images by 
 Basic comparison slider:
 ```
 {{</* image-compare 
-  before="/images/nordic-landscape-1.jpg" 
-  after="/images/nordic-landscape-2.jpg" 
+  before="/images/picture-1.jpg" 
+  after="/images/picture-2.jpg" 
   before-alt="Before editing" 
   after-alt="After editing" 
 */>}}
@@ -106,8 +106,8 @@ Basic comparison slider:
 Customized comparison slider:
 ```
 {{</* image-compare 
-  before="/images/nordic-landscape-3.jpg" 
-  after="/images/nordic-landscape-4.jpg" 
+  before="/images/picture-3.jpg" 
+  after="/images/picture-4.jpg" 
   before-label="Day" 
   after-label="Night" 
   initial="30"
@@ -155,22 +155,22 @@ Create responsive image galleries with the gallery component.
 Basic gallery:
 ```
 {{</* image-gallery columns="3" */>}}
-  {{</* gallery-item src="/images/nordic-landscape-1.jpg" caption="Nordic Mountain Range" */>}}
-  {{</* gallery-item src="/images/nordic-landscape-2.jpg" caption="Northern Lights" */>}}
-  {{</* gallery-item src="/images/nordic-landscape-3.jpg" caption="Fjord View" */>}}
-  {{</* gallery-item src="/images/nordic-landscape-4.jpg" caption="Winter Forest" */>}}
-  {{</* gallery-item src="/images/nordic-landscape-5.jpg" caption="Coastal Sunset" */>}}
-  {{</* gallery-item src="/images/nordic-landscape-6.jpg" caption="Mountain Lake" */>}}
+  {{</* gallery-item src="/images/picture-1.jpg" caption="Nordic Mountain Range" */>}}
+  {{</* gallery-item src="/images/picture-2.jpg" caption="Northern Lights" */>}}
+  {{</* gallery-item src="/images/picture-3.jpg" caption="Fjord View" */>}}
+  {{</* gallery-item src="/images/picture-4.jpg" caption="Winter Forest" */>}}
+  {{</* gallery-item src="/images/picture-5.jpg" caption="Coastal Sunset" */>}}
+  {{</* gallery-item src="/images/picture-6.jpg" caption="Mountain Lake" */>}}
 {{</* /image-gallery */>}}
 ```
 
 Gallery with always visible captions:
 ```
 {{</* image-gallery columns="2" captions-visible=true */>}}
-  {{</* gallery-item src="/images/nordic-landscape-3.jpg" caption="Fjord View" */>}}
-  {{</* gallery-item src="/images/nordic-landscape-4.jpg" caption="Winter Forest" */>}}
-  {{</* gallery-item src="/images/nordic-landscape-5.jpg" caption="Coastal Sunset" */>}}
-  {{</* gallery-item src="/images/nordic-landscape-6.jpg" caption="Mountain Lake" */>}}
+  {{</* gallery-item src="/images/picture-3.jpg" caption="Fjord View" */>}}
+  {{</* gallery-item src="/images/picture-4.jpg" caption="Winter Forest" */>}}
+  {{</* gallery-item src="/images/picture-5.jpg" caption="Coastal Sunset" */>}}
+  {{</* gallery-item src="/images/picture-6.jpg" caption="Mountain Lake" */>}}
 {{</* /image-gallery */>}}
 ```
 

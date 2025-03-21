@@ -62,7 +62,7 @@
     {{ if not (eq $width "auto") }}width="{{ $width }}"{{ end }}
     {{ if not (eq $height "auto") }}height="{{ $height }}"{{ end }}
     {{ if $lazy }}loading="lazy"{{ end }}
-    {{ if $lightbox }}data-lightbox="true"{{ if $caption }}data-caption="{{ $caption }}"{{ end }}{{ end }}
+    {{ if $lightbox }}data-lightbox="true" class="lightbox-trigger"{{ if $caption }}data-caption="{{ $caption }}"{{ end }}{{ end }}
   />
   {{- if $caption -}}
     <figcaption class="image-caption{{ with $caption_style }} caption-{{ . }}{{ end }}">

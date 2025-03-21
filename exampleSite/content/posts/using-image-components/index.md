@@ -126,6 +126,15 @@ Enable lightbox functionality for clickable, full-screen image viewing:
 */>}}
 ```
 
+Here's a clickable image with lightbox enabled:
+
+{{< image 
+  src="picture-5.jpg" 
+  alt="Nordic landscape" 
+  caption="Click to enlarge" 
+  lightbox=true 
+>}}
+
 ## Image Comparison Slider
 
 The image comparison slider allows users to interactively compare two images by dragging a slider handle.

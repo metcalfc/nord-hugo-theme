@@ -289,6 +289,23 @@ export const Lightbox = {
   init() {
     // Bind click events for lightbox-enabled images
     document.addEventListener('click', (e) => {
+      // Check if the clicked element is an image with lightbox trigger class
+      if (e.target.classList.contains('lightbox-trigger')) {
+        e.preventDefault();
+        
+        // Direct click on the image element
+        const img = e.target;
+        const figure = img.closest('figure');
+        const src = img.src;
+        const caption = figure ? figure.querySelector('.image-caption')?.textContent : img.dataset.caption;
+        
+        if (src) {
+          this.open(src, caption);
+        }
+        return;
+      }
+      
+      // Otherwise use normal container detection
       const target = e.target.closest('.nord-image.lightbox-enabled, .gallery-item[data-lightbox="true"]');
       if (!target) return;
       

@@ -18,6 +18,7 @@ defaultContentLanguage = "en"
 enableRobotsTXT = true
 
 [params]
+  
   # Site description
   description = "A beautiful blog using the Nord color palette"
   
