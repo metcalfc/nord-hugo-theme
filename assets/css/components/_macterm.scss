@@ -1,0 +1,302 @@
+/*
+ * Mac-styled Terminal Container for asciinema player
+ */
+
+.mac-term-container {
+  margin: 2rem auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 800px;
+  background-color: #2E3440;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+  transform-origin: center;
+  
+  &.minimized {
+    height: 32px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.85;
+    
+    &:hover {
+      opacity: 1;
+    }
+    
+    .mac-term-content {
+      display: none;
+    }
+    
+    &::after {
+      content: 'Terminal (click to restore)';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #D8DEE9;
+      font-size: 12px;
+      pointer-events: none;
+    }
+  }
+  
+  &.maximized {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    height: 90vh;
+    max-width: 1200px;
+    margin: 0;
+    z-index: 9999;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7);
+    animation: expandFromCenter 0.3s ease forwards;
+    
+    .mac-term-content {
+      height: calc(90vh - 32px);
+    }
+    
+    &::after {
+      content: 'Press ESC to exit fullscreen';
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      color: rgba(216, 222, 233, 0.4);
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background-color: rgba(46, 52, 64, 0.6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+}
+
+.mac-term-header {
+  background: #3B4252;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  position: relative;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  -webkit-app-region: drag;
+  user-select: none;
+}
+
+.mac-controls {
+  display: flex;
+  gap: 8px;
+  margin-right: 12px;
+  -webkit-app-region: no-drag;
+}
+
+.mac-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  -webkit-app-region: no-drag;
+  
+  &:hover {
+    filter: brightness(1.1);
+  }
+  
+  &:active {
+    filter: brightness(0.9);
+  }
+}
+
+.mac-control.red {
+  background-color: #ff5f57;
+  
+  &:hover::before,
+  &:hover::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    width: 6px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.25);
+  }
+  
+  &:hover::before {
+    transform: rotate(45deg);
+  }
+  
+  &:hover::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.mac-control.yellow {
+  background-color: #febc2e;
+  
+  &:hover::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    width: 6px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.25);
+  }
+}
+
+.mac-control.green {
+  background-color: #28c840;
+  
+  &:hover::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 1px;
+    background: rgba(0, 0, 0, 0.25);
+  }
+}
+
+.mac-title {
+  color: #eceff4;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.mac-spacer {
+  flex: 1;
+}
+
+.mac-term-content {
+  padding: 0;
+  height: 360px;
+  background-color: #2E3440;
+  overflow: hidden;
+}
+
+/* Make sure the asciinema player has 100% width */
+.asciinema-player-container {
+  width: 100%;
+  height: 100%;
+  background-color: #2E3440;
+}
+
+/* Ensure asciinema player styling works correctly */
+.asciinema-terminal {
+  padding: 10px !important;
+  box-sizing: border-box !important;
+  font-family: "SF Mono", Menlo, Monaco, "Courier New", Courier, monospace !important;
+  line-height: 1.4 !important;
+  font-variant-ligatures: none !important;
+}
+
+.asciinema-player .asciinema-terminal {
+  border-radius: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+.asciinema-player {
+  border-radius: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  background-color: transparent !important;
+}
+
+.asciinema-player .asciinema-terminal .terminal {
+  padding: 8px !important;
+}
+
+/* Override controls styling */
+.asciinema-player .control-bar {
+  background-color: rgba(46, 52, 64, 0.8) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Animation for the expansion from center */
+@keyframes expandFromCenter {
+  from {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Animation for collapsing to center */
+@keyframes collapseToCenter {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+}
+
+/* Media query for different screen sizes */
+@media (max-width: 600px) {
+  .mac-term-container {
+    border-radius: 6px;
+    margin: 1rem auto;
+    
+    &.maximized {
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      transform: translate(-50%, -50%);
+      
+      .mac-term-content {
+        height: calc(100vh - 28px) !important;
+      }
+      
+      .mac-term-header {
+        border-radius: 0;
+      }
+    }
+  }
+  
+  .mac-term-header {
+    height: 28px;
+    padding: 0 8px;
+  }
+  
+  .mac-control {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .mac-title {
+    font-size: 12px;
+  }
+  
+  .mac-term-content {
+    height: 300px;
+  }
+}
