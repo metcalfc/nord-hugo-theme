@@ -1,44 +1,23 @@
 /* 
- * Nord Hugo Theme - Typography (Minimal Edition)
- * Base typography styles inspired by Planetscale's minimal design
+ * Typography 
+ * Base typography styles
  */
 
-html {
-  font-size: $font-size-base;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: $font-family-base;
-  line-height: $line-height-base;
-  color: var(--foreground);
-  @include transition(color);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-// Headings - simplified, more minimal approach
+// Headings
 h1, h2, h3, h4, h5, h6 {
-  margin-top: $spacing-xl;
-  margin-bottom: $spacing-md;
-  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
   color: var(--foreground);
-  font-weight: 500; // Lighter weight for minimalist style
-  @include transition(color);
-  letter-spacing: -0.01em; // Slight kerning adjustment
 }
 
 h1 {
-  font-size: 1.75rem;
-  margin-top: $spacing-lg;
-  font-weight: 600;
+  font-size: 2rem;
 }
 
 h2 {
   font-size: 1.5rem;
-  padding-bottom: $spacing-sm;
-  margin-top: $spacing-xxl;
 }
 
 h3 {
@@ -46,141 +25,95 @@ h3 {
 }
 
 h4 {
-  font-size: 1.1rem;
+  font-size: 1.125rem;
 }
 
 h5 {
   font-size: 1rem;
-  font-weight: 600;
 }
 
 h6 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.875rem;
 }
 
-// Paragraphs - adjusted line height for improved readability
+// Paragraphs
 p {
-  margin-bottom: $spacing-lg;
-  max-width: 65ch; // Optimal reading line length
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
 }
 
-// Links - simpler styling
-a {
-  color: var(--links);
-  text-decoration: none;
-  @include transition(color);
-  
-  &:hover, 
-  &:focus {
-    color: var(--links-hover);
-  }
+// Lists
+ul, ol {
+  margin-bottom: 1.25rem;
 }
 
-// Basic text elements
-strong, b {
-  font-weight: 600;
+li {
+  margin-bottom: 0.5rem;
 }
 
-em, i {
-  font-style: italic;
-}
-
-small {
-  font-size: 0.85em;
-}
-
-// Code elements - monospace font
+// Code
 pre, code {
   font-family: $font-family-mono;
-  @include transition(background-color, color);
 }
 
 code {
-  background-color: var(--inline-code-bg);
-  color: var(--inline-code-color);
-  padding: $spacing-xs $spacing-sm;
-  border-radius: $border-radius-sm;
   font-size: 0.9em;
-  @include transition(background-color, color);
-  border: 1px solid var(--code-border);
 }
 
-pre {
-  padding: $spacing-md;
-  background-color: var(--code-bg);
-  border-radius: $border-radius-sm;
-  overflow-x: auto;
-  margin: $spacing-lg 0;
-  border: 1px solid var(--code-border);
-  
-  code {
-    background-color: transparent;
-    padding: 0;
-    font-size: 0.9rem;
-    color: var(--syntax-base);
-    border: none;
-    line-height: 1.5;
-  }
+// Tables
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
 }
 
-// Blockquotes - more minimal
+th {
+  text-align: left;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+// Blockquotes
 blockquote {
-  border-left: 2px solid var(--blockquote-border);
-  background-color: transparent;
-  padding: $spacing-sm $spacing-lg;
-  margin: $spacing-lg 0;
-  font-style: italic;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--blockquote-border);
   color: var(--muted);
-  @include transition(border-color);
+  font-size: 1.05rem;
   
   p:last-child {
     margin-bottom: 0;
   }
 }
 
-// Lists - simplified
-ul, ol {
-  margin: $spacing-lg 0;
-  padding-left: $spacing-xl;
-  
-  li {
-    margin-bottom: $spacing-sm;
-    
-    // Fix for nested lists
-    ul, ol {
-      margin-top: $spacing-sm;
-      margin-bottom: 0;
-    }
-  }
+// Helper text formats
+.text-center {
+  text-align: center;
 }
 
-// Horizontal rule - minimal line
-hr {
-  border: 0;
-  height: 1px;
-  background-color: var(--border);
-  margin: $spacing-xl 0;
-  @include transition(background-color);
+.text-right {
+  text-align: right;
 }
 
-// Text selection
-::selection {
-  background-color: var(--selection);
-  color: var(--selection-text);
-}
-
-// Text decoration for separators (|)
-.text-decoration {
+.text-muted {
   color: var(--muted);
-  font-weight: normal;
-  margin: 0 $spacing-xs;
 }
 
-// Dashed box (similar to Planetscale design)
-.dashed-box {
-  border: 1px dashed var(--border);
-  @include transition(border-color);
+.font-weight-bold {
+  font-weight: 600;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.6;
 }

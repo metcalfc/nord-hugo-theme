@@ -1,24 +1,31 @@
 <footer class="site-footer">
     <div class="container">
-        <div class="footer-inner">
-            <nav class="footer-nav">
-                <div class="dashed-box p-3">
-                    <h2 class="font-semibold">Links</h2>
-                    {{ range .Site.Menus.footer }}
-                    <a class="block pl-1 -indent-1 text-primary hover:text-contrast" href="{{ .URL }}">{{ .Name }}</a>
-                    {{ end }}
+        <div class="footer-content p-3">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <ul>
+                        <li class="nav-item">
+                            <a class="text-primary" href="{{ .Site.Params.githubUrl | default "#" }}">GitHub</a>
+                        </li>
+                        <li class="text-decoration" role="presentation">|</li>
+                        <li class="nav-item">
+                            <a class="text-primary" href="{{ .Site.Params.twitterUrl | default "#" }}">Twitter</a>
+                        </li>
+                        <li class="text-decoration" role="presentation">|</li>
+                        <li class="nav-item">
+                            <a class="text-primary" href="{{ "index.xml" | absURL }}">RSS</a>
+                        </li>
+                        {{ range .Site.Menus.footer }}
+                        <li class="text-decoration" role="presentation">|</li>
+                        <li class="nav-item">
+                            <a class="text-primary" href="{{ .URL }}">{{ .Name }}</a>
+                        </li>
+                        {{ end }}
+                    </ul>
                 </div>
-            </nav>
-            
-            <div class="dashed-box dashed-box-x-b p-3">
-                <p>
-                    <a class="text-primary" href="{{ .Site.Params.githubUrl | default "#" }}">GitHub</a>
-                    <span class="text-decoration" role="presentation">|</span>
-                    <a class="text-primary" href="{{ .Site.Params.twitterUrl | default "#" }}">Twitter</a>
-                    <span class="text-decoration" role="presentation">|</span>
-                    <a class="text-primary" href="{{ "index.xml" | absURL }}">RSS</a>
-                </p>
-                <p class="text-secondary">&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+                <div class="copyright">
+                    <p class="text-secondary">&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+                </div>
             </div>
         </div>
     </div>

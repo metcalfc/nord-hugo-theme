@@ -1,0 +1,55 @@
+{{ define "main" }}
+<div class="container">
+  <!-- Hero section with code animation -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>{{ .Site.Title }}</h1>
+      <p>{{ .Site.Params.description }}</p>
+    </div>
+    
+    <!-- Include the code scrolling feature if enabled -->
+    {{ if ne .Site.Params.showFeatureCode "false" }}
+      {{ partial "home-code-feature.html" . }}
+    {{ end }}
+  </div>
+  
+  <!-- Recent posts section -->
+  <div>
+    <h2 class="section-title">Recent Posts</h2>
+    <div class="card-grid">
+      {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+      {{ range $paginator.Pages }}
+        <article class="card post-card">
+          <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <div class="card-meta">
+            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+              {{ .Date.Format "January 2, 2006" }}
+            </time>
+          </div>
+          <div class="card-content">{{ .Summary }}</div>
+          <a href="{{ .RelPermalink }}" class="read-more">Read More →</a>
+        </article>
+      {{ end }}
+    </div>
+    
+    <!-- Pagination -->
+    {{ template "_internal/pagination.html" . }}
+  </div>
+</div>
+
+<style>
+  .hero {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .hero-content {
+    margin-bottom: 2rem;
+  }
+  
+  .section-title {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+</style>
+{{ end }}

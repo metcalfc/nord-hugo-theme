@@ -1,0 +1,82 @@
+/* 
+ * Scroll-Code Icons Styling
+ * SVG icon styles for the code scroller
+ */
+
+/* Base icon styling */
+.scroll-controls svg {
+  width: 16px;
+  height: 16px;
+  transition: all 0.2s ease;
+}
+
+/* Light mode icon colors */
+:root:not(.dark-theme) .scroll-code-container .icon-stroke,
+html:not(.dark-theme) .scroll-code-container .icon-stroke {
+  stroke: #5e81ac; /* Nord10 - blue */
+}
+
+:root:not(.dark-theme) .scroll-code-container .icon-fill,
+html:not(.dark-theme) .scroll-code-container .icon-fill {
+  fill: #5e81ac; /* Nord10 - blue */
+}
+
+/* Dark mode icon colors */
+.dark-theme .scroll-code-container .icon-stroke,
+:root.dark-theme .scroll-code-container .icon-stroke,
+html.dark-theme .scroll-code-container .icon-stroke {
+  stroke: #88c0d0; /* Nord8 - light blue */
+}
+
+.dark-theme .scroll-code-container .icon-fill,
+:root.dark-theme .scroll-code-container .icon-fill,
+html.dark-theme .scroll-code-container .icon-fill {
+  fill: #88c0d0; /* Nord8 - light blue */
+}
+
+/* Button states - success (same for both modes) */
+.scroll-controls button.success .icon-stroke,
+.scroll-controls button.success .icon-fill {
+  stroke: #a3be8c !important; /* Nord14 - green */
+  fill: #a3be8c !important;
+}
+
+/* Button states - error (same for both modes) */
+.scroll-controls button.error .icon-stroke,
+.scroll-controls button.error .icon-fill {
+  stroke: #bf616a !important; /* Nord11 - red */
+  fill: #bf616a !important;
+}
+
+/* Button styles */
+.scroll-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+/* Light mode button hover */
+:root:not(.dark-theme) .scroll-controls button:hover,
+html:not(.dark-theme) .scroll-controls button:hover {
+  background-color: rgba(94, 129, 172, 0.1); /* Nord10 with opacity */
+}
+
+/* Dark mode button hover */
+.dark-theme .scroll-controls button:hover,
+:root.dark-theme .scroll-controls button:hover,
+html.dark-theme .scroll-controls button:hover {
+  background-color: rgba(136, 192, 208, 0.1); /* Nord8 with opacity */
+}
+
+/* State changes for icons */
+.scroll-code-container[data-paused="true"] .pause-icon {
+  display: none !important;
+}
+  
+.scroll-code-container[data-paused="true"] .play-icon {
+  display: block !important;
+}

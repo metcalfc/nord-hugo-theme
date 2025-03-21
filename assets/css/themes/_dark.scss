@@ -1,17 +1,15 @@
 /* 
- * Nord Hugo Theme - Dark Theme Variables (Minimal Edition)
+ * Dark Theme Variables
  */
 
 .dark-theme {
-  // Nord RGB values for opacity usage (same as light theme for consistency)
+  // RGB values of colors for use with rgba()
   --nord9-rgb: 129, 161, 193;
   --nord10-rgb: 94, 129, 172;
   --nord11-rgb: 191, 97, 106;
   --nord13-rgb: 235, 203, 139;
   --nord14-rgb: 163, 190, 140;
   --nord15-rgb: 180, 142, 173;
-  --background-rgb: 46, 52, 64;
-  --border-rgb: 76, 86, 106;
   
   // Main colors
   --background: #{$nord0}; /* Polar Night darkest */
@@ -76,6 +74,6 @@
   
   /* Inline code */
   --inline-code-color: #{$nord4};
-  --inline-code-bg: rgba(#{$nord1}, 0.6);
+  --inline-code-bg: rgba(59, 66, 82, 0.7); /* Nord1 with opacity */
   --code-border: #{rgba($nord3, 0.3)};
 }

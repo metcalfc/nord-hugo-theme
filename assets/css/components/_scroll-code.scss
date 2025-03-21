@@ -1,0 +1,191 @@
+/* 
+ * Scroll-Code Component Styles
+ * For use with the scroll-code shortcode
+ */
+
+// Base container styles
+.scroll-code-container {
+  border-radius: 8px;
+  margin: 1rem 0;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border-color, #d8dee9);
+}
+
+// Header section
+.scroll-code-header {
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color, #d8dee9);
+}
+
+.lang-indicator {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.code-source {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.scroll-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.scroll-controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.scroll-controls button:hover {
+  opacity: 1;
+}
+
+.scroll-code-content {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+.scroll-code-content pre {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 0;
+  text-align: left;
+}
+
+.scroll-code-content code {
+  font-family: 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  white-space: pre;
+  display: block;
+  tab-size: 4;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Scrolling animation */
+@keyframes scroll {
+  0% { transform: translateY(0); }
+  85% { transform: translateY(calc(-100% + var(--container-height, 300px) - 100px)); }
+  100% { transform: translateY(0); }
+}
+
+.scroll-code-container[data-auto-scroll="true"] .scroll-code-content {
+  overflow-y: hidden;
+}
+
+.scroll-code-container[data-auto-scroll="true"] .scroll-code-content pre {
+  animation: scroll linear 480s infinite; /* Extra slow scrolling */
+}
+
+.scroll-code-container[data-auto-scroll="true"][data-paused="true"] .scroll-code-content pre,
+.scroll-code-container[data-auto-scroll="true"]:hover .scroll-code-content pre {
+  animation-play-state: paused;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .code-source {
+    max-width: 150px;
+  }
+}
+
+/* Theme-specific styles */
+/* Light mode */
+:root:not(.dark-theme) .scroll-code-container,
+html:not(.dark-theme) .scroll-code-container {
+  background-color: #eceff4; /* Nord6 - light background */
+  color: #2e3440; /* Nord0 - dark text */
+  border-color: #d8dee9; /* Nord4 - light border */
+}
+
+:root:not(.dark-theme) .scroll-code-header,
+html:not(.dark-theme) .scroll-code-header {
+  background-color: #e5e9f0; /* Nord5 - slightly darker header */
+  color: #2e3440; /* Nord0 - dark text */
+  border-color: #d8dee9; /* Nord4 - light border */
+}
+
+:root:not(.dark-theme) .lang-indicator,
+html:not(.dark-theme) .lang-indicator {
+  color: #5e81ac; /* Nord10 - blue accent */
+}
+
+:root:not(.dark-theme) .code-source,
+html:not(.dark-theme) .code-source {
+  color: #4c566a; /* Nord3 - darker gray */
+}
+
+:root:not(.dark-theme) .scroll-code-content,
+html:not(.dark-theme) .scroll-code-content {
+  background-color: #eceff4; /* Nord6 - light background */
+}
+
+:root:not(.dark-theme) .scroll-code-content pre,
+:root:not(.dark-theme) .scroll-code-content code,
+html:not(.dark-theme) .scroll-code-content pre,
+html:not(.dark-theme) .scroll-code-content code {
+  background-color: #eceff4; /* Nord6 - light background */
+  color: #2e3440; /* Nord0 - dark text */
+}
+
+/* Dark mode */
+.dark-theme .scroll-code-container,
+:root.dark-theme .scroll-code-container,
+html.dark-theme .scroll-code-container {
+  background-color: #2e3440; /* Nord0 - dark background */
+  color: #eceff4; /* Nord6 - light text */
+  border-color: #4c566a; /* Nord3 - dark border */
+}
+
+.dark-theme .scroll-code-header,
+:root.dark-theme .scroll-code-header,
+html.dark-theme .scroll-code-header {
+  background-color: #3b4252; /* Nord1 - slightly lighter header */
+  color: #e5e9f0; /* Nord5 - light text */
+  border-color: #4c566a; /* Nord3 - dark border */
+}
+
+.dark-theme .lang-indicator,
+:root.dark-theme .lang-indicator,
+html.dark-theme .lang-indicator {
+  color: #88c0d0; /* Nord8 - light blue accent */
+}
+
+.dark-theme .code-source,
+:root.dark-theme .code-source,
+html.dark-theme .code-source {
+  color: #d8dee9; /* Nord4 - light gray */
+}
+
+.dark-theme .scroll-code-content,
+:root.dark-theme .scroll-code-content,
+html.dark-theme .scroll-code-content {
+  background-color: #2e3440; /* Nord0 - dark background */
+}
+
+.dark-theme .scroll-code-content pre,
+.dark-theme .scroll-code-content code,
+:root.dark-theme .scroll-code-content pre,
+:root.dark-theme .scroll-code-content code,
+html.dark-theme .scroll-code-content pre,
+html.dark-theme .scroll-code-content code {
+  background-color: #2e3440; /* Nord0 - dark background */
+  color: #eceff4; /* Nord6 - light text */
+}

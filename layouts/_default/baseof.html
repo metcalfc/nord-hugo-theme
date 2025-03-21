@@ -1,7 +1,46 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}">
+<html lang="{{ .Site.Language.Lang }}" class="{{ if .Site.Params.darkMode }}dark-theme{{ end }}">
 <head>
-    {{ partial "head.html" . }}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    {{ $options := (dict "targetPath" "css/main.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+    {{ $style := resources.Get "css/main.scss" | toCSS $options | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+    <!-- Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/nord.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('pre code').forEach(function(block) {
+          hljs.highlightElement(block);
+        });
+      });
+    </script>
+
+    <!-- Theme JS -->
+    {{ $js := resources.Get "js/main.js" | resources.ExecuteAsTemplate "js/main.js" . | js.Build (dict "targetPath" "js/main.js" "minify" true) | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+
+    <!-- Custom CSS and JS -->
+    {{ if .Site.Params.customCSS }}
+    <link rel="stylesheet" href="{{ .Site.Params.customCSS | absURL }}">
+    {{ end }}
+    {{ if .Site.Params.customJS }}
+    <script src="{{ .Site.Params.customJS | absURL }}"></script>
+    {{ end }}
 </head>
 <body>
     {{ partial "header.html" . }}

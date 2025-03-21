@@ -1,0 +1,191 @@
+/* 
+ * Scroll-Code Syntax Highlighting
+ * Compatible with highlight.js themes
+ */
+
+/* Light mode syntax highlighting */
+:root:not(.dark-theme) .scroll-code-content .hljs,
+html:not(.dark-theme) .scroll-code-content .hljs {
+  background: #eceff4 !important; /* Nord6 - light background */
+  color: #2e3440 !important; /* Nord0 - dark text */
+}
+
+:root:not(.dark-theme) .scroll-code-content .hljs-comment,
+:root:not(.dark-theme) .scroll-code-content .hljs-quote,
+html:not(.dark-theme) .scroll-code-content .hljs-comment,
+html:not(.dark-theme) .scroll-code-content .hljs-quote {
+  color: #616e88 !important; /* Nord3 - medium gray */
+  font-style: italic;
+}
+
+:root:not(.dark-theme) .scroll-code-content .hljs-keyword,
+:root:not(.dark-theme) .scroll-code-content .hljs-selector-tag,
+:root:not(.dark-theme) .scroll-code-content .hljs-meta .hljs-keyword,
+:root:not(.dark-theme) .scroll-code-content .hljs-doctag,
+:root:not(.dark-theme) .scroll-code-content .hljs-section,
+html:not(.dark-theme) .scroll-code-content .hljs-keyword,
+html:not(.dark-theme) .scroll-code-content .hljs-selector-tag,
+html:not(.dark-theme) .scroll-code-content .hljs-meta .hljs-keyword,
+html:not(.dark-theme) .scroll-code-content .hljs-doctag,
+html:not(.dark-theme) .scroll-code-content .hljs-section {
+  color: #5e81ac !important; /* Nord10 - blue */
+  font-weight: bold;
+}
+
+:root:not(.dark-theme) .scroll-code-content .hljs-string,
+:root:not(.dark-theme) .scroll-code-content .hljs-regexp,
+html:not(.dark-theme) .scroll-code-content .hljs-string,
+html:not(.dark-theme) .scroll-code-content .hljs-regexp {
+  color: #a3be8c !important; /* Nord14 - green */
+}
+
+:root:not(.dark-theme) .scroll-code-content .hljs-title,
+:root:not(.dark-theme) .scroll-code-content .hljs-title.class_,
+:root:not(.dark-theme) .scroll-code-content .hljs-title.function_,
+html:not(.dark-theme) .scroll-code-content .hljs-title,
+html:not(.dark-theme) .scroll-code-content .hljs-title.class_,
+html:not(.dark-theme) .scroll-code-content .hljs-title.function_ {
+  color: #8fbcbb !important; /* Nord7 - cyan */
+}
+
+:root:not(.dark-theme) .scroll-code-content .hljs-attr,
+:root:not(.dark-theme) .scroll-code-content .hljs-attribute,
+:root:not(.dark-theme) .scroll-code-content .hljs-variable,
+:root:not(.dark-theme) .scroll-code-content .hljs-template-variable,
+html:not(.dark-theme) .scroll-code-content .hljs-attr,
+html:not(.dark-theme) .scroll-code-content .hljs-attribute,
+html:not(.dark-theme) .scroll-code-content .hljs-variable,
+html:not(.dark-theme) .scroll-code-content .hljs-template-variable {
+  color: #d08770 !important; /* Nord12 - orange */
+}
+
+:root:not(.dark-theme) .scroll-code-content .hljs-number,
+:root:not(.dark-theme) .scroll-code-content .hljs-literal,
+html:not(.dark-theme) .scroll-code-content .hljs-number,
+html:not(.dark-theme) .scroll-code-content .hljs-literal {
+  color: #b48ead !important; /* Nord15 - purple */
+}
+
+:root:not(.dark-theme) .scroll-code-content .hljs-tag,
+:root:not(.dark-theme) .scroll-code-content .hljs-built_in,
+:root:not(.dark-theme) .scroll-code-content .hljs-builtin-name,
+:root:not(.dark-theme) .scroll-code-content .hljs-type,
+html:not(.dark-theme) .scroll-code-content .hljs-tag,
+html:not(.dark-theme) .scroll-code-content .hljs-built_in,
+html:not(.dark-theme) .scroll-code-content .hljs-builtin-name,
+html:not(.dark-theme) .scroll-code-content .hljs-type {
+  color: #81a1c1 !important; /* Nord9 - lighter blue */
+}
+
+:root:not(.dark-theme) .scroll-code-content .hljs-meta,
+:root:not(.dark-theme) .scroll-code-content .hljs-meta .hljs-string,
+html:not(.dark-theme) .scroll-code-content .hljs-meta,
+html:not(.dark-theme) .scroll-code-content .hljs-meta .hljs-string {
+  color: #88c0d0 !important; /* Nord8 - light blue */
+}
+
+/* Dark mode syntax highlighting */
+.dark-theme .scroll-code-content .hljs,
+:root.dark-theme .scroll-code-content .hljs,
+html.dark-theme .scroll-code-content .hljs {
+  background: #2e3440 !important; /* Nord0 - dark background */
+  color: #eceff4 !important; /* Nord6 - light text */
+}
+
+.dark-theme .scroll-code-content .hljs-comment,
+.dark-theme .scroll-code-content .hljs-quote,
+:root.dark-theme .scroll-code-content .hljs-comment,
+:root.dark-theme .scroll-code-content .hljs-quote,
+html.dark-theme .scroll-code-content .hljs-comment,
+html.dark-theme .scroll-code-content .hljs-quote {
+  color: #4c566a !important; /* Nord3 - gray */
+  font-style: italic;
+}
+
+.dark-theme .scroll-code-content .hljs-keyword,
+.dark-theme .scroll-code-content .hljs-selector-tag,
+.dark-theme .scroll-code-content .hljs-meta .hljs-keyword,
+.dark-theme .scroll-code-content .hljs-doctag,
+.dark-theme .scroll-code-content .hljs-section,
+:root.dark-theme .scroll-code-content .hljs-keyword,
+:root.dark-theme .scroll-code-content .hljs-selector-tag,
+:root.dark-theme .scroll-code-content .hljs-meta .hljs-keyword,
+:root.dark-theme .scroll-code-content .hljs-doctag,
+:root.dark-theme .scroll-code-content .hljs-section,
+html.dark-theme .scroll-code-content .hljs-keyword,
+html.dark-theme .scroll-code-content .hljs-selector-tag,
+html.dark-theme .scroll-code-content .hljs-meta .hljs-keyword,
+html.dark-theme .scroll-code-content .hljs-doctag,
+html.dark-theme .scroll-code-content .hljs-section {
+  color: #81a1c1 !important; /* Nord9 - blue */
+  font-weight: bold;
+}
+
+.dark-theme .scroll-code-content .hljs-string,
+.dark-theme .scroll-code-content .hljs-regexp,
+:root.dark-theme .scroll-code-content .hljs-string,
+:root.dark-theme .scroll-code-content .hljs-regexp,
+html.dark-theme .scroll-code-content .hljs-string,
+html.dark-theme .scroll-code-content .hljs-regexp {
+  color: #a3be8c !important; /* Nord14 - green */
+}
+
+.dark-theme .scroll-code-content .hljs-title,
+.dark-theme .scroll-code-content .hljs-title.class_,
+.dark-theme .scroll-code-content .hljs-title.function_,
+:root.dark-theme .scroll-code-content .hljs-title,
+:root.dark-theme .scroll-code-content .hljs-title.class_,
+:root.dark-theme .scroll-code-content .hljs-title.function_,
+html.dark-theme .scroll-code-content .hljs-title,
+html.dark-theme .scroll-code-content .hljs-title.class_,
+html.dark-theme .scroll-code-content .hljs-title.function_ {
+  color: #8fbcbb !important; /* Nord7 - cyan */
+}
+
+.dark-theme .scroll-code-content .hljs-attr,
+.dark-theme .scroll-code-content .hljs-attribute,
+.dark-theme .scroll-code-content .hljs-variable,
+.dark-theme .scroll-code-content .hljs-template-variable,
+:root.dark-theme .scroll-code-content .hljs-attr,
+:root.dark-theme .scroll-code-content .hljs-attribute,
+:root.dark-theme .scroll-code-content .hljs-variable,
+:root.dark-theme .scroll-code-content .hljs-template-variable,
+html.dark-theme .scroll-code-content .hljs-attr,
+html.dark-theme .scroll-code-content .hljs-attribute,
+html.dark-theme .scroll-code-content .hljs-variable,
+html.dark-theme .scroll-code-content .hljs-template-variable {
+  color: #d08770 !important; /* Nord12 - orange */
+}
+
+.dark-theme .scroll-code-content .hljs-number,
+.dark-theme .scroll-code-content .hljs-literal,
+:root.dark-theme .scroll-code-content .hljs-number,
+:root.dark-theme .scroll-code-content .hljs-literal,
+html.dark-theme .scroll-code-content .hljs-number,
+html.dark-theme .scroll-code-content .hljs-literal {
+  color: #b48ead !important; /* Nord15 - purple */
+}
+
+.dark-theme .scroll-code-content .hljs-tag,
+.dark-theme .scroll-code-content .hljs-built_in,
+.dark-theme .scroll-code-content .hljs-builtin-name,
+.dark-theme .scroll-code-content .hljs-type,
+:root.dark-theme .scroll-code-content .hljs-tag,
+:root.dark-theme .scroll-code-content .hljs-built_in,
+:root.dark-theme .scroll-code-content .hljs-builtin-name,
+:root.dark-theme .scroll-code-content .hljs-type,
+html.dark-theme .scroll-code-content .hljs-tag,
+html.dark-theme .scroll-code-content .hljs-built_in,
+html.dark-theme .scroll-code-content .hljs-builtin-name,
+html.dark-theme .scroll-code-content .hljs-type {
+  color: #88c0d0 !important; /* Nord8 - light blue */
+}
+
+.dark-theme .scroll-code-content .hljs-meta,
+.dark-theme .scroll-code-content .hljs-meta .hljs-string,
+:root.dark-theme .scroll-code-content .hljs-meta,
+:root.dark-theme .scroll-code-content .hljs-meta .hljs-string,
+html.dark-theme .scroll-code-content .hljs-meta,
+html.dark-theme .scroll-code-content .hljs-meta .hljs-string {
+  color: #5e81ac !important; /* Nord10 - blue */
+}

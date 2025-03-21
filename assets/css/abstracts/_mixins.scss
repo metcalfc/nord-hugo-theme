@@ -1,97 +1,87 @@
 /* 
  * Nord Hugo Theme Mixins
- * Contains reusable SCSS mixins for the theme
+ * Reusable mixins for common patterns
  */
 
-// Media query mixins
-// ------------------
-@mixin respond-to($breakpoint) {
-  @if $breakpoint == sm {
-    @media (max-width: $breakpoint-sm) { @content; }
-  } @else if $breakpoint == md {
-    @media (max-width: $breakpoint-md) { @content; }
-  } @else if $breakpoint == lg {
-    @media (max-width: $breakpoint-lg) { @content; }
-  } @else if $breakpoint == xl {
-    @media (max-width: $breakpoint-xl) { @content; }
-  }
-}
-
-// Box shadow mixin
-// ---------------
-@mixin box-shadow($level: 1) {
-  @if $level == 0 {
-    box-shadow: none;
-  } @else if $level == 1 {
-    box-shadow: $box-shadow-sm;
-  } @else if $level == 2 {
-    box-shadow: $box-shadow-md;
-  } @else if $level == 3 {
-    box-shadow: $box-shadow-lg;
-  }
-}
-
 // Transition mixin
-// ---------------
-@mixin transition($properties...) {
-  $transitions: ();
-  @each $property in $properties {
-    $transitions: append($transitions, $property 0.3s ease, comma);
-  }
-  transition: $transitions;
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease) {
+  transition-property: $properties;
+  transition-duration: $duration;
+  transition-timing-function: $timing;
 }
 
-// Typography mixins
-// ----------------
-@mixin heading-size($level) {
-  @if $level == 1 {
-    font-size: 2.2rem;
-  } @else if $level == 2 {
-    font-size: 1.8rem;
-  } @else if $level == 3 {
-    font-size: 1.5rem;
-  } @else if $level == 4 {
-    font-size: 1.3rem;
-  } @else if $level == 5 {
-    font-size: 1.1rem;
-  } @else if $level == 6 {
-    font-size: 1rem;
+// Responsive container for code blocks
+@mixin code-container {
+  display: block;
+  padding: $spacing-md;
+  margin: $spacing-md 0;
+  overflow-x: auto;
+  border: 1px solid $code-border;
+  background-color: $code-bg;
+  border-radius: $border-radius-sm;
+  font-family: $font-family-mono;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+// Media queries
+@mixin small-up {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin medium-up {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin large-up {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xlarge-up {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// Focus styles
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+    @content;
+  }
+}
+
+// Hover/active states for links and buttons
+@mixin interactive {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: $links-hover;
+    @content;
   }
   
-  line-height: 1.3;
-  font-weight: 700;
+  &:active {
+    transform: translateY(1px);
+  }
 }
 
-// Container mixin
-// --------------
-@mixin container {
-  max-width: $container-max-width;
-  width: 100%;
-  margin: 0 auto;
-  padding: $container-padding;
+// Card styles
+@mixin card {
+  padding: $spacing-md;
+  margin-bottom: $spacing-md;
+  border: 1px solid $border;
+  background-color: $card-bg;
+  @include transition(border-color, background-color);
 }
 
-// Flex utility mixins
-// ------------------
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@mixin flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-// Visually hidden (accessibility)
-// ------------------------------
+// Visually hide element but keep it accessible
 @mixin visually-hidden {
   position: absolute;
   width: 1px;
@@ -102,4 +92,12 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+// Nord-specific focus ring
+@mixin nord-focus {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $nord8;
+  }
 }

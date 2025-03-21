@@ -1,0 +1,132 @@
+{{ $src := .Get 0 }}
+{{ $language := .Get 1 | default "auto" }}
+{{ $height := .Get 2 | default "300px" }}
+{{ $autoScroll := .Get 3 | default "true" }}
+
+{{ $isURL := hasPrefix $src "http" }}
+{{ $codeContent := "" }}
+{{ $fetchError := false }}
+
+{{ if $isURL }}
+  {{ $remoteSrc := resources.GetRemote $src }}
+  {{ if $remoteSrc }}
+    {{ $codeContent = $remoteSrc.Content }}
+  {{ else }}
+    {{ $fetchError = true }}
+  {{ end }}
+{{ else }}
+  {{ if fileExists $src }}
+    {{ $codeContent = readFile $src }}
+  {{ else }}
+    {{ $fetchError = true }}
+  {{ end }}
+{{ end }}
+
+{{ $lang := $language }}
+{{ if eq $lang "auto" }}
+  {{ if findRE "\\.rs$" $src }}
+    {{ $lang = "rust" }}
+  {{ else if findRE "\\.py$" $src }}
+    {{ $lang = "python" }}
+  {{ else if findRE "\\.js$" $src }}
+    {{ $lang = "javascript" }}
+  {{ else if findRE "\\.ts$" $src }}
+    {{ $lang = "typescript" }}
+  {{ else if findRE "\\.go$" $src }}
+    {{ $lang = "go" }}
+  {{ else if findRE "\\.c$" $src }}
+    {{ $lang = "c" }}
+  {{ else if findRE "\\.cpp$" $src }}
+    {{ $lang = "cpp" }}
+  {{ else if findRE "\\.java$" $src }}
+    {{ $lang = "java" }}
+  {{ else if findRE "\\.html$" $src }}
+    {{ $lang = "html" }}
+  {{ else if findRE "\\.css$" $src }}
+    {{ $lang = "css" }}
+  {{ else if findRE "\\.sh$" $src }}
+    {{ $lang = "bash" }}
+  {{ else if findRE "\\.md$" $src }}
+    {{ $lang = "markdown" }}
+  {{ else if findRE "\\.json$" $src }}
+    {{ $lang = "json" }}
+  {{ else if findRE "\\.ya?ml$" $src }}
+    {{ $lang = "yaml" }}
+  {{ else }}
+    {{ $lang = "plaintext" }}
+  {{ end }}
+{{ end }}
+
+<div class="scroll-code-container" style="height: {{ $height }};" data-auto-scroll="{{ $autoScroll }}">
+  <div class="scroll-code-header">
+    <span class="lang-indicator">{{ $lang }}</span>
+    <span class="code-source">{{ if $isURL }}{{ $src | replaceRE "^(https?://)([^/]+).*" "$1$2/..." }}{{ else }}{{ $src }}{{ end }}</span>
+    <div class="scroll-controls">
+      <button class="pause-btn" title="Pause/Resume scrolling">
+        {{ partial "icons/pause-play.html" . }}
+      </button>
+      <button class="copy-btn" title="Copy code">
+        {{ partial "icons/copy.html" . }}
+      </button>
+    </div>
+  </div>
+  <div class="scroll-code-content">
+    <pre><code class="language-{{ $lang }}">{{ if $fetchError }}// Error: Could not fetch code from source{{ else }}{{ $codeContent }}{{ end }}</code></pre>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const containers = document.querySelectorAll('.scroll-code-container');
+  
+  containers.forEach(container => {
+    const content = container.querySelector('.scroll-code-content');
+    const pre = container.querySelector('pre');
+    const pauseBtn = container.querySelector('.pause-btn');
+    const copyBtn = container.querySelector('.copy-btn');
+    
+    // Set a CSS variable for the container height to use in the animation
+    container.style.setProperty('--container-height', container.style.height);
+    
+    // Check if content is long enough to scroll
+    if (pre.scrollHeight <= content.clientHeight) {
+      container.setAttribute('data-auto-scroll', 'false');
+      pauseBtn.style.display = 'none';
+    }
+    
+    // Pause/resume scrolling
+    pauseBtn.addEventListener('click', () => {
+      const isPaused = container.getAttribute('data-paused') === 'true';
+      container.setAttribute('data-paused', !isPaused);
+    });
+    
+    // Copy code
+    copyBtn.addEventListener('click', () => {
+      const code = pre.textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        // Replace the copy icon with success icon
+        copyBtn.innerHTML = `{{ partial "icons/success.html" . }}`;
+        copyBtn.classList.add('success');
+        
+        setTimeout(() => {
+          // Reset to copy icon
+          copyBtn.innerHTML = `{{ partial "icons/copy.html" . }}`;
+          copyBtn.classList.remove('success');
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+        
+        // Replace with error icon
+        copyBtn.innerHTML = `{{ partial "icons/error.html" . }}`;
+        copyBtn.classList.add('error');
+        
+        setTimeout(() => {
+          // Reset to copy icon
+          copyBtn.innerHTML = `{{ partial "icons/copy.html" . }}`;
+          copyBtn.classList.remove('error');
+        }, 2000);
+      });
+    });
+  });
+});
+</script>
