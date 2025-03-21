@@ -1,5 +1,25 @@
 {{- $before := .Get "before" -}}
 {{- $after := .Get "after" -}}
+{{- $beforeResource := .Page.Resources.GetMatch $before -}}
+{{- if not $beforeResource -}}
+  {{- $beforeResource = .Page.Resources.GetMatch (printf "images/%s" $before) -}}
+{{- end -}}
+{{- $afterResource := .Page.Resources.GetMatch $after -}}
+{{- if not $afterResource -}}
+  {{- $afterResource = .Page.Resources.GetMatch (printf "images/%s" $after) -}}
+{{- end -}}
+{{- $beforeSrc := $before -}}
+{{- $afterSrc := $after -}}
+{{- if $beforeResource -}}
+  {{- $beforeSrc = $beforeResource.RelPermalink -}}
+{{- else -}}
+  {{- warnf "Before image resource not found: %s in page %s" $before .Page.Path -}}
+{{- end -}}
+{{- if $afterResource -}}
+  {{- $afterSrc = $afterResource.RelPermalink -}}
+{{- else -}}
+  {{- warnf "After image resource not found: %s in page %s" $after .Page.Path -}}
+{{- end -}}
 {{- $before_alt := .Get "before-alt" | default "Before image" -}}
 {{- $after_alt := .Get "after-alt" | default "After image" -}}
 {{- $before_label := .Get "before-label" | default "Before" -}}
@@ -29,13 +49,15 @@
      data-initial="{{ $initial }}" 
      {{ if not (eq $height "auto") }}style="height: {{ $height }};"{{ end }}
      id="compare-{{ .Ordinal }}">
-  <div class="image-before" style="width: {{ $initial }}%;">
-    <img src="{{ $before }}" alt="{{ $before_alt }}" loading="lazy" />
-    {{ if $show_labels }}<div class="compare-label label-before">{{ $before_label }}</div>{{ end }}
+  <div class="image-container">
+    <div class="image-after">
+      <img src="{{ $afterSrc }}" alt="{{ $after_alt }}" loading="lazy" />
+      {{ if $show_labels }}<div class="compare-label label-after">{{ $after_label }}</div>{{ end }}
+    </div>
+    <div class="image-before">
+      <img src="{{ $beforeSrc }}" alt="{{ $before_alt }}" loading="lazy" />
+      {{ if $show_labels }}<div class="compare-label label-before">{{ $before_label }}</div>{{ end }}
+    </div>
+    <div class="compare-handle" aria-label="Drag to compare images"></div>
   </div>
-  <div class="image-after">
-    <img src="{{ $after }}" alt="{{ $after_alt }}" loading="lazy" />
-    {{ if $show_labels }}<div class="compare-label label-after">{{ $after_label }}</div>{{ end }}
-  </div>
-  <div class="compare-handle" aria-label="Drag to compare images"></div>
 </div>

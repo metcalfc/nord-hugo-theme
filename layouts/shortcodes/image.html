@@ -1,4 +1,14 @@
 {{- $src := .Get "src" -}}
+{{- $resource := .Page.Resources.GetMatch $src -}}
+{{- if not $resource -}}
+  {{- $resource = .Page.Resources.GetMatch (printf "images/%s" $src) -}}
+{{- end -}}
+{{- $imgSrc := $src -}}
+{{- if $resource -}}
+  {{- $imgSrc = $resource.RelPermalink -}}
+{{- else -}}
+  {{- warnf "Image resource not found: %s in page %s" $src .Page.Path -}}
+{{- end -}}
 {{- $alt := .Get "alt" | default "" -}}
 {{- $caption := .Get "caption" | default "" -}}
 {{- $class := .Get "class" | default "" -}}
@@ -47,7 +57,7 @@
 
 <figure class="{{ delimit $classes " " }}">
   <img 
-    src="{{ $src }}" 
+    src="{{ $imgSrc }}" 
     alt="{{ $alt }}" 
     {{ if not (eq $width "auto") }}width="{{ $width }}"{{ end }}
     {{ if not (eq $height "auto") }}height="{{ $height }}"{{ end }}

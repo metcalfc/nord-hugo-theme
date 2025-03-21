@@ -4,7 +4,7 @@
 import { ThemeManager } from './lib/theme.js';
 import { ThemeToggle } from './components/themeToggle.js';
 import { CodeBlocks } from './components/codeBlocks.js';
-import { PaletteImages } from './components/images.js';
+import { PaletteImages, ImageCompare, Lightbox, initImageComponents } from './components/images.js';
 import { TwitterIntegration } from './integrations/twitter.js';
 import { BlueSkyIntegration } from './integrations/bluesky.js';
 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize UI components
   ThemeToggle.init();
   CodeBlocks.init();
-  PaletteImages.init();
+  initImageComponents(); // Initialize all image components
   
   // Get config
   const config = window.nordThemeConfig || {};
