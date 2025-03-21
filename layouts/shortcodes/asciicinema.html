@@ -1,0 +1,80 @@
+{{- $src := .Get "src" -}}
+{{- $poster := .Get "poster" | default "npt:0:00" -}}
+{{- $autoplay := .Get "autoplay" | default "false" -}}
+{{- $loop := .Get "loop" | default "false" -}}
+{{- $speed := .Get "speed" | default "1.0" -}}
+{{- $theme := .Get "theme" | default "ghostty" -}}
+{{- $fit := .Get "fit" | default "width" -}}
+{{- $cols := .Get "cols" | default "80" -}}
+{{- $rows := .Get "rows" | default "24" -}}
+{{- $idSuffix := now.UnixNano -}}
+{{- $playerID := printf "asciicinema-%s" $idSuffix -}}
+{{- $containerID := printf "asciicinema-container-%s" $idSuffix -}}
+
+<div id="{{ $containerID }}" class="asciicinema-container">
+  <div class="asciicinema-header">
+    <div class="asciicinema-window-controls">
+      <button class="window-control red" title="Close" aria-label="Close"></button>
+      <button class="window-control yellow" title="Minimize" aria-label="Minimize"></button>
+      <button class="window-control green maximize-btn" title="Maximize" aria-label="Maximize" 
+        data-container-id="{{ $containerID }}" data-player-id="{{ $playerID }}"></button>
+    </div>
+    <div class="asciicinema-title">Terminal</div>
+    <div class="asciicinema-spacer"></div>
+  </div>
+  <div id="{{ $playerID }}" class="asciicinema-player"></div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize asciinema player
+    const element = document.getElementById('{{ $playerID }}');
+    let player;
+    
+    if (element && typeof AsciinemaPlayer !== 'undefined') {
+      player = AsciinemaPlayer.create('{{ $src }}', element, {
+        poster: '{{ $poster }}',
+        autoPlay: {{ $autoplay }},
+        loop: {{ $loop }},
+        speed: {{ $speed }},
+        theme: '{{ $theme }}',
+        fit: '{{ $fit }}',
+        cols: {{ $cols }},
+        rows: {{ $rows }}
+      });
+    } else {
+      console.error('AsciinemaPlayer not loaded or element not found');
+    }
+    
+    // Setup window controls
+    const container = document.getElementById('{{ $containerID }}');
+    const controls = container.querySelectorAll('.window-control');
+    
+    // Close and minimize buttons (both do the same thing - hide the player)
+    controls[0].addEventListener('click', function() {
+      container.classList.add('minimized');
+    });
+    
+    controls[1].addEventListener('click', function() {
+      container.classList.add('minimized');
+    });
+    
+    // Maximize button
+    controls[2].addEventListener('click', function() {
+      container.classList.toggle('maximized');
+      
+      // Resize player when maximized/restored
+      if (player && typeof player.fit === 'function') {
+        setTimeout(() => player.fit(), 300); // Wait for transition to complete
+      }
+    });
+    
+    // Allow clicking on the minimized state to restore
+    container.addEventListener('click', function(e) {
+      if (container.classList.contains('minimized') && 
+          !e.target.classList.contains('window-control')) {
+        container.classList.remove('minimized');
+      }
+    });
+  });
+</script>
