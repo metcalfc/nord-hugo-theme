@@ -43,10 +43,13 @@
         {{- end -}}
         <h3 class="card-title">{{ $title }}</h3>
       </div>
-      {{- if $subtitle -}}
-        <div class="card-subtitle">{{ $subtitle }}</div>
       {{- end -}}
-      {{- else if and $icon (not $center) -}}
+      
+      {{- if $subtitle -}}
+      <div class="card-subtitle">{{ $subtitle }}</div>
+      {{- end -}}
+      
+      {{- if and (not $title) $icon (not $center) -}}
       <div class="card-icon">
       {{- partial "components/icon" $icon -}}
       </div>

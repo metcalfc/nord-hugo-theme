@@ -180,6 +180,33 @@
   &.card-center {
     text-align: center;
     
+    .card-header-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .card-image {
+      margin: 0 auto $spacing-md auto;
+      max-width: 100%;
+      height: auto;
+      flex: 0 0 auto;
+      
+      img {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        object-fit: contain;
+      }
+    }
+    
+    .card-header-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
     .card-title,
     .card-subtitle,
     .card-body,
@@ -204,7 +231,7 @@
       svg {
         width: 36px; /* Slightly larger for centered icons */
         height: 36px;
-        color: var(--accent); /* Use accent color for centered icons */
+        color: $accent; /* Use accent color for centered icons */
       }
     }
   }
@@ -245,5 +272,24 @@
     .card-body {
       margin-top: $spacing-sm;
     }
+  }
+}
+
+// Team member card
+.card-grid.grid-columns-4 .card.card-center {
+  .card-image {
+    max-width: 100%;
+    height: 150px;
+    margin: -#{$spacing-lg} -#{$spacing-lg} $spacing-md -#{$spacing-lg};
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .card-title {
+    margin-top: $spacing-sm;
   }
 }
