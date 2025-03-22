@@ -22,15 +22,15 @@
   <!-- Terminal Content -->
   <div class="termcode-content" style="max-height: {{ $maxHeight }}">
     <div class="termcode-text">
-      {{ if or $prompt $path }}
-        {{ if $path }}<span class="termcode-path">{{ $path }}</span>{{ end }}
-        {{ if $prompt }}<span class="termcode-prompt">{{ $prompt }}</span>{{ end }}
-      {{ end }}
-      {{ if $lang }}
+      {{- if or $prompt $path -}}
+        {{- if $path }}<span class="termcode-path">{{ $path }}</span>{{- end -}}
+        {{- if $prompt }}<span class="termcode-prompt">{{ $prompt }}</span>{{- end -}}
+      {{- end -}}
+      {{- if $lang -}}
         {{ highlight $inner $lang }}
-      {{ else }}
+      {{- else -}}
         {{ $inner | safeHTML }}
-      {{ end }}
+      {{- end -}}
     </div>
   </div>
 </div>
