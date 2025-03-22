@@ -7,6 +7,7 @@ import { CodeBlocks } from './components/codeBlocks.js';
 import { PaletteImages, ImageCompare, Lightbox, initImageComponents } from './components/images.js';
 import { TwitterIntegration } from './integrations/twitter.js';
 import { BlueSkyIntegration } from './integrations/bluesky.js';
+import { TerminalControls } from './components/terminalControls.js';
 
 // Initialize all modules when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ThemeToggle.init();
   CodeBlocks.init();
   initImageComponents(); // Initialize all image components
+  TerminalControls.init(); // Initialize terminal window controls
   
   // Get config
   const config = window.nordThemeConfig || {};

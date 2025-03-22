@@ -33,10 +33,6 @@
     <!-- Theme JS -->
     {{ $js := resources.Get "js/main.js" | resources.ExecuteAsTemplate "js/main.js" . | js.Build (dict "targetPath" "js/main.js" "minify" true) | fingerprint }}
     <script src="{{ $js.RelPermalink }}" defer></script>
-    
-    <!-- Window Controls JS -->
-    {{ $windowControlsJS := resources.Get "js/window-controls.js" | js.Build (dict "targetPath" "js/window-controls.js" "minify" true) | fingerprint }}
-    <script src="{{ $windowControlsJS.RelPermalink }}"></script>
 
     <!-- Custom CSS and JS -->
     {{ if .Site.Params.customCSS }}
