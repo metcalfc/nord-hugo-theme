@@ -31,24 +31,19 @@
   </div>
 </div>
 
-<!-- Add required script for this specific player -->
+<!-- Initialize player script -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded for {{ $id }}');
   const container = document.getElementById('{{ $id }}');
   
-  // Define a function to initialize the player
   function initializePlayer() {
     if (typeof AsciinemaPlayer === 'undefined') {
-      console.log('AsciinemaPlayer not available yet, waiting...');
       setTimeout(initializePlayer, 300);
       return;
     }
     
-    console.log('Initializing AsciinemaPlayer with {{ $src }}');
-    
     try {
-      // Create the player instance with proper nord-like colors using theme option
+      // Create the player instance with nord-like colors
       const isDarkTheme = document.documentElement.classList.contains('dark-theme') || 
                         (!document.documentElement.classList.contains('light-theme') && 
                          window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -114,18 +109,12 @@ document.addEventListener('DOMContentLoaded', function() {
         lineHeight: 1.3
       });
       
-      console.log('Player created successfully');
-      
-      // Add window control functionality
-      setupWindowControls();
-      
       // Listen for theme changes
       const themeChangeObserver = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
           if (mutation.attributeName === 'class' && 
               (mutation.target.classList.contains('dark-theme') || 
                mutation.target.classList.contains('light-theme'))) {
-            console.log('Theme changed, reinitializing player');
             // Re-initialize the player with new theme colors
             container.innerHTML = '';
             initializePlayer();
@@ -140,98 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     } catch (error) {
       console.error('Error creating player:', error);
-      // Display error message in the container
       container.innerHTML = '<div style="color: #BF616A; padding: 10px;">Error loading terminal recording.</div>';
-    }
-  }
-  
-  // Set up window controls
-  function setupWindowControls() {
-    const macContainer = container.closest('.mac-term-container');
-    
-    if (macContainer) {
-      // Close and minimize buttons
-      const redButton = macContainer.querySelector('.mac-control.red');
-      const yellowButton = macContainer.querySelector('.mac-control.yellow');
-      const greenButton = macContainer.querySelector('.mac-control.green');
-      
-      if (redButton) {
-        redButton.addEventListener('click', function() {
-          // If already minimized, restore it
-          if (macContainer.classList.contains('minimized')) {
-            macContainer.classList.remove('minimized');
-          } else {
-            macContainer.classList.add('minimized');
-          }
-        });
-      }
-      
-      if (yellowButton) {
-        yellowButton.addEventListener('click', function() {
-          // If already minimized, restore it
-          if (macContainer.classList.contains('minimized')) {
-            macContainer.classList.remove('minimized');
-          } else {
-            macContainer.classList.add('minimized');
-          }
-        });
-      }
-      
-      if (greenButton) {
-        greenButton.addEventListener('click', function() {
-          // If minimized, restore and maximize
-          if (macContainer.classList.contains('minimized')) {
-            macContainer.classList.remove('minimized');
-            // Add a small delay before maximizing for better UX
-            setTimeout(() => {
-              macContainer.classList.add('maximized');
-              document.body.style.overflow = 'hidden';
-            }, 50);
-          } else if (macContainer.classList.contains('maximized')) {
-            // Animate before removing the class
-            macContainer.style.animation = 'collapseToCenter 0.25s ease-in-out forwards';
-            
-            setTimeout(function() {
-              macContainer.classList.remove('maximized');
-              document.body.style.overflow = '';
-              // Reset animation
-              macContainer.style.animation = '';
-            }, 250);
-          } else {
-            // Expand
-            macContainer.classList.add('maximized');
-            document.body.style.overflow = 'hidden';
-            // Force a reflow to ensure animation works
-            void macContainer.offsetWidth;
-          }
-        });
-      }
-      
-      // Restore from minimized
-      macContainer.addEventListener('click', function(e) {
-        if (macContainer.classList.contains('minimized')) {
-          // Don't restore if clicking control buttons
-          if (!e.target.classList.contains('mac-control')) {
-            macContainer.classList.remove('minimized');
-          }
-        }
-      });
-      
-      // Add ESC key support to exit maximized mode
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && macContainer.classList.contains('maximized')) {
-          // Add animation class first
-          macContainer.style.animation = 'collapseToCenter 0.25s ease-in-out forwards';
-          
-          // Then remove maximized class after animation completes
-          setTimeout(function() {
-            macContainer.classList.remove('maximized');
-            document.body.style.overflow = '';
-            // Reset animation
-            macContainer.style.animation = '';
-          }, 250);
-        }
-      });
     }
   }
   

@@ -93,6 +93,30 @@ $box-shadow-sm: none;
 $box-shadow-md: none;
 $box-shadow-lg: none;
 
+// Animations
+// ---------
+@keyframes expandFromCenter {
+  0% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes collapseToCenter {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+}
+
 // Breakpoints
 // -----------
 $breakpoint-sm: 576px;

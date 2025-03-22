@@ -3,6 +3,10 @@
  * A simplified version of modern-normalize.css
  */
 
+/* Special states */
+body.has-terminal-maximized {
+  overflow: hidden;
+}
 /* Box sizing */
 *,
 *::before,

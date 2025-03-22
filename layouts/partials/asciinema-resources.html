@@ -1,9 +1,0 @@
-{{ if .HasShortcode "asciicinema" }}
-<!-- Load Asciinema Player resources only when needed -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.6.3/dist/bundle/asciinema-player.css">
-<script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.6.3/dist/bundle/asciinema-player.min.js"></script>
-
-<!-- Load custom Ghostty theme and functionality -->
-{{ $asciinemaTheme := resources.Get "js/asciicinema-ghostty-theme.js" | js.Build (dict "target" "es2015" "minify" true) | fingerprint }}
-<script src="{{ $asciinemaTheme.RelPermalink }}"></script>
-{{ end }}
