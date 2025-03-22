@@ -191,9 +191,11 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Restore from minimized
       macContainer.addEventListener('click', function(e) {
-        if (macContainer.classList.contains('minimized') && 
-            !e.target.classList.contains('mac-control')) {
-          macContainer.classList.remove('minimized');
+        if (macContainer.classList.contains('minimized')) {
+          // Don't restore if clicking control buttons
+          if (!e.target.classList.contains('mac-control')) {
+            macContainer.classList.remove('minimized');
+          }
         }
       });
       

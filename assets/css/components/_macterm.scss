@@ -29,8 +29,12 @@
       display: none;
     }
     
+    .mac-title {
+      display: none;
+    }
+    
     &::after {
-      content: 'Terminal (click to restore)';
+      content: 'Terminal (minimized)';
       position: absolute;
       top: 0;
       left: 0;
@@ -283,6 +287,7 @@ html:not(.dark-theme) .mac-term-container {
   
   &.minimized::after {
     color: #333333;
+    content: 'Terminal (minimized)';
   }
   
   &.maximized::after {
