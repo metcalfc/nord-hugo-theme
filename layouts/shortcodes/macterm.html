@@ -122,14 +122,14 @@ document.addEventListener('DOMContentLoaded', function() {
         greenButton.addEventListener('click', function() {
           if (macContainer.classList.contains('maximized')) {
             // Animate before removing the class
-            macContainer.style.animation = 'collapseToCenter 0.2s ease forwards';
+            macContainer.style.animation = 'collapseToCenter 0.25s ease-in-out forwards';
             
             setTimeout(function() {
               macContainer.classList.remove('maximized');
               document.body.style.overflow = '';
               // Reset animation
               macContainer.style.animation = '';
-            }, 200);
+            }, 250);
           } else {
             // Expand
             macContainer.classList.add('maximized');
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && macContainer.classList.contains('maximized')) {
           // Add animation class first
-          macContainer.style.animation = 'collapseToCenter 0.2s ease forwards';
+          macContainer.style.animation = 'collapseToCenter 0.25s ease-in-out forwards';
           
           // Then remove maximized class after animation completes
           setTimeout(function() {
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
             // Reset animation
             macContainer.style.animation = '';
-          }, 200);
+          }, 250);
         }
       });
     }
