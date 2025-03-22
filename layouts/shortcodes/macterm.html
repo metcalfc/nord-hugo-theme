@@ -157,19 +157,37 @@ document.addEventListener('DOMContentLoaded', function() {
       
       if (redButton) {
         redButton.addEventListener('click', function() {
-          macContainer.classList.add('minimized');
+          // If already minimized, restore it
+          if (macContainer.classList.contains('minimized')) {
+            macContainer.classList.remove('minimized');
+          } else {
+            macContainer.classList.add('minimized');
+          }
         });
       }
       
       if (yellowButton) {
         yellowButton.addEventListener('click', function() {
-          macContainer.classList.add('minimized');
+          // If already minimized, restore it
+          if (macContainer.classList.contains('minimized')) {
+            macContainer.classList.remove('minimized');
+          } else {
+            macContainer.classList.add('minimized');
+          }
         });
       }
       
       if (greenButton) {
         greenButton.addEventListener('click', function() {
-          if (macContainer.classList.contains('maximized')) {
+          // If minimized, restore and maximize
+          if (macContainer.classList.contains('minimized')) {
+            macContainer.classList.remove('minimized');
+            // Add a small delay before maximizing for better UX
+            setTimeout(() => {
+              macContainer.classList.add('maximized');
+              document.body.style.overflow = 'hidden';
+            }, 50);
+          } else if (macContainer.classList.contains('maximized')) {
             // Animate before removing the class
             macContainer.style.animation = 'collapseToCenter 0.25s ease-in-out forwards';
             
