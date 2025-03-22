@@ -49,6 +49,55 @@ document.addEventListener('DOMContentLoaded', function() {
     
     try {
       // Create the player instance with proper nord-like colors using theme option
+      const isDarkTheme = document.documentElement.classList.contains('dark-theme') || 
+                        (!document.documentElement.classList.contains('light-theme') && 
+                         window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      // Choose theme based on current mode
+      const themeColors = isDarkTheme ? {
+        // Dark theme colors
+        background: '#2E3440',
+        foreground: '#D8DEE9',
+        selection: '#434C5E',
+        0: '#3B4252',  // black
+        1: '#BF616A',  // red
+        2: '#A3BE8C',  // green
+        3: '#EBCB8B',  // yellow
+        4: '#81A1C1',  // blue
+        5: '#B48EAD',  // magenta
+        6: '#88C0D0',  // cyan
+        7: '#E5E9F0',  // white
+        8: '#4C566A',  // bright black
+        9: '#BF616A',  // bright red
+        10: '#A3BE8C', // bright green
+        11: '#EBCB8B', // bright yellow
+        12: '#81A1C1', // bright blue
+        13: '#B48EAD', // bright magenta
+        14: '#8FBCBB', // bright cyan
+        15: '#ECEFF4'  // bright white
+      } : {
+        // Light theme colors
+        background: '#f8f8f8',
+        foreground: '#2e3440',
+        selection: '#e5e9f0',
+        0: '#3b4252',  // black
+        1: '#bf616a',  // red
+        2: '#a3be8c',  // green
+        3: '#ebcb8b',  // yellow
+        4: '#5e81ac',  // blue
+        5: '#b48ead',  // magenta
+        6: '#88c0d0',  // cyan
+        7: '#e5e9f0',  // white
+        8: '#4c566a',  // bright black
+        9: '#bf616a',  // bright red
+        10: '#a3be8c', // bright green
+        11: '#ebcb8b', // bright yellow
+        12: '#81a1c1', // bright blue
+        13: '#b48ead', // bright magenta
+        14: '#8fbcbb', // bright cyan
+        15: '#eceff4'  // bright white
+      };
+      
       AsciinemaPlayer.create('{{ $src }}', container, {
         poster: '{{ $poster }}',
         autoPlay: {{ $autoplay }},
@@ -58,27 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cols: {{ $cols }},
         rows: {{ $rows }},
         // Use theme option directly
-        theme: {
-          background: '#2E3440',
-          foreground: '#D8DEE9',
-          selection: '#434C5E',
-          0: '#3B4252',  // black
-          1: '#BF616A',  // red
-          2: '#A3BE8C',  // green
-          3: '#EBCB8B',  // yellow
-          4: '#81A1C1',  // blue
-          5: '#B48EAD',  // magenta
-          6: '#88C0D0',  // cyan
-          7: '#E5E9F0',  // white
-          8: '#4C566A',  // bright black
-          9: '#BF616A',  // bright red
-          10: '#A3BE8C', // bright green
-          11: '#EBCB8B', // bright yellow
-          12: '#81A1C1', // bright blue
-          13: '#B48EAD', // bright magenta
-          14: '#8FBCBB', // bright cyan
-          15: '#ECEFF4'  // bright white
-        },
+        theme: themeColors,
         // Improve font settings
         fontFamily: "SF Mono, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace",
         fontSize: "14px",
@@ -89,6 +118,26 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Add window control functionality
       setupWindowControls();
+      
+      // Listen for theme changes
+      const themeChangeObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.attributeName === 'class' && 
+              (mutation.target.classList.contains('dark-theme') || 
+               mutation.target.classList.contains('light-theme'))) {
+            console.log('Theme changed, reinitializing player');
+            // Re-initialize the player with new theme colors
+            container.innerHTML = '';
+            initializePlayer();
+          }
+        });
+      });
+      
+      // Observe both html and :root for theme class changes
+      themeChangeObserver.observe(document.documentElement, { attributes: true });
+      if (document.body.parentElement) {
+        themeChangeObserver.observe(document.body.parentElement, { attributes: true });
+      }
     } catch (error) {
       console.error('Error creating player:', error);
       // Display error message in the container

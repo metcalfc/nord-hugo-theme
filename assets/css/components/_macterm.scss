@@ -258,6 +258,39 @@
   }
 }
 
+/* Light mode adaptations */
+:root:not(.dark-theme) .mac-term-container,
+html:not(.dark-theme) .mac-term-container {
+  background-color: #f2f2f2;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  
+  .mac-term-header {
+    background-color: #e4e4e4;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .mac-title {
+    color: #333333;
+  }
+  
+  .mac-term-content {
+    background-color: #f8f8f8;
+  }
+  
+  .asciinema-player-container {
+    background-color: #f8f8f8;
+  }
+  
+  &.minimized::after {
+    color: #333333;
+  }
+  
+  &.maximized::after {
+    color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(230, 230, 230, 0.7);
+  }
+}
+
 /* Media query for different screen sizes */
 @media (max-width: 600px) {
   .mac-term-container {
