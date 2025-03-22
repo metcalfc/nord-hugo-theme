@@ -127,11 +127,42 @@
   color: #b48ead;
 }
 
-.termcode-content code {
+/* Style for code content with syntax highlighting */
+.termcode-container .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 10px 0;
+  color: inherit;
+  background-color: transparent !important;
+}
+
+/* Dark mode: Ensure readable colors */
+:root.dark-theme .termcode-container .hljs,
+html.dark-theme .termcode-container .hljs,
+.dark-theme .termcode-container .hljs {
+  color: #d8dee9;
+}
+
+/* Light mode: Ensure readable colors */
+:root:not(.dark-theme) .termcode-container .hljs,
+html:not(.dark-theme) .termcode-container .hljs {
+  color: #2e3440;
+}
+
+/* Basic code tag styles */
+.termcode-container pre {
+  margin: 0;
+  padding: 0;
+  border-radius: 3px;
+  background-color: transparent !important;
+}
+
+.termcode-container code {
   font-family: inherit;
-  background: transparent;
+  background: transparent !important;
   padding: 0;
 }
+
 
 /* Special paths and prompts */
 .termcode-path {
@@ -171,13 +202,8 @@ html:not(.dark-theme) .termcode-container {
     color: #5e81ac;
   }
   
-  /* Fix code background in highlighted sections */
-  pre {
-    background-color: #2b2b2b !important;
-    margin: 0;
-    padding: 12px;
-    border-radius: 4px;
-    color: #e5e9f0 !important;
+  pre, code, .hljs {
+    background-color: transparent !important;
   }
   .hljs-keyword,
   .hljs-selector-tag,
