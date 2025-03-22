@@ -90,7 +90,7 @@
   user-select: none;
 }
 
-/* Code highlighting */
+/* Code highlighting for dark theme */
 .termcode-content .hljs-keyword,
 .termcode-content .hljs-selector-tag,
 .termcode-content .hljs-built_in,
@@ -169,6 +169,50 @@ html:not(.dark-theme) .termcode-container {
   
   .termcode-path {
     color: #5e81ac;
+  }
+  
+  /* Fix code background in highlighted sections */
+  pre {
+    background-color: #2b2b2b !important;
+    margin: 0;
+    padding: 12px;
+    border-radius: 4px;
+    color: #e5e9f0 !important;
+  }
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-built_in,
+  .hljs-name,
+  .hljs-tag {
+    color: #0550ae;
+  }
+
+  .hljs-string,
+  .hljs-title,
+  .hljs-section,
+  .hljs-attribute,
+  .hljs-literal,
+  .hljs-template-tag,
+  .hljs-template-variable,
+  .hljs-type {
+    color: #1a8765;
+  }
+
+  .hljs-comment,
+  .hljs-quote,
+  .hljs-deletion {
+    color: #656e77;
+  }
+
+  .hljs-meta,
+  .hljs-meta-string {
+    color: #ad7c0b;
+  }
+
+  .hljs-number,
+  .hljs-regexp,
+  .hljs-link {
+    color: #a44185;
   }
 }
 
