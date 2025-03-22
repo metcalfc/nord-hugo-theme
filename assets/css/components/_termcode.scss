@@ -1,0 +1,218 @@
+/*
+ * Mac-styled Terminal Container for code blocks
+ */
+
+.termcode-container {
+  margin: 2rem auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 100%;
+  background-color: #2E3440;
+  font-family: "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.termcode-header {
+  background: #3B4252;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  position: relative;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  -webkit-app-region: drag;
+  user-select: none;
+}
+
+.termcode-controls {
+  display: flex;
+  gap: 8px;
+  margin-right: 12px;
+  -webkit-app-region: no-drag;
+}
+
+.termcode-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: relative;
+  -webkit-app-region: no-drag;
+}
+
+.termcode-control.red {
+  background-color: #ff5f57;
+}
+
+.termcode-control.yellow {
+  background-color: #febc2e;
+}
+
+.termcode-control.green {
+  background-color: #28c840;
+}
+
+.termcode-title {
+  color: #eceff4;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.termcode-spacer {
+  flex: 1;
+}
+
+.termcode-content {
+  padding: 16px;
+  background-color: #2E3440;
+  overflow-x: auto;
+  overflow-y: auto;
+  color: #d8dee9;
+  line-height: 1.5;
+}
+
+.termcode-text {
+  font-size: 14px;
+  white-space: pre;
+  tab-size: 4;
+}
+
+.termcode-prompt {
+  color: #a3be8c;
+  margin-right: 8px;
+  user-select: none;
+}
+
+/* Code highlighting */
+.termcode-content .hljs-keyword,
+.termcode-content .hljs-selector-tag,
+.termcode-content .hljs-built_in,
+.termcode-content .hljs-name,
+.termcode-content .hljs-tag {
+  color: #81a1c1;
+}
+
+.termcode-content .hljs-string,
+.termcode-content .hljs-title,
+.termcode-content .hljs-section,
+.termcode-content .hljs-attribute,
+.termcode-content .hljs-literal,
+.termcode-content .hljs-template-tag,
+.termcode-content .hljs-template-variable,
+.termcode-content .hljs-type {
+  color: #a3be8c;
+}
+
+.termcode-content .hljs-comment,
+.termcode-content .hljs-quote,
+.termcode-content .hljs-deletion {
+  color: #4c566a;
+}
+
+.termcode-content .hljs-meta,
+.termcode-content .hljs-meta-string {
+  color: #ebcb8b;
+}
+
+.termcode-content .hljs-number,
+.termcode-content .hljs-regexp,
+.termcode-content .hljs-link {
+  color: #b48ead;
+}
+
+.termcode-content code {
+  font-family: inherit;
+  background: transparent;
+  padding: 0;
+}
+
+/* Special paths and prompts */
+.termcode-path {
+  color: #88c0d0;
+  margin-right: 8px;
+}
+
+/* Light theme adaptations */
+:root:not(.dark-theme) .termcode-container,
+html:not(.dark-theme) .termcode-container {
+  background-color: #f2f2f2;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  
+  .termcode-header {
+    background-color: #e4e4e4;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .termcode-title {
+    color: #333333;
+  }
+  
+  .termcode-content {
+    background-color: #f8f8f8;
+    color: #2e3440;
+  }
+  
+  .termcode-prompt {
+    color: #4d7a5a;
+  }
+  
+  .termcode-path {
+    color: #5e81ac;
+  }
+}
+
+/* Scrollbar styling */
+.termcode-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.termcode-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.termcode-content::-webkit-scrollbar-thumb {
+  background-color: rgba(136, 192, 208, 0.5);
+  border-radius: 4px;
+}
+
+.termcode-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(136, 192, 208, 0.7);
+}
+
+/* Media query for different screen sizes */
+@media (max-width: 600px) {
+  .termcode-container {
+    border-radius: 6px;
+    margin: 1rem auto;
+  }
+  
+  .termcode-header {
+    height: 28px;
+    padding: 0 8px;
+  }
+  
+  .termcode-control {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .termcode-title {
+    font-size: 12px;
+  }
+  
+  .termcode-content {
+    padding: 12px;
+  }
+  
+  .termcode-text {
+    font-size: 13px;
+  }
+}
